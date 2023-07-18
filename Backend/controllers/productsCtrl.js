@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 
 //CREATE A NEW PRODUCT ADMIN
-const createProdcut = asyncHandler(async (req, res) => {
+const createProduct = asyncHandler(async (req, res) => {
 
  
      try {
@@ -111,4 +111,4 @@ const getAllProduct = asyncHandler(async (req, res) => {
      }
 })
 
-module.exports = { createProdcut, getAllProduct, getaProduct,updateProduct,deleteProduct};
+module.exports = { createProduct, getAllProduct, getaProduct,updateProduct,deleteProduct};

@@ -10,29 +10,37 @@ const {
   unBlockUser,
   handleRefreshToken,
   logout,
+  forgotPasswordToken,
+  updatePassword,
 } = require("../controllers/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
-//user register
+//USER REGISTER
 router.post("/register", createUser);
-//user login
+//USER REGISTER
+router.post("/forgot-password-token", forgotPasswordToken);
+//USER REGISTER
+router.post("/reset-password",);
+//USER REGISTER
+router.put("/update-password", authMiddleware,updatePassword);
+//USER LOGSIN 
 router.post("/login", loginUserCtrl);
-//get all users
-router.get("/allUsers", getAllUsers);
-//handle refresh token
+//ADMIN VIEWS ALL USERS
+router.get("/allUsers", authMiddleware,isAdmin,getAllUsers);
+//HANDLE REFRESH TOKEN
 router.get("/refresh", handleRefreshToken);
-//user log out
+//USER LOGS OUT
 router.get("/logout", logout);
-//get a single user
-router.get("/:id", authMiddleware, isAdmin, getAUsers);
-//delete a user by id
-router.delete("/delete/:id", deleteAUsers);
-//update a user
+//GET A SINGLE USER
+router.get("/:id", authMiddleware,getAUsers);
+//DELETE
+router.delete("/delete/:id", authMiddleware, deleteAUsers);
+//UPDATE USER
 router.put("/update/:id", authMiddleware, updateAUser);
-//admin block a user
+//ADMIN BLOCK USER
 router.put("/block/:id", authMiddleware, isAdmin, blockUser);
-//admin unblock a user
+//ADMIN UNBLOCK USER
 router.put("/unBlock/:id", authMiddleware, isAdmin, unBlockUser);
 
 module.exports = router;

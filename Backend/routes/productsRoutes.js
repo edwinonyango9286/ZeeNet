@@ -1,10 +1,10 @@
 const express = require("express");
-const { createProdcut, getAllProduct, getaProduct, updateProduct, deleteProduct } = require("../controllers/productsCtrl");
+const { createProdcut, getAllProduct, getaProduct, updateProduct, deleteProduct, createProduct } = require("../controllers/productsCtrl");
 const {isAdmin,authMiddleware} = require("../middlewares/authMiddleware")
 
 const router = express.Router();
 //CREATE A NEW PRODUCT ADMIN
-router.post("/create",authMiddleware, isAdmin,createProdcut);
+router.post("/create",authMiddleware, isAdmin,createProduct);
 //UPDATE PRODUCT DETAILS ADMIN
 router.put("/update/:id",authMiddleware,isAdmin,updateProduct);
 //DELETE A PRODUCT ADMIN

@@ -10,9 +10,8 @@ const cookieParser = require("cookie-parser");
 const productsRoutes = require("./routes/productsRoutes");
 const morgan = require("morgan");
 
-
 dbConnect();
-app.use(morgan("dev"))
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
