@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
   const info = await transporter.sendMail({
-    from: '"Zeenet" <technologieszeent@gmail.com>', 
+    from: '"ZeeNet" <technologieszeent@gmail.com>', 
     to:data.to, 
     subject: data.subject, 
     text: data.next,
