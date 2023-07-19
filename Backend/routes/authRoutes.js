@@ -38,7 +38,7 @@ router.get("/:id", authMiddleware,getAUsers);
 //DELETE
 router.delete("/delete/:id", authMiddleware, deleteAUsers);
 //UPDATE USER
-router.put("/update/:id", authMiddleware, updateAUser);
+router.put("/update/:id",authMiddleware, updateAUser);
 //ADMIN BLOCK USER
 router.put("/block/:id", authMiddleware, isAdmin, blockUser);
 //ADMIN UNBLOCK USER
