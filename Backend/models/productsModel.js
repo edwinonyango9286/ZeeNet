@@ -43,7 +43,7 @@ var productSchema = new mongoose.Schema(
       {
         public_id: String,
         url: String,
-      },
+      }
     ],
     color: [],
     tags: String,
