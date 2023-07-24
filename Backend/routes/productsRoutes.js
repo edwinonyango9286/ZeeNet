@@ -8,10 +8,10 @@ const {
   createProduct,
   addToWishlist,
   rating,
-  uploadImages,
+  uploadProductImages
 } = require("../controllers/productsCtrl");
 const { isAdmin, authMiddleware } = require("../middlewares/authMiddleware");
-const uploadPhoto = require("../middlewares/uploadImages");
+const { uploadPhoto,productImgResize } = require("../middlewares/uploadImage");
 const router = express.Router();
 
 //CREATE A NEW PRODUCT ADMIN
@@ -22,8 +22,8 @@ router.put(
   authMiddleware,
   isAdmin,
   uploadPhoto.array("images", 10),
-  productImageResize,
- uploadImages
+  productImgResize,
+  uploadProductImages,
 );
 //UPDATE PRODUCT DETAILS ADMIN
 router.put("/update/:id", authMiddleware, isAdmin, updateProduct);
