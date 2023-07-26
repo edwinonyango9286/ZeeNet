@@ -9,7 +9,7 @@ const {
   addToWishlist,
   rating,
   uploadProductImages
-} = require("../controllers/productsCtrl");
+} = require("../controllers/productCtrl");
 const { isAdmin, authMiddleware } = require("../middlewares/authMiddleware");
 const { uploadPhoto,productImgResize } = require("../middlewares/uploadImage");
 const router = express.Router();

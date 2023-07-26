@@ -10,12 +10,16 @@ const {
   unBlockUser,
   handleRefreshToken,
   logout,
-  forgotPasswordToken,
   updatePassword,
+  forgotPasswordToken,
   resetPassword,
   adminLogin,
   getWishlist,
   saveUserAddress,
+  addToCart,
+  getUserCart,
+  emptyCart,
+  applyCoupon,
 } = require("../controllers/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
@@ -31,7 +35,15 @@ router.put("/update-password", authMiddleware,updatePassword);
 //USER LOGSIN 
 router.post("/login", loginUserCtrl);
 // LOGIN ADMIN
-router.post("/adminlogin",adminLogin)
+router.post("/adminlogin",adminLogin);
+//USER CART
+router.post("/addtocart",authMiddleware,addToCart);
+//GET USER CART
+router.get("/getusercart",authMiddleware,getUserCart);
+//APPLY COUPON
+router.post("/applycoupon",authMiddleware,applyCoupon);
+//EMPTY CART
+router.delete("/emptycart",authMiddleware,emptyCart);
 //ADMIN VIEWS ALL USERS
 router.get("/allUsers", authMiddleware,isAdmin,getAllUsers);
 //HANDLE REFRESH TOKEN
@@ -42,7 +54,6 @@ router.get("/logout", logout);
 router.get("/getuserwishlist",authMiddleware,getWishlist);
 //GET A SINGLE USER
 router.get("/:id", authMiddleware,getAUser);
-
 //DELETE
 router.delete("/delete/:id", authMiddleware, deleteAUsers);
 //UPDATE USER

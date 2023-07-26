@@ -1,5 +1,5 @@
 const { query } = require("express");
-const Product = require("../models/productsModel");
+const Product = require("../models/productModel");
 const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const User = require("../models/userModel");

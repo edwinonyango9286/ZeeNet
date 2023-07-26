@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-const {Schema,Types: { ObjectId },} = require("mongoose");
+const {
+  Schema,
+  Types: { ObjectId },
+} = require("mongoose");
 
 //PRODUCTS MODEL SCHEMA
 var productSchema = new mongoose.Schema(
@@ -39,17 +42,22 @@ var productSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    images: [],
+    images: [
+      {
+        public_id: String,
+        url: String,
+      },
+    ],
     color: [],
     tags: String,
     ratings: [
       {
         star: Number,
         comment: String,
-            postedby: {
-                type: ObjectId,
-                ref: "User"
-            },
+        postedby: {
+          type: ObjectId,
+          ref: "User",
+        },
       },
     ],
     totalrating: {
