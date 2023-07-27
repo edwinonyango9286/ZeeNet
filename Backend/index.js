@@ -13,7 +13,8 @@ const blogRoute = require("./routes/blogRoute");
 const productCategoryRoute = require("./routes/productCategoryRoute");
 const blogCategoryRoute = require("./routes/blogCategoryRoute");
 const productBrandRoute = require("./routes/productBrandRoute");
-const couponRoute = require("./routes/couponRoute")
+const couponRoute = require("./routes/couponRoute");
+const colorRoute = require("./routes/colorRoute");
 dbConnect();
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -24,6 +25,8 @@ app.use(cookieParser());
 app.use("/api/user", authRoutes);
 //PRODUCT API
 app.use("/api/products", productRoutes);
+//COLOR API
+app.use("/api/color", colorRoute);
 //BLOGS API
 app.use("/api/blog", blogRoute);
 // PRODUCT CATEGORY API
@@ -31,9 +34,9 @@ app.use("/api/productcategory", productCategoryRoute);
 //BLOG CATEGORY API
 app.use("/api/blogcategory", blogCategoryRoute);
 //PRODUCT BRAND API
-app.use("/api/productbrand",productBrandRoute);
+app.use("/api/productbrand", productBrandRoute);
 //COUPON BRAND API
-app.use("/api/coupon",couponRoute)
+app.use("/api/coupon", couponRoute);
 
 app.use(notFound);
 app.use(errorHandler);

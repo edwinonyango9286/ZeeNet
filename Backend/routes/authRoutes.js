@@ -20,6 +20,11 @@ const {
   getUserCart,
   emptyCart,
   applyCoupon,
+  createOrder,
+  getOrders,
+  updateOrderStatus,
+  getOrderByUserId,
+  getAllOrders,
 } = require("../controllers/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
@@ -42,6 +47,15 @@ router.post("/addtocart",authMiddleware,addToCart);
 router.get("/getusercart",authMiddleware,getUserCart);
 //APPLY COUPON
 router.post("/applycoupon",authMiddleware,applyCoupon);
+//CREATE ORDER
+router.post("/createorder",authMiddleware,createOrder);
+//GET USER ORDERS 
+router.get("/getuserorders",authMiddleware,getOrders);
+//UPDATE ORDER STATUS
+router.put("/updateorderstatus",authMiddleware,isAdmin,updateOrderStatus)
+//GET ORDER BY USER ID
+router.get("/getorderbyuserid/:id",authMiddleware,isAdmin,getOrderByUserId);
+router.get("/getallorders",authMiddleware,isAdmin,getAllOrders);
 //EMPTY CART
 router.delete("/emptycart",authMiddleware,emptyCart);
 //ADMIN VIEWS ALL USERS

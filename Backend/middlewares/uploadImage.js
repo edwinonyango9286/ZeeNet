@@ -2,10 +2,9 @@ const multer = require("multer");
 const sharp = require("sharp");
 const path = require("path");
 const fs = require("fs");
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../public/images"));
+    cb(null, path.join(__dirname, "../public/images/"));
   },
   filename: function (req, file, cb) {
     const uniquesuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
@@ -17,18 +16,14 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
     cb(null, true);
   } else {
-    cb(
-      {
-        message: "Unsupported file format",
-      },
-      false);
+    cb({ message: "Unsupported file format" }, false);
   }
 };
 
 const uploadPhoto = multer({
   storage: storage,
   fileFilter: multerFilter,
-  limits: { fileSize: 8000000 },
+  limits: { fileSize: 1000000 },
 });
 
 const productImgResize = async (req, res, next) => {
@@ -40,12 +35,11 @@ const productImgResize = async (req, res, next) => {
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
         .toFile(`public/images/productImages/${file.filename}`);
-      fs.unlinkSync(`public/images/productsImages/${file.filename}`);
+      fs.unlinkSync(`public/images/productImages/${file.filename}`);
     })
   );
   next();
 };
-
 
 const blogImgResize = async (req, res, next) => {
   if (!req.files) return next();
@@ -61,6 +55,4 @@ const blogImgResize = async (req, res, next) => {
   );
   next();
 };
-
-
 module.exports = { uploadPhoto, productImgResize, blogImgResize };
