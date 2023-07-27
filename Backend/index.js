@@ -15,6 +15,7 @@ const blogCategoryRoute = require("./routes/blogCategoryRoute");
 const productBrandRoute = require("./routes/productBrandRoute");
 const couponRoute = require("./routes/couponRoute");
 const colorRoute = require("./routes/colorRoute");
+const enquiryRoute = require("./routes/enquiryRoute")
 dbConnect();
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -37,6 +38,8 @@ app.use("/api/blogcategory", blogCategoryRoute);
 app.use("/api/productbrand", productBrandRoute);
 //COUPON BRAND API
 app.use("/api/coupon", couponRoute);
+//ENQUIRIES API 
+app.use("/api/enquiry",enquiryRoute);
 
 app.use(notFound);
 app.use(errorHandler);
