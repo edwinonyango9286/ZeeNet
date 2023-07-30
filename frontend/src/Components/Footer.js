@@ -44,7 +44,7 @@ const Footer = () => {
                   Address : Moi Avenue Bazaar <br/>Plaza 7th Floor, Crystal Suites,<br/>
                    Suite 718, Nairobi
                 </address>
-                <a href="tel:+254 0719547267 " className="text-white mt-3 d-block mb-2">Phone:+254 0719547267</a>
+                <a href="tel:+254 0719547267 " className="text-white mt-3 d-block mb-2">Phone : +254 0719547267</a>
                 <a href="mailto:technologieszeenet@gmail.com" className="text-white mt-2 d-block mb-2 ">Email : technologieszeenet@gmail.com</a>
                 <div className="social-icons d-flex align-items-center gap-30 mt-4">
                   <a className="text-white">
