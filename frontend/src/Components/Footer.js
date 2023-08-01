@@ -44,23 +44,21 @@ const Footer = () => {
                   Address : Moi Avenue Bazaar <br/>Plaza 7th Floor, Crystal Suites,<br/>
                    Suite 718, Nairobi
                 </address>
-                <a href="tel:+254 0719547267 " className="text-white mt-3 d-block mb-2">Phone : +254 0719547267</a>
-                <a href="mailto:technologieszeenet@gmail.com" className="text-white mt-2 d-block mb-2 ">Email : technologieszeenet@gmail.com</a>
+                <a href="tel:+254 0719547267 " className="text-white mt-3 d-block mb-1">Phone : +254 0719547267</a>
+                <a href="mailto:technologieszeenet@gmail.com" className="text-white mt-2 d-block mb-0 ">Email : technologieszeenet@gmail.com</a>
                 <div className="social-icons d-flex align-items-center gap-30 mt-4">
-                  <a className="text-white">
-                    <BsLinkedin></BsLinkedin>
+                  <a className="text-white" to="#">
+                    <BsLinkedin className="fs-4"></BsLinkedin>
                   </a>
-                  <a className="text-white">
-                    <BsInstagram></BsInstagram>
+                  <a className="text-white" to="#">
+                    <BsInstagram className="fs-4"></BsInstagram>
                   </a>
-                  <a className="text-white">
-                    <BsYoutube></BsYoutube>
+                  <a className="text-white" to="#">
+                    <BsYoutube className="fs-4"></BsYoutube>
                   </a>
-                  <a className="text-white">
-                    <BsGithub></BsGithub>
+                  <a className="text-white" to="#">
+                    <BsGithub className="fs-4"></BsGithub>
                   </a>
-
-
                 </div>
               </div>
             </div>
