@@ -2,6 +2,7 @@ import React from "react";
 import watchImage from "../images/watch.jpg";
 import headphones from "../images/headphone.jpg";
 import ReactStars from "react-rating-stars-component";
+import watchImage1 from "../images/watch-1.avif"
 import { Link } from "react-router-dom";
 import prodcompare from "../images/prodcompare.svg";
 import view from "../images/view.svg";
@@ -19,7 +20,7 @@ const ProductCard = () => {
         </div>
         <div className="product-image">
           <img src={watchImage} className="img-fluid" alt="product image" />
-          <img src={headphones} className="img-fluid" alt="watch"></img>
+          <img src={watchImage1} className="img-fluid" alt="watch"></img>
 
         </div>
 

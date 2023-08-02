@@ -332,6 +332,84 @@ footer .input-group-text {
   border-radius: 10px;
   background-color: white;
 }
-
-
 /* Special Products Styling  Ends here*/
+
+/* famous card styling starts here */
+ .famous-content{
+  top: 10%;
+  left: 10%;
+}
+.famous-card img{
+  border-radius: 10px;
+}
+
+ .famous-content h5{
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+}
+.famous-card .famous-content h6{
+  font-size:24px;
+  line-height: 38px;
+  font-weight: 500;
+  color: white;
+
+}
+
+.famous-content p{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 100;
+  color: white;
+}
+/* famous card styling ends here */
+
+
+/* store styling starts here */
+.filter-card{
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.filter-title{
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color:  var(--color-1c1c1b);
+  margin-bottom: 20px;
+}
+
+
+
+.filter-card ul,
+.filter-card .form-check-label
+{
+  list-style-type: none;
+  font-size: 13px;
+line-height: 20px;  
+color: var(--color-777777);
+cursor: pointer;
+  
+}
+.filter-card .form-check-input:checked{
+  background-color: var(--color-febd69);
+  border-color:  var(--color-febd69);
+}
+.filter-card .form-check-input:focus{
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.25)
+}
+.sub-title
+{
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-1c1c1b);
+  margin-bottom: 15px;
+}
+
+
+
+/* store styling ends here */

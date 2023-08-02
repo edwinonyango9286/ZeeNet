@@ -5,6 +5,7 @@ import Layout from './Components/Layout';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Store from './Pages/Store';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Route index element={<Home></Home>}/>
       <Route path='/about' element={<About/>} />
       <Route path='/contact' element={<Contact/>}/>
+      <Route path='/store' element={<Store/>}/>
+
      </Route>
     </Routes>
     </BrowserRouter>

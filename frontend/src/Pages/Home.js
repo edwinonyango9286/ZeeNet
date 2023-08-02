@@ -26,6 +26,11 @@ import brand8 from "../images/brand-08.png";
 import BlogCard from "../Components/BlogCard";
 import ProductCard from "../Components/ProductCard";
 import SpecialProducts from "../Components/SpecialProducts";
+import famous1 from "../images/famous-01.png";
+import famous2 from "../images/famous-02.webp";
+import famous3 from "../images/famous-03.webp";
+import famous4 from "../images/famous-04.webp";
+
 
 const Home = () => {
   return (
@@ -244,6 +249,55 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="famous-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img src={famous1} className="img-fluid" alt="famous1"/>
+                <div className="famous-content position-absolute">
+                  <h5>Big Screen</h5>
+                  <h6>Smart Watch series 7</h6>
+                  <p>From $399 or $16.62/mo</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img src={famous2} className="img-fluid" alt="famous2"/>
+                <div className="famous-content position-absolute">
+                  <h5 className="text-dark">Big Screen</h5>
+                  <h6 className="text-dark">Smart Watch series 7</h6>
+                  <p className="text-dark">From $399 or $16.62/mo</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img src={famous3} className="img-fluid" alt="famous1"/>
+                <div className="famous-content position-absolute">
+                  <h5 className="text-dark">Big Screen</h5>
+                  <h6 className="text-dark">Smart Watch series 7</h6>
+                  <p className="text-dark">From $399 or $16.62/mo</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-3">
+              <div className="famous-card position-relative">
+                <img src={famous4} className="img-fluid" alt="famous1"/>
+                <div className="famous-content position-absolute">
+                  <h5 className="text-dark">Big Screen</h5>
+                  <h6 className="text-dark">Smart Watch series 7</h6>
+                  <p className="text-dark">From $399 or $16.62/mo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="special-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
@@ -253,9 +307,25 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <SpecialProducts/>
-            <SpecialProducts/>
-            <SpecialProducts/>
+            <SpecialProducts />
+            <SpecialProducts />
+            <SpecialProducts />
+          </div>
+        </div>
+      </section>
+
+      <section className="popular-wrapper py-5 home-wrapper-2">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Our Popular Products </h3>
+            </div>
+          </div>
+          <div className="row">
+            <ProductCard></ProductCard>
+            <ProductCard></ProductCard>
+            <ProductCard></ProductCard>
+            <ProductCard></ProductCard>
           </div>
         </div>
       </section>
