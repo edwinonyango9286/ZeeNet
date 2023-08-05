@@ -14,7 +14,7 @@ const BlogCard = () => {
             <p className="desc"> 
             Virtual Reality has emerged as one of the most exciting and transformative technologies of our time. 
             </p>
-            <Link  to="/" className="button">Read More</Link>
+            <Link  to="/blogs/singleblog/:id" className="button">Read More</Link>
         </div>
       </div>
   );

@@ -8,6 +8,7 @@ import grid2 from "../images/gr2.svg";
 import grid3 from "../images/gr3.svg";
 import grid4 from "../images/gr4.svg";
 import ProductCard from "../Components/ProductCard";
+import Colors from "../Components/Colors";
 const Store = () => {
   const [grid, setGrid] = useState(4);
 
@@ -55,7 +56,7 @@ const Store = () => {
                         id=""
                       />
                       <label className="form-check-label " htmlFor="">
-                        {" "}
+                      
                         Out of Stock (1)
                       </label>
                     </div>
@@ -84,21 +85,7 @@ const Store = () => {
                   </div>
                   <h5 className="sub-title">Colors</h5>
                   <div>
-                    <ul className="colors ps-0">
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                      <li></li>
-                    </ul>
+                    <Colors/>
                   </div>
                   <h5 className="sub-title">Size</h5>
 
