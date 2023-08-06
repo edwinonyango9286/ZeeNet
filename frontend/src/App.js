@@ -14,6 +14,11 @@ import ForgotPassword from './Pages/ForgotPassword';
 import Signup from './Pages/Signup';
 import ResetPassword from './Pages/ResetPassword';
 import SingleBlog from './Pages/SingleBlog';
+import RefundPolicy from './Pages/RefundPolicy';
+import ShippingPolicy from './Pages/ShippingPolicy';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import TermsandConditions from './Pages/TermsandConditions';
+import SingleProduct from './Pages/SingleProduct';
 
 function App() {
   return (
@@ -24,6 +29,8 @@ function App() {
       <Route index element={<Home/>}/>
       <Route path='about' element={<About/>} />
       <Route path='store' element={<Store/>}/>
+      <Route path='sigleproduct/:id' element={<SingleProduct/>}/>
+
       <Route path='blogs' element={<Blogs/>}/>
       <Route path='blogs/singleblog/:id' element={ <SingleBlog/>}/>
       <Route path='contact' element={<Contact/>}/>
@@ -33,7 +40,12 @@ function App() {
       <Route path='forgot-password' element={<ForgotPassword/>}/>
       <Route path='signup' element={<Signup/>}/>
       <Route path='reset-password' element={<ResetPassword/>}/>
+      <Route path='refund-policy' element={<RefundPolicy/>}/>
+      <Route path='shipping-policy' element={<ShippingPolicy/>}/>
+      <Route path='privacy-policy' element={<PrivacyPolicy/>}/>
+      <Route path='terms-and-conditions' element={<TermsandConditions/>}/>
      </Route>
+
     </Routes>
     </BrowserRouter>
     </>

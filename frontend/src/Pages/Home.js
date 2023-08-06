@@ -31,7 +31,6 @@ import famous2 from "../images/famous-02.webp";
 import famous3 from "../images/famous-03.webp";
 import famous4 from "../images/famous-04.webp";
 
-
 const Home = () => {
   return (
     <>
@@ -254,7 +253,7 @@ const Home = () => {
           <div className="row">
             <div className="col-3">
               <div className="famous-card position-relative">
-                <img src={famous1} className="img-fluid" alt="famous1"/>
+                <img src={famous1} className="img-fluid" alt="famous1" />
                 <div className="famous-content position-absolute">
                   <h5>Big Screen</h5>
                   <h6>Smart Watch series 7</h6>
@@ -265,7 +264,7 @@ const Home = () => {
 
             <div className="col-3">
               <div className="famous-card position-relative">
-                <img src={famous2} className="img-fluid" alt="famous2"/>
+                <img src={famous2} className="img-fluid" alt="famous2" />
                 <div className="famous-content position-absolute">
                   <h5 className="text-dark">Big Screen</h5>
                   <h6 className="text-dark">Smart Watch series 7</h6>
@@ -276,7 +275,7 @@ const Home = () => {
 
             <div className="col-3">
               <div className="famous-card position-relative">
-                <img src={famous3} className="img-fluid" alt="famous1"/>
+                <img src={famous3} className="img-fluid" alt="famous1" />
                 <div className="famous-content position-absolute">
                   <h5 className="text-dark">Big Screen</h5>
                   <h6 className="text-dark">Smart Watch series 7</h6>
@@ -287,7 +286,7 @@ const Home = () => {
 
             <div className="col-3">
               <div className="famous-card position-relative">
-                <img src={famous4} className="img-fluid" alt="famous1"/>
+                <img src={famous4} className="img-fluid" alt="famous1" />
                 <div className="famous-content position-absolute">
                   <h5 className="text-dark">Big Screen</h5>
                   <h6 className="text-dark">Smart Watch series 7</h6>
@@ -376,19 +375,17 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="col-3">
-            <BlogCard></BlogCard>
+              <BlogCard></BlogCard>
             </div>
             <div className="col-3">
-            <BlogCard></BlogCard>
+              <BlogCard></BlogCard>
             </div>
             <div className="col-3">
-            <BlogCard></BlogCard>
+              <BlogCard></BlogCard>
             </div>
             <div className="col-3">
-            <BlogCard></BlogCard>
+              <BlogCard></BlogCard>
             </div>
-            
-            
           </div>
         </div>
       </section>
