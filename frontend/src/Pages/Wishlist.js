@@ -3,14 +3,14 @@ import Meta from "../Components/Meta";
 import BreadCrumb from "../Components/BreadCrumb";
 import cross from "../images/cross.svg";
 import watch from "../images/watch-1.avif";
+import Container from "../Components/Container";
 
 const Wishlist = () => {
   return (
     <>
       <Meta title={"wishlist"} />
       <BreadCrumb title="wishlist" />
-      <div className="wishlist-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
+      <Container class1="wishlist-wrapper home-wrapper-2 py-5">
           <div className="row">
             <div className="col-3">
               <div className="wishlist-card  position-relative">
@@ -87,8 +87,7 @@ const Wishlist = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

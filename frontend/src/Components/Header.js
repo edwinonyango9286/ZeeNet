@@ -10,11 +10,11 @@ import menu from "../images/menu.svg"
 const Header = () => {
   return (
     <>
-      <header className="header-top-strip py-3">
-        <div className="container-xxl">
+      <header className="header-top-strip py-2">
+        <div className="container-md">
           <div className="row">
             <div className="col-6">
-              <p className="text-white" mb-0>
+              <p className="text-white mb-0" >
                 Free Shipping Over Ksh 1000 & Free Returns
               </p>
             </div>
@@ -30,8 +30,8 @@ const Header = () => {
         </div>
       </header>
 
-      <header className="header-upper py-3">
-        <div className="container-xxl">
+      <header className="header-upper py-2">
+        <div className="container-md">
           <div className="row align-items-center">
             <div className="col-2">
               <h2>
@@ -47,7 +47,7 @@ const Header = () => {
                   aria-label="Search Product Here"
                   aria-describedby="basic-addon2"
                 />
-                <span className="input-group-text" id="basic-addon2 p-3">
+                <span className="input-group-text" id="basic-addon2 p-2">
                   <BsSearch className="fs-6"></BsSearch>
                 </span>
               </div>
@@ -57,29 +57,29 @@ const Header = () => {
                 <div>
                   <Link  to="/compare-products" className="d-flex align-items-center gap-10 text-white">
                     <img src={compareImage} alt="compare"></img>
-                    <p className="mb-0">
+                    <h6 className="mb-0 ">
                       compare
                       <br />
                       products
-                    </p>
+                    </h6>
                   </Link>
                 </div>
                 <div>
                   <Link to="/wishlist" className="d-flex align-items-center gap-10 text-white">
                     <img src={wishlistImage} alt="wishlist"></img>
-                    <p className="mb-0">
+                    <h6 className="mb-0 ">
                       favourite
                       <br /> wishlist
-                    </p>
+                    </h6>
                   </Link>
                 </div>
                 <div>
                   <Link to="/login" className="d-flex align-items-center gap-10 text-white">
                     <img src={accountImage} alt="user"></img>
-                    <p className="mb-0">
+                    <h6 className="mb-0">
                       Log in <br />
                       My Account
-                    </p>
+                    </h6>
                   </Link>
                 </div>
                 <div>
@@ -87,7 +87,7 @@ const Header = () => {
                     <img src={cartImage} alt="cart"></img>
                     <div className="d-flex flex-column gap-10">
                       <span className="badge bg-white text-dark">0</span>
-                      <p className="mb-0">200/-</p>
+                      <h6 className="mb-0">200/-</h6>
                     </div>
                   </Link>
                 </div>
@@ -97,8 +97,8 @@ const Header = () => {
         </div>
       </header>
 
-      <header className="header-bottom py-3">
-        <div className="container-xxl">
+      <header className="header-bottom py-1">
+        <div className="container-md">
           <div className="row">
             <div className="col-12">
               <div className="menu-bottom d-flex align-items-center gap-30">

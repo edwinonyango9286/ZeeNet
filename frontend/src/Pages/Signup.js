@@ -2,52 +2,25 @@ import React from "react";
 import Meta from "../Components/Meta";
 import BreadCrump from "../Components/BreadCrumb";
 import {Link} from "react-router-dom";
+import Container from "../Components/Container";
+import CustomInput from "../Components/CustomInput";
 
 const Signup = () => {
   return (
     <>
       <Meta title={"signup"} />
       <BreadCrump title="signup" />
-      <div className="signup-wrapper py-5 home-wrapper-2">
-        <div className="container-xxl">
+      <Container className="signup-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <div className="auth-card">
               <h3 className="text-center mb-3">Create Account</h3>
               <form action="" className="d-flex flex-column gap-15">
-                <div>
-                  <input
-                    type="text"
-                    name="firstname"
-                    placeholder="Firs tname"
-                    className="form-control"
-                  />
-                </div>
-
-                <div>
-                  <input type="text" name="lastname" placeholder="Last name" className="form-control" />
-                </div>
-                <div>
-                  <input type="email" name="email" placeholder="Email"
-                  className="form-control" />
-                </div>
-
-                <div>
-                  <input
-                    type="tel"
-                    name="mobile"
-                    placeholder="Mobile Number"
-                    className="form-control"
-                  />
-                </div>
-                <div className="mt-1">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className="form-control"
-                  />
-                </div>
+              <CustomInput type="text" name="firstname" placeholder="First name"/>
+              <CustomInput type="text" name="Lastname" placeholder="Last Name"/>
+              <CustomInput type="email" name="email" placeholder="Email"/>
+              <CustomInput type="tel" name="mobile" placeholder="Mobile Number"/>
+              <CustomInput type="password" name="password" placeholder="Password"/>
                 <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
                     <button className="button border-0">Create
                     </button>
@@ -58,9 +31,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

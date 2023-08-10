@@ -9,6 +9,7 @@ import grid3 from "../images/gr3.svg";
 import grid4 from "../images/gr4.svg";
 import ProductCard from "../Components/ProductCard";
 import Colors from "../Components/Colors";
+import Container from "../Components/Container";
 const Store = () => {
   const [grid, setGrid] = useState(4);
 
@@ -16,8 +17,7 @@ const Store = () => {
     <>
       <Meta title={"Store"}/>
       <BreadCrumb title="Store"/>
-      <div className="store-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
+      <Container class1="store-wrapper home-wrapper-2 ">
           <div className="row">
             <div className="col-3">
               <div className="filter-card mb-3">
@@ -71,7 +71,7 @@ const Store = () => {
                         id="floatingInput"
                         placeholder="from"
                       />
-                      <label for="floatingInput">From</label>
+                      <label htmlFor="floatingInput">From</label>
                     </div>
                     <div className="form-floating">
                       <input
@@ -241,7 +241,7 @@ const Store = () => {
                     </p>
                     <select name="" className="form-control form-select" id="">
                       <option value="manual">featured</option>
-                      <option value="best-selling" selected="selected ">
+                      <option value="best-selling" defaultValue="best-selling">
                         Best Selling
                       </option>
                       <option value="title-ascending">
@@ -312,8 +312,7 @@ const Store = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

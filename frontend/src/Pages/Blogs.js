@@ -2,6 +2,7 @@ import React from "react";
 import BreadCrumb from "../Components/BreadCrumb";
 import Meta from "../Components/Meta";
 import BlogCard from "../Components/BlogCard";
+import Container from "../Components/Container";
 
 const Blogs = () => {
   return (
@@ -9,8 +10,7 @@ const Blogs = () => {
       <Meta title={"Blogs"} />
       <BreadCrumb title="Blogs" />
 
-      <div className="blog-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
+      <Container clas1="blog-wrapper home-wrapper-2">
           <div className="row">
             <div className="col-3">
               <div className="filter-card mb-3">
@@ -44,8 +44,7 @@ const Blogs = () => {
 
             </div>
           </div>
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

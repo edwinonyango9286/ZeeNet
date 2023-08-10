@@ -2,35 +2,22 @@ import React from "react";
 import Meta from "../Components/Meta";
 import BreadCrump from "../Components/BreadCrumb";
 import { Link } from "react-router-dom";
+import Container from "../Components/Container";
+import CustomInput from "../Components/CustomInput";
 
 const Login = () => {
   return (
     <>
       <Meta title={"login"} />
       <BreadCrump title="login" />
-      <div className="login-wrapper home-wrapper-2">
-        <div className="container-xxl">
+      <Container class1="login-wrapper home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
               <form action="" className="d-flex flex-column gap-15">
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    placeholder="Email"
-                  />
-                </div>
-                <div className="mt-1">
-                  <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    placeholder="password"
-                  />
-                </div>
+                <CustomInput type="email" name="email" placeholder="Email"/>
+               <CustomInput type="password" name="password" placeholder="password"/>
                 <div>
                   <Link to="/forgot-password">Forgot Your Password?</Link>
                 </div>
@@ -47,8 +34,7 @@ const Login = () => {
           </div>
         </div>
 
-        </div>
-      </div>
+      </Container>
     </>
   );
 };

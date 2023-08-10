@@ -16,11 +16,14 @@ const ProductCard = (props) => {
   return (
     <>
     <div className={`${location.pathname=="/store" ? `gr-${grid}`:"col-3"}`} >
-      <Link to="/sigleproduct/:id" className="product-card position-relative">
+      <Link to={`${location.pathname=="/"?"/store/:id":location.pathname=="/store/:id"?"/store/:id":":id"}`}
+      
+      
+      className="product-card position-relative">
         <div className="wishlist-icon position-absolute">
-         <Link>
+         <button className="border-0 bg-transparent">
          <img src={wishlistIcon} alt="watch"></img>
-         </Link>
+         </button>
         </div>
         <div className="product-image">
           <img src={watchImage} className="img-fluid" alt="product image" />
@@ -48,77 +51,31 @@ const ProductCard = (props) => {
 
         <div className="action-bar position-absolute">
           <div className="d-flex flex-column gap-15">
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={prodcompare} alt="prodcompare"></img>
-            </Link>
+            </button>
 
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={view} alt="view"></img>
-            </Link>
+            </button>
 
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={addCart} alt="addtocart"></img>
-            </Link>
-          </div>
-        </div>
-      </Link>
-    </div>
-    <div className={`${location.pathname=="/store" ? `gr-${grid}`:"col-3"}`} >
-      <Link className="product-card position-relative">
-        <div className="wishlist-icon position-absolute">
-         <Link>
-         <img src={wishlistIcon} alt="watch"></img>
-         </Link>
-        </div>
-        <div className="product-image">
-          <img src={watchImage} className="img-fluid" alt="product image" />
-          <img src={watchImage1} className="img-fluid" alt="watch"></img>
-
-        </div>
-
-        <div className="product-details">
-          <h6 className="brand">Vandrose</h6>
-          <h5 className="product-title">
-            Kids headphone bulk 10 pack multi colored for students
-          </h5>
-          <ReactStars
-            count={5}
-            size={24}
-            value={3}
-            edit={false}
-            activeColor="#ffd700"
-          />
-          <p className={`description ${grid ===12 ?"d-bock":"d-none"}`}>
-          Introducing the HP ProBook X360, a versatile and powerful laptop designed to elevate your productivity and creativity to new heights
-          </p>
-          <p className="price">Ksh 1000/-</p>
-        </div>
-
-        <div className="action-bar position-absolute">
-          <div className="d-flex flex-column gap-15">
-            <Link>
-              <img src={prodcompare} alt="prodcompare"></img>
-            </Link>
-
-            <Link>
-              <img src={view} alt="view"></img>
-            </Link>
-
-            <Link>
-              <img src={addCart} alt="addtocart"></img>
-            </Link>
+            </button>
           </div>
         </div>
       </Link>
     </div>
 
-
     <div className={`${location.pathname=="/store" ? `gr-${grid}`:"col-3"}`} >
-      <Link className="product-card position-relative">
+      <Link 
+      
+      
+      className="product-card position-relative">
         <div className="wishlist-icon position-absolute">
-         <Link>
+         <button className="border-0 bg-transparent">
          <img src={wishlistIcon} alt="watch"></img>
-         </Link>
+         </button>
         </div>
         <div className="product-image">
           <img src={watchImage} className="img-fluid" alt="product image" />
@@ -146,17 +103,17 @@ const ProductCard = (props) => {
 
         <div className="action-bar position-absolute">
           <div className="d-flex flex-column gap-15">
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={prodcompare} alt="prodcompare"></img>
-            </Link>
+            </button>
 
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={view} alt="view"></img>
-            </Link>
+            </button>
 
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={addCart} alt="addtocart"></img>
-            </Link>
+            </button>
           </div>
         </div>
       </Link>
@@ -166,9 +123,9 @@ const ProductCard = (props) => {
     <div className={`${location.pathname=="/store" ? `gr-${grid}`:"col-3"}`} >
       <Link className="product-card position-relative">
         <div className="wishlist-icon position-absolute">
-         <Link>
+         <button className="border-0 bg-transparent">
          <img src={wishlistIcon} alt="watch"></img>
-         </Link>
+         </button>
         </div>
         <div className="product-image">
           <img src={watchImage} className="img-fluid" alt="product image" />
@@ -196,17 +153,67 @@ const ProductCard = (props) => {
 
         <div className="action-bar position-absolute">
           <div className="d-flex flex-column gap-15">
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={prodcompare} alt="prodcompare"></img>
-            </Link>
+            </button>
 
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={view} alt="view"></img>
-            </Link>
+            </button>
 
-            <Link>
+            <button className="border-0 bg-transparent">
               <img src={addCart} alt="addtocart"></img>
-            </Link>
+            </button>
+          </div>
+        </div>
+      </Link>
+    </div>
+
+
+    <div className={`${location.pathname=="/store" ? `gr-${grid}`:"col-3"}`} >
+      <Link className="product-card position-relative">
+        <div className="wishlist-icon position-absolute">
+         <button className="border-0 bg-transparent">
+         <img src={wishlistIcon} alt="watch"></img>
+         </button>
+        </div>
+        <div className="product-image">
+          <img src={watchImage} className="img-fluid" alt="product image" />
+          <img src={watchImage1} className="img-fluid" alt="watch"></img>
+
+        </div>
+
+        <div className="product-details">
+          <h6 className="brand">Vandrose</h6>
+          <h5 className="product-title">
+            Kids headphone bulk 10 pack multi colored for students
+          </h5>
+          <ReactStars
+            count={5}
+            size={24}
+            value={3}
+            edit={false}
+            activeColor="#ffd700"
+          />
+          <p className={`description ${grid ===12 ?"d-bock":"d-none"}`}>
+          Introducing the HP ProBook X360, a versatile and powerful laptop designed to elevate your productivity and creativity to new heights
+          </p>
+          <p className="price">Ksh 1000/-</p>
+        </div>
+
+        <div className="action-bar position-absolute">
+          <div className="d-flex flex-column gap-15">
+            <button className="border-0 bg-transparent">
+              <img src={prodcompare} alt="prodcompare"></img>
+            </button>
+
+            <button className="border-0 bg-transparent">
+              <img src={view} alt="view"></img>
+            </button>
+
+            <button className="border-0 bg-transparent">
+              <img src={addCart} alt="addtocart"></img>
+            </button>
           </div>
         </div>
       </Link>
