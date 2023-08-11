@@ -15,9 +15,9 @@ const Cart = () => {
         <div className="row">
           <div className="col-12">
             <div className="cart-header py-3 d-flex justify-content-between align-items-center">
-              <h4 className="cart-col-1">product</h4>
+              <h4 className="cart-col-1">Product</h4>
               <h4 className="cart-col-2">Price</h4>
-              <h4 className="cart-col-3">Quality</h4>
+              <h4 className="cart-col-3">Quantity</h4>
               <h4 className="crat-col-4">Total</h4>
             </div>
             <div className="cart-data py-3 mb-2 d-flex justify-content-between align-items-center">
@@ -35,7 +35,7 @@ const Cart = () => {
               <div className="cart-col-2">
                 <h5 className="price">Ksh 1000</h5>
               </div>
-              <div className="cart-col-3 d-flex align-items-center gap-15">
+              <div className="cart-col-3 d-flex align-items-center gap-30">
                 <div>
                   <input
                     className="form-control"
@@ -47,7 +47,7 @@ const Cart = () => {
                   />
                 </div>
                 <div>
-                  <AiOutlineDelete className="text-danger" />
+                  <AiOutlineDelete className="text-danger fs-3" />
                 </div>
               </div>
               <div className="cart-col-4">
@@ -62,7 +62,7 @@ const Cart = () => {
                 Continue Shopping
               </Link>
               <div className="d-flex flex-column align-items-end">
-                <h4>SubTotal:1000</h4>
+                <h5>SubTotal : 1000/-</h5>
                 <p>Taxes and shipping calaculate at checkout</p>
                 <Link to="/checkout" className="button">
                   {" "}

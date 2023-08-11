@@ -366,15 +366,15 @@ footer .input-group-text {
 /* Special Products Styling */
 
 .special-product-card {
-  padding: 20px 10px;
-  border-radius: 10px;
+  padding: 10px 10px;
+  border-radius: 5px;
   background-color: white;
 }
 /* Special Products Styling  Ends here*/
 
 /* famous card styling starts here */
 .famous-content {
-  top: 10%;
+  top: 2%;
   left: 10%;
 }
 .famous-card img {
@@ -382,22 +382,19 @@ footer .input-group-text {
 }
 
 .famous-content h5 {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 14px;
   font-weight: 400;
   color: white;
   text-transform: uppercase;
 }
 .famous-card .famous-content h6 {
   font-size: 24px;
-  line-height: 38px;
   font-weight: 500;
   color: white;
 }
 
 .famous-content p {
   font-size: 16px;
-  line-height: 24px;
   font-weight: 100;
   color: white;
 }
@@ -527,17 +524,16 @@ footer .input-group-text {
 }
 
 .contact-title {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 35px;
+  line-height: 30px;
   text-align: left;
 }
 
 .contact-inner-wrapper form .form-control {
   background-color: var(--color-f5f5f7);
-  border-radius: 10px;
   border-color: transparent;
-  padding: 10px;
+  padding: 10px  ;
 }
 
 .contact-inner-wrapper ul {
@@ -553,7 +549,7 @@ footer .input-group-text {
 
 /* compare products page starts here */
 .compare-product-card {
-  padding: 20px 15px;
+  padding: 10px 10px;
   background-color: white;
   border-radius: 10px;
 }
@@ -562,22 +558,22 @@ footer .input-group-text {
   top: 15px;
   right: 15px;
   width: 20px;
-  padding: 3px;
+  padding: 4px;
   cursor: pointer;
 }
 
 .compare-product-details h5.title,
 .wishlist-card h5.title {
-  font-size: 15px;
-  line-height: 22px;
-  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
   color: var(--color-1c1c1b);
 }
 
 .compare-product-details h6.price,
 .wishlist-card h6.price {
-  font-size: 15px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 400;
 }
 
@@ -585,7 +581,7 @@ footer .input-group-text {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0px;
+  padding: 4px 0px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* compare products page styling ends here */
@@ -772,7 +768,7 @@ footer .input-group-text {
   border-bottom: 1px solid var(--color-eaeaea);
 }
 .cart-header h4 {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--color-777777);
 }
 .cart-col-1 {

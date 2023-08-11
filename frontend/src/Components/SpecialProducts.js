@@ -6,7 +6,8 @@ import{Link} from "react-router-dom"
 
 const SpecialProducts = () => {
   return (
-    <div className="col-6 mb-3">
+
+    <div className="col-6 mb-2">
       <div className="special-product-card">
         <div className="d-flex justify-content-between">
           <div>
@@ -17,7 +18,7 @@ const SpecialProducts = () => {
             <h6 className="title">Heavenly Horizons: A Celestial Timepiece</h6>
             <ReactStars
               count={5}
-              size={24}
+              size={20}
               value={4}
               edit={false}
               activeColor="#ffd700"
@@ -37,7 +38,7 @@ const SpecialProducts = () => {
                 <span className="badge rounded-circle p-2 bg-danger">1</span>
               </div>
             </div>
-            <div className="prod-count my-3">
+            <div className="prod-count my-2">
                 <p>Products:5</p>
                 <div class="progress">
                   <div

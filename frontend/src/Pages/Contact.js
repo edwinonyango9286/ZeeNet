@@ -75,11 +75,11 @@ import Container from "../Components/Container";
                   Plaza 7th Floor, Crystal Suites,
                         </address></li>
                       <li className="mb-3 d-flex align-items-center gap-15"><BsTelephoneFill className="fs-5"/>
-                      <a href="tel:+254 0719547267" >Phone:+254 0719547267</a>
+                      <a href="tel:+254 0719547267" >Phone : +254 0719547267</a>
                       </li>
 
                       <li className="mb-3 d-flex align-items-center gap-15"><AiTwotoneMail className="fs-5"/>
-                      <a href="mailto:technologieszeenet@gmail.com">Email:technologieszeenet@gmail.com</a>
+                      <a href="mailto:technologieszeenet@gmail.com">Email : technologieszeenet@gmail.com</a>
                       
                       </li>
 
