@@ -32,7 +32,7 @@ const SingleProduct = () => {
     <>
       <Meta title={"product name"} />
       <BreadCrumb title="product name" />
-      <Container class1="main-product-wrapper py-5 home-wrapper-2">
+      <Container class1="main-product-wrapper py-3 home-wrapper-2">
           <div className="row">
             <div className="col-6">
               <div className="main-product-image">

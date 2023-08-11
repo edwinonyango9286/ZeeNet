@@ -26,7 +26,8 @@ import famous3 from "../images/famous-03.webp";
 import famous4 from "../images/famous-04.webp";
 import Container from "../Components/Container";
 import services from "../utils/Data"
-
+import spaeker from "../images/speaker.jpg"
+import smartwatch from "../images/smartwatch.avif"
 const Home = () => {
   return (
     <>
@@ -40,8 +41,8 @@ const Home = () => {
                 alt="main banner"
               ></img>
               <div className="main-banner-content position-absolute">
-                <h4> SUPPERCHARGED FOR PROS</h4>
-                <h5>iPad S13+ Pro.</h5>
+                <h5> SUPPERCHARGED FOR PROS</h5>
+                <h6>iPad S13+ Pro.</h6>
                 <p> From Ksh : 56,000 To 98,000</p>
                 <Link className="button">BUY NOW</Link>
               </div>
@@ -57,7 +58,7 @@ const Home = () => {
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4> SUPPERCHARGED FOR PROS</h4>
+                  <h4> SUPPERCHARGED PROS</h4>
                   <h5>iPad S13+ Pro.</h5>
                   <p>
                     From Ksh : 56,000 <br />
@@ -102,7 +103,7 @@ const Home = () => {
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4> SUPPERCHARGED FOR PROS</h4>
+                  <h4> SUPPERCHARGED PROS</h4>
                   <h5>iPad S13+ Pro.</h5>
                   <p>
                     From Ksh : 56,000 <br />
@@ -130,11 +131,10 @@ const Home = () => {
                   <p className="mb-0">{i.tagline}</p>
                 </div>
               </div>
-
                 )
               })}
               
-            </div>
+            </div> 
           </div>
         </div>
       </Container>
@@ -148,7 +148,7 @@ const Home = () => {
                   <h6>Music & Gaming</h6>
                   <p>10 Items</p>
                 </div>
-                <img src={cameraImage} alt="camera"></img>
+                <img src={spaeker} alt="camera"></img>
               </div>
               <div className="d-flex  align-items-center">
                 <div>
@@ -169,7 +169,7 @@ const Home = () => {
                   <h6>Smart Watch</h6>
                   <p>10 Items</p>
                 </div>
-                <img src={headphoneImage} alt="camera"></img>
+                <img src={smartwatch} alt="camera"></img>
               </div>
 
               <div className="d-flex  align-items-center">
@@ -177,7 +177,7 @@ const Home = () => {
                   <h6>Music & Gaming</h6>
                   <p>10 Items</p>
                 </div>
-                <img src={cameraImage} alt="camera"></img>
+                <img src={spaeker} alt="camera"></img>
               </div>
               <div className="d-flex  align-items-center">
                 <div>
@@ -198,7 +198,7 @@ const Home = () => {
                   <h6>Smart Watch</h6>
                   <p>10 Items</p>
                 </div>
-                <img src={headphoneImage} alt="camera"></img>
+                <img src={smartwatch} alt="smartwatch"></img>
               </div>
             </div>
           </div>

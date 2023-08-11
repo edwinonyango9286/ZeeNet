@@ -20,7 +20,7 @@ const Store = () => {
       <Container class1="store-wrapper home-wrapper-2 ">
           <div className="row">
             <div className="col-3">
-              <div className="filter-card mb-3">
+              <div className="filter-card mb-2">
                 <h3 className="filter-title">Shop By Categories</h3>
                 <div>
                   <ul className="ps-0">
@@ -31,7 +31,7 @@ const Store = () => {
                   </ul>
                 </div>
               </div>
-              <div className="filter-card mb-3">
+              <div className="filter-card mb-2">
                 <h3 className="filter-title"> Filter By</h3>
                 <div>
                   <h5 className="sub-title">Availability</h5>
@@ -150,7 +150,7 @@ const Store = () => {
                   </div>
                 </div>
               </div>
-              <div className="filter-card mb-3">
+              <div className="filter-card mb-2">
                 <h3 className="filter-title">Product Tags</h3>
                 <div>
                   <div className="product-tags d-flex flex-wrap align-items-center gap-10">
@@ -188,7 +188,7 @@ const Store = () => {
                   </div>
                 </div>
               </div>
-              <div className="filter-card mb-3">
+              <div className="filter-card mb-2">
                 <h3 className="filter-title">Random Products</h3>
                 <div>
                   <div className="random-product mb-3 d-flex">
@@ -307,6 +307,9 @@ const Store = () => {
 
               <div className="products-list pb-5">
                 <div className="d-flex gap-10 flex-wrap" > 
+                <ProductCard grid={grid} />
+                <ProductCard grid={grid} />
+                <ProductCard grid={grid} />
                 <ProductCard grid={grid} />
                 </div>
               </div>
