@@ -217,7 +217,7 @@ const Home = () => {
         </div>
       </Container>
 
-      <Container class1="famous-wrapper py-5 home-wrapper-2">
+      <Container class1="famous-wrapper py-3 home-wrapper-2">
         <div className="row">
           <div className="col-3">
             <div className="famous-card position-relative">
@@ -272,9 +272,8 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <SpecialProducts />
-          <SpecialProducts />
-          <SpecialProducts />
+          <SpecialProducts/>
+          <SpecialProducts/>
         </div>
       </Container>
 

@@ -17,10 +17,10 @@
   --color-eaeaea: #eaeaea;
 }
 .section-heading {
-  font-size: 20px;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 400;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .card-wrapper {
   border-color: white;
@@ -370,6 +370,16 @@ footer .input-group-text {
   border-radius: 5px;
   background-color: white;
 }
+.special-product-content .brand {
+  font-size: 16px;
+  font-weight: 500;
+  
+}
+.special-product-content h6.title{
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
 /* Special Products Styling  Ends here*/
 
 /* famous card styling starts here */
@@ -379,6 +389,7 @@ footer .input-group-text {
 }
 .famous-card img {
   border-radius: 10px;
+
 }
 
 .famous-content h5 {
@@ -644,26 +655,30 @@ footer .input-group-text {
 
 .description-wrapper h4,
 .reviews-wrapper h3 {
-  font-size: 26px;
+  font-size: 18px;
   color: var(--color-1c1c1b);
-  margin-bottom: 10px;
+  margin-bottom:5px;
+}
+.description-body{
+  border-radius: 5px;
 }
 
 .description-wrapper p {
-  font: 14px;
+  font-size: 14px;
   color: var(--color-777777);
 }
 
 .review-inner-wrapper {
   background-color: white;
-  padding: 30px;
+  padding: 10px;
+  border-radius: 5px;
 }
 .review-head {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 .review-head h4 {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-1c1c1b);
 }
 
@@ -673,7 +688,7 @@ footer .input-group-text {
   color: var(--color-777777);
 }
 .review-head a {
-  padding-left: 800px;
+  padding-left: 700px;
 }
 .review-form h4 {
   font-size: 16px;

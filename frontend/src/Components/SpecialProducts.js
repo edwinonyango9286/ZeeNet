@@ -6,15 +6,15 @@ import{Link} from "react-router-dom"
 
 const SpecialProducts = () => {
   return (
-
+ 
     <div className="col-6 mb-2">
       <div className="special-product-card">
         <div className="d-flex justify-content-between">
           <div>
             <img src={watchImage} className="img-fluid" alt="watch" />
           </div>
-          <div className="special-product-content">
-            <h5 className="brand">Havels</h5>
+          <div className="special-product-content px-2">
+            <h5 className="brand mb-2">Havels</h5>
             <h6 className="title">Heavenly Horizons: A Celestial Timepiece</h6>
             <ReactStars
               count={5}
@@ -39,7 +39,7 @@ const SpecialProducts = () => {
               </div>
             </div>
             <div className="prod-count my-2">
-                <p>Products:5</p>
+                <p className="mb-1">Products:5</p>
                 <div class="progress">
                   <div
                     className="progress-bar"
@@ -51,7 +51,7 @@ const SpecialProducts = () => {
                   ></div>
                 </div>
               </div>
-              <Link className="button">Add To Cart</Link>
+              <Link to="" className="button">Add To Cart</Link>
           </div>
         </div>
       </div>

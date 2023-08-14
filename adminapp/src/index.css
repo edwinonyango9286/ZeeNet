@@ -1,0 +1,59 @@
+body{
+    font-family: 'Roboto', sans-serif;
+  }
+
+.trigger{
+    padding:  0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover{
+    color: #1890ff;
+}
+
+.logo{
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}
+.ant-layout{
+    min-height:100vh;
+}
+
+
+:root {
+    --color-131921: #131921;
+    --color-3b4149: #3b4149;
+    --color-febd69: #febd69;
+    --color-232f3e: #232f3e;
+    --color-bf4800: #bf4800;
+    --color-f5f5f7: #f5f5f7;
+    --color-ededed: #ededed;
+    --color-777777: #777777;
+    --color-1c1c1b: #1c1c1b;
+    --color-f2f2f2: #f2f2f2;
+    --color-eaeaea: #eaeaea;
+  }
+
+  .home-wrapper-2 {
+    background-color: var(--color-f5f5f7);
+  }
+
+  .button {
+    background-color: var(--color-232f3e);
+    color: white;
+    font-size: 14px;
+    padding: 10px 28px;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  .signup {
+    color: var(--color-131921);
+    border: none;
+    text-decoration: none;
+
+  }

@@ -67,7 +67,7 @@ const SingleProduct = () => {
                   <div className="d-flex align-items-center gap-10">
                     <ReactStars
                       count={5}
-                      size={24}
+                      size={20}
                       value={4}
                       edit={false}
                       activeColor="#ffd700"
@@ -162,8 +162,8 @@ const SingleProduct = () => {
                       <b> 5-10 business days!</b>
                     </p>
                   </div>
-                  <div className="d-flex gap-10 align-items-center my-3">
-                    <h3 className="product-heading">  Product Link:</h3>
+                  <div className="d-flex gap-10 align-items-center my-2">
+                    <h3 className="product-heading"> Product Link :</h3>
                     <a href="javasrcript:void(0);"
                     onClick={()=>{copyToClipboard("https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg");
                     }}> Copy Product Link</a>
@@ -176,12 +176,12 @@ const SingleProduct = () => {
           </div>
       </Container>
 
-      <Container class1="description-wrapper py-5 home-wrapper-2">
+      <Container class1="description-wrapper py-2 home-wrapper-2">
           <div className="row">
             <div className="col-12">
               <h4>Description</h4>
 
-              <div className="bg-white p-3">
+              <div className="bg-white p-2 description-body">
                 <p>
                   The watch is an exquisite timepiece that seamlessly blends
                   classic elegance with modern sophistication. Crafted with
@@ -208,7 +208,7 @@ const SingleProduct = () => {
                     <div className="d-flex align-items-center gap-10">
                       <ReactStars
                         count={5}
-                        size={24}
+                        size={20}
                         value={4}
                         edit={false}
                         activeColor="#ffd700"
@@ -234,7 +234,7 @@ const SingleProduct = () => {
                     <div>
                       <ReactStars
                         count={5}
-                        size={24}
+                        size={20}
                         value={4}
                         edit={true}
                         activeColor="#ffd700"
@@ -261,7 +261,7 @@ const SingleProduct = () => {
                       <h6 className="mb-0">Omollo</h6>
                       <ReactStars
                         count={5}
-                        size={24}
+                        size={20}
                         value={4}
                         edit={false}
                         activeColor="#ffd700"
