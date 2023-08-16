@@ -9,7 +9,7 @@ const ForgotPassword = ()=>{
                 minHeight: "100vh"
             }}>
                 <div className="my-5 w-25 bg-white rounded-3 mx-auto p-4">
-                    <h5 className="text-center">Forgot Password</h5>
+                    <h5 className="text-center title">Forgot Password</h5>
                     <p className="text-center">Please enter a registered email to proceed.</p>
                     <form action="">
                         <CustomInput type="email" label="email" id="email"/>

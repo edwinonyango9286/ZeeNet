@@ -12,7 +12,7 @@ const Login = () => {
                 minHeight: "100vh"
             }}>
                 <div className="my-5 w-25 bg-white rounded-3 mx-auto p-4">
-                    <h5 className="text-center">Login</h5>
+                    <h5 className="text-center title">Login</h5>
                     <p className="text-center">Login to your account to continue.</p>
                     <form action="">
                         <CustomInput type="text" label="email" id="email" />

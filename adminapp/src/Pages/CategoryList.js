@@ -5,20 +5,14 @@ const columns=[
     {
         title:"SNO",
         dataIndex:"key",
-
     },
     {
-        title:"Tittle",
+        title:"Name",
         dataIndex:"name",
-
     },
     {
-        title:"Category",
-        dataIndex:'category'
-    },
-    {
-        title:"action",
-        dataIndex:"action",
+        title:"Action",
+        dataIndex:"action",    
     },
 ];
 
@@ -32,20 +26,21 @@ for (let i =0; i<46; i++){
     });
 }
 
-const BlogList =()=>{
+const CategoryList =()=>{
+
     return(
         <>
         <div>
-            <h4 className="mb-2 title">Blog List</h4>
+            <h5 className="mb-2 title"> Product Categories</h5>
             <div>
-                <Table columns={columns} dataSource={data1}/>
+                {<Table columns={columns} dataSource={data1}/>}
             </div>
+
         </div>
-
-
         </>
     )
+
+
 }
 
-export default BlogList;
-
+export default CategoryList;

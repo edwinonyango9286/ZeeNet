@@ -1,24 +1,18 @@
-import React from "react";
 import { Table } from "antd";
+import React from "react";
 
 const columns=[
     {
         title:"SNO",
         dataIndex:"key",
-
     },
     {
-        title:"Tittle",
-        dataIndex:"name",
-
+        title:"Name",
+        dataIndex:"name", 
     },
     {
-        title:"Category",
-        dataIndex:'category'
-    },
-    {
-        title:"action",
-        dataIndex:"action",
+        title:"Action",
+        dataIndex:"action"
     },
 ];
 
@@ -32,20 +26,22 @@ for (let i =0; i<46; i++){
     });
 }
 
-const BlogList =()=>{
+
+const ColorList = ()=>{
+
     return(
         <>
         <div>
-            <h4 className="mb-2 title">Blog List</h4>
+            <h5 className="mb-2 title">Colors</h5>
             <div>
                 <Table columns={columns} dataSource={data1}/>
             </div>
         </div>
 
-
+        
         </>
     )
 }
 
-export default BlogList;
+export default ColorList;
 

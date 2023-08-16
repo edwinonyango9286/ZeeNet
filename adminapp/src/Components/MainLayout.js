@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
 import { SiBrandfolder } from "react-icons/si";
-import { TbCategory } from "react-icons/tb";
+import { TbCategory} from "react-icons/tb";
 import { AiOutlineBgColors } from "react-icons/ai";
 import { FaClipboardList } from "react-icons/fa";
 import { ImBlogger2 } from "react-icons/im";
@@ -19,7 +19,8 @@ import { LiaBlogSolid } from "react-icons/lia";
 import { BiSolidMessageEdit } from "react-icons/bi"
 import { Outlet } from 'react-router-dom';
 import userImage from "../Images/user.jpg";
-import {MdNotificationsNone} from "react-icons/md"
+import { MdNotificationsNone } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 
 const { Header, Sider, Content } = Layout;
@@ -45,7 +46,7 @@ const MainLayout = () => {
           defaultSelectedKeys={['1']}
 
           onClick={({ key }) => {
-            if (key == "signout") {
+            if (key === "signout") {
             } else {
               navigate(key)
             }
@@ -76,21 +77,21 @@ const MainLayout = () => {
                   icon: <BsCart3 className='fs-5' />,
                   label: "Product List"
                 }, {
-                  key: "category",
+                  key: "brand",
                   icon: <SiBrandfolder className="fs-5" />,
-                  label: "Brand"
+                  label: " Add Brand"
                 }, {
-                  key: "list-category",
+                  key: "brand-list",
                   icon: <SiBrandfolder className="fs-5" />,
                   label: "Brand List"
                 },
                 {
                   key: "category",
                   icon: <TbCategory className="fs-5" />,
-                  label: "Category"
+                  label: " Add Category"
                 },
                 {
-                  key: "list-category",
+                  key: "category-list",
                   icon: <TbCategory className="fs-5" />,
                   label: "Category List"
 
@@ -100,7 +101,7 @@ const MainLayout = () => {
                   icon: <AiOutlineBgColors className="fs-5" />,
                   label: "Color"
                 }, {
-                  key: "list-color",
+                  key: "color-list",
                   icon: <AiOutlineBgColors className="fs-5" />,
                   label: "Color List"
                 }
@@ -113,7 +114,7 @@ const MainLayout = () => {
               label: "Orders"
             },
             {
-              key: "blog",
+              key: "blogs",
               icon: <ImBlogger2 className="fs-5" />,
               label: "Blogs",
               children: [
@@ -137,7 +138,6 @@ const MainLayout = () => {
                   icon: <ImBlogger2 className='fs-5' />,
                   label: "Blog Category List"
                 }
-
               ]
 
             },
@@ -165,22 +165,44 @@ const MainLayout = () => {
           />
           <div className='d-flex gap-4 align-items-center'>
             <div className='position-relative'>
-              <MdNotificationsNone className='fs-4'/>
+              <MdNotificationsNone className='fs-4' />
               <span className='badge bg-warning rounded-circle p-1 position-absolute'>2</span>
 
             </div>
 
 
             <div className='d-flex gap-3 align-items-center'>
-              <img 
-              width={32}
-             height={32}
-               src={userImage}  alt='userimage'>
+              <img
+                width={32}
+                height={32}
+                src={userImage} alt='userimage'>
               </img>
             </div>
-            <div>
+            <div
+             role='button' 
+             id="dropdownMenuLink"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+             >
               <h5 className='mb-0'>Omollo</h5>
               <p className='mb-0'>omollo@dev.com</p>
+            </div>
+            <div className='dropdown-menu'
+             aria-labelledby='dropdownMenuLink'
+             style={{height:"auto", lineHeight:"20px" }}>
+              <li>
+                <Link to="/" className='dropdown-item py-1 mb-1'>
+                  View Profile
+                </Link>
+                </li>
+
+                <li>
+                <Link to="/" className='dropdown-item py-1 mb-1'>
+                  Signout
+                </Link>
+                </li>
+
+             
             </div>
 
           </div>

@@ -10,7 +10,7 @@ const ResestPassword =()=>{
                 minHeight: "100vh"
             }}>
                 <div className="my-5 w-25 bg-white rounded-3 mx-auto p-4">
-                    <h5 className="text-center">Reset Password</h5>
+                    <h5 className="text-center title">Reset Password</h5>
                     <p className="text-center">Create a new password.</p>
                     <form action="">
                         <CustomInput type="password" label="New Password" id="pass"/>

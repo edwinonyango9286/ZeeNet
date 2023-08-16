@@ -7,7 +7,8 @@ var blogCategorySchema = new mongoose.Schema({
         unique:true,
         index:true
     },
-},{timestamps:true});
+},
+{timestamps:true});
 
 //Export the model
 module.exports = mongoose.model('BlogCategory', blogCategorySchema);

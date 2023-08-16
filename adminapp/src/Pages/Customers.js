@@ -1,35 +1,23 @@
 import React from "react";
 import { Table } from "antd";
-const columns =[
+const columns = [
     {
         title:"SNO",
-        dataIndex:"key",
+        dataIndex:"key",   
     },
     {
         title:"Name",
         dataIndex:"name",
-
     },
     {
         title:"Email",
-        dataIndex:"email"
-
+        dataIndex:"email",
     },
     {
         title:"Mobile",
         dataIndex:"mobile",
     },
-    {
-        title:"Satus",
-        dataIndex:"status",
-
-    },{
-        title:"Action",
-        dataIndex:"action",
-    },
-
 ];
-
 const data1 =[];
 for (let i =0; i<46; i++){
     data1.push({
@@ -40,20 +28,18 @@ for (let i =0; i<46; i++){
     });
 }
 
-const Enquiries =()=>{
-    return(
-        <>
+const Customers =()=>(
+    <>
         <div>
-            <h5 className="mb-2 title">Enquiries</h5>
+            <h5 className="mb-4 title">Customers</h5>
             <div>
-                <Table columns={columns} dataSource={data1}/>
+                {<Table columns={columns} dataSource={data1}/>}
             </div>
 
+
         </div>
-        </>
-    )
 
-}
+    </>
+)
 
-export default Enquiries;
-
+export default Customers;

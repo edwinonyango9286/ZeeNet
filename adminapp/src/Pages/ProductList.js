@@ -1,33 +1,36 @@
-import React from "react";
+import React  from "react";
 import { Table } from "antd";
+
 const columns =[
     {
         title:"SNO",
         dataIndex:"key",
-    },
-    {
-        title:"Name",
-        dataIndex:"name",
 
     },
     {
-        title:"Email",
-        dataIndex:"email"
-
+        title:"Title",
+        dataIndex:"title",
     },
     {
-        title:"Mobile",
-        dataIndex:"mobile",
+        title:"Brand",
+        dataIndex:"brand",
     },
     {
-        title:"Satus",
-        dataIndex:"status",
-
-    },{
+        title:"Category",
+        dataIndex:"category",
+    },
+    {
+        title:"Color",
+        dataIndex:"color",
+    },
+    {
+        title:"Price",
+        dataIndex:"price",
+    },
+    {
         title:"Action",
         dataIndex:"action",
     },
-
 ];
 
 const data1 =[];
@@ -40,20 +43,20 @@ for (let i =0; i<46; i++){
     });
 }
 
-const Enquiries =()=>{
+const ProductList =()=>{
     return(
         <>
         <div>
-            <h5 className="mb-2 title">Enquiries</h5>
+            <h5 className="mb-2 title">Products</h5>
             <div>
-                <Table columns={columns} dataSource={data1}/>
+                {<Table columns={columns} dataSource={data1} />}
             </div>
 
         </div>
         </>
+        
     )
-
 }
 
-export default Enquiries;
+export default ProductList;
 
