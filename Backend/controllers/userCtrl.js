@@ -63,6 +63,8 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
   }
 });
 
+
+
 const adminLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const findAdmin = await User.findOne({ email });

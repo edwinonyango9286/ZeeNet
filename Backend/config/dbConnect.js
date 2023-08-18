@@ -1,7 +1,6 @@
 const { default: mongoose } = require("mongoose");
-const dotenv = require("dotenv").config()
 
-//DB CONNECT FUNCTION
+
 const dbConnect = () => {
   try {
     const conn = mongoose.connect(process.env.MONGODB_URL);
