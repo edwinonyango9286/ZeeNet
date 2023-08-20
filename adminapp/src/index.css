@@ -26,7 +26,6 @@ body{
 
   }
 
-
 .trigger{
     padding:  0 24px;
     font-size: 18px;
@@ -99,6 +98,10 @@ main{
   background-color: transparent !important;
 }
 
+.error{
+  color: red;
+  font-size: 12px;
+}
 
 
 

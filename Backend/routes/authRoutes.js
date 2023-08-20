@@ -40,7 +40,7 @@ router.put("/update-password", authMiddleware,updatePassword);
 //USER LOGSIN 
 router.post("/login", loginUserCtrl);
 // LOGIN ADMIN
-router.post("/adminlogin",adminLogin);
+router.post("/admin-login",adminLogin);
 //USER CART
 router.post("/addtocart",authMiddleware,addToCart);
 //GET USER CART

@@ -16,8 +16,12 @@ const productBrandRoute = require("./routes/productBrandRoute");
 const couponRoute = require("./routes/couponRoute");
 const colorRoute = require("./routes/colorRoute");
 const enquiryRoute = require("./routes/enquiryRoute")
+const cors = require("cors")
+
+
 dbConnect();
 app.use(morgan("dev"));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

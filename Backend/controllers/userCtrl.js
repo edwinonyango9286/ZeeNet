@@ -28,6 +28,8 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 
+
+
 // USER LOGS IN WITH AN EMAIL AND  A PASSWORD AND A TOKEN GENERATED FOR THE USER
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;

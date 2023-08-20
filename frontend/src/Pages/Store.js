@@ -232,8 +232,8 @@ const Store = () => {
               </div>
             </div>
 
-            <div className="col-9">
-              <div className="filter-sort-grid mb-4">
+            <div className="col-9 ">
+              <div className="filter-sort-grid mb-4 mt-2">
                 <div className="d-flex justify-content-between align-items-center grid">
                   <div className="d-flex align-items-center gap-10">
                     <p className="mb-0 d-block " style={{ width: "100px" }}>
