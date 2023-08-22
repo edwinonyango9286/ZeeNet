@@ -59,7 +59,7 @@ router.get("/getallorders",authMiddleware,isAdmin,getAllOrders);
 //EMPTY CART
 router.delete("/emptycart",authMiddleware,emptyCart);
 //ADMIN VIEWS ALL USERS
-router.get("/allUsers", authMiddleware,isAdmin,getAllUsers);
+router.get("/allUsers",getAllUsers);
 //HANDLE REFRESH TOKEN
 router.get("/refresh", handleRefreshToken);
 //USER LOGS OUT

@@ -28,7 +28,6 @@ const props = {
 };
 
 
-
 const AddProduct =()=>{
     const [desc,setDesc] = useState();
     const handleDesc = (e)=>{
@@ -80,7 +79,7 @@ const AddProduct =()=>{
                             </p>
                         </Dragger>
 
-            <button className="btn btn-success border-0 rounded-3 mt-2">
+            <button className="btn btn-success border-0 rounded-3 mt-3">
                 Add Product
             </button>
 

@@ -3,8 +3,10 @@ const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const validateMongodbId = require("../utils/validateMongodbId");
-const { cloudinaryUploadImg, cloudinaryDeleteImg } = require("../utils/cloudinary")
-
+const {
+  cloudinaryUploadImg,
+  cloudinaryDeleteImg,
+} = require("../utils/cloudinary");
 
 const cloudinaryUploadingImg = require("cloudinary");
 const fs = require("fs");
@@ -23,7 +25,7 @@ const createProduct = asyncHandler(async (req, res) => {
 });
 //UPDATE PRODUCT DETAILS ADMIN
 const updateProduct = asyncHandler(async (req, res) => {
-  const  id  = req.params;
+  const id = req.params;
   validateMongodbId(id);
 
   try {
@@ -31,7 +33,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       req.body.slug = slugify(req.body.title);
     }
 
-    const updateProduct = await Product.findByIdAndUpdate({id}, req.body, {
+    const updateProduct = await Product.findByIdAndUpdate({ id }, req.body, {
       new: true,
     });
     res.json(updateProduct);
@@ -52,7 +54,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//GET A SINGLE PRODUCT 
+//GET A SINGLE PRODUCT
 const getaProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
@@ -74,7 +76,6 @@ const getAllProduct = asyncHandler(async (req, res) => {
     excludeFields.forEach((el) => delete queryObj[el]);
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-
     let query = Product.find(JSON.parse(queryStr));
 
     //SORTING
@@ -86,7 +87,6 @@ const getAllProduct = asyncHandler(async (req, res) => {
     }
 
     //LIMITING FIELDS
-
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       query = query.select(fields);
@@ -200,42 +200,40 @@ const rating = asyncHandler(async (req, res) => {
   }
 });
 
-
-const uploadImages = asyncHandler(async(req,res)=>{
+const uploadImages = asyncHandler(async (req, res) => {
   try {
-    const uploader = (path)=>cloudinaryUploadImg(path,"images");
-    const urls=[];
+    const uploader = (path) => cloudinaryUploadImg(path, "images");
+    const urls = [];
     const files = req.files;
 
-    for (const file of files ){
-      const {path} = file;
+    for (const file of files) {
+      const { path } = file;
       const newPath = await uploader(path);
       urls.push(newPath);
       fs.unlinkSync(path);
-    };
-    
-    const images = urls.map((file)=>{
+    }
+
+    const images = urls.map((file) => {
       return file;
     });
 
     res.json(images);
   } catch (error) {
-    throw new Error(error)
+    throw new Error(error);
   }
 });
 
-const deleteImages = asyncHandler(async(req,res)=>{
-  const {id} =req.params;
+const deleteImages = asyncHandler(async (req, res) => {
+  const { id } = req.params;
   try {
-    const deletedImage = cloudinaryDeleteImg(id,"images");
+    const deletedImage = cloudinaryDeleteImg(id, "images");
     res.json({
-      message:"Deleted"
-    })
-    
+      message: "Deleted",
+    });
   } catch (error) {
-    throw new Error(error)
+    throw new Error(error);
   }
-})
+});
 
 module.exports = {
   createProduct,

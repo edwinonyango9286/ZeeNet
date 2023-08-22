@@ -10,7 +10,7 @@ const AddColor =()=>{
                 <form action="">
                     <CustomInput type="color" label="Enter Color"/>
                     <button type="submit" className="btn
-                     btn-success border-0 rounded-3 "> Add Color</button>
+                     btn-success border-0 rounded-3 mt-3 "> Add Color</button>
                 </form>
             </div>
 

@@ -27,9 +27,6 @@ const createUser = asyncHandler(async (req, res) => {
   }
 });
 
-
-
-
 // USER LOGS IN WITH AN EMAIL AND  A PASSWORD AND A TOKEN GENERATED FOR THE USER
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -64,8 +61,6 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
     throw new Error("Invalid credentials");
   }
 });
-
-
 
 const adminLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -187,7 +182,6 @@ const saveUserAddress = asyncHandler(async (req, res) => {
 
 //GET ALL USERS
 const getAllUsers = asyncHandler(async (req, res) => 
-
 {
   try {
     const getUsers = await User.find();

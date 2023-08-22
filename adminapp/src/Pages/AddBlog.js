@@ -68,7 +68,7 @@ const AddBlog = () => {
                             onChange={(evt) => {
                                 handleDesc(evt)
                             }} />
-                        <button type="submit" className="btn btn-success border-0 rounded-3 my-2"> Add Blog</button>
+                        <button type="submit" className="btn btn-success border-0 rounded-3 mt-3 my-2"> Add Blog</button>
                     </form>
                 </div>
 

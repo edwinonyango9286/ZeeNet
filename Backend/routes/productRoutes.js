@@ -39,6 +39,6 @@ router.delete("/deleteimage/:id",authMiddleware,isAdmin,deleteImages)
 //GET A PRODUCT ALL USERS
 router.get("/singleProduct/:id", getaProduct);
 //GET ALL PRODUCTS ALL USERS
-router.get("/allproducts", getAllProduct);
+router.get("/allproducts",getAllProduct);
 
 module.exports = router;

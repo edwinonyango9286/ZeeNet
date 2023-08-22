@@ -10,7 +10,7 @@ const AddBlogCategory = () => {
                 <div>
                     <form action=''>
                         <CustomInput type="text" label="Enter Blog Category" />
-                        <button className='btn btn-success border-0 rounded-3 '>
+                        <button className='btn btn-success border-0 mt-3 rounded-3 '>
                             Add Blog Category
                         </button>
                     </form>
