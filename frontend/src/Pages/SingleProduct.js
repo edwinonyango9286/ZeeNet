@@ -196,7 +196,7 @@ const SingleProduct = () => {
           </div>
       </Container>
 
-      <Container class1="reviews-wrapper home-wrapper-2">
+      <Container class1="reviews-wrapper py-3 home-wrapper-2">
           <div className="row">
             <div className="col-12">
               <h3 id="review">Reviews</h3>
@@ -278,7 +278,7 @@ const SingleProduct = () => {
           </div>
       </Container>
 
-      <Container className="popular-wrapper py-5 home-wrapper-2">
+      <Container class1="popular-wrapper home-wrapper-2">
           <div className="row">
             <div className="col-12">
               <h3 className="section-heading">Our Popular Products </h3>

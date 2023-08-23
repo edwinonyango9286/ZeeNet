@@ -1,5 +1,10 @@
 import { Table } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import {AiTwotoneEdit,AiFillDelete} from "react-icons/ai";
+import { getColors } from "../features/color/colorSlice";
+
 
 const columns=[
     {
@@ -16,18 +21,28 @@ const columns=[
     },
 ];
 
-const data1 =[];
-for (let i =0; i<46; i++){
-    data1.push({
-        key:i,
-        name:`Edward King ${i}`,
-        product:32,
-        status:`London Park Lane no.${i}`
-    });
-}
-
 
 const ColorList = ()=>{
+    const dispatch =useDispatch();
+    useEffect(()=>{
+        dispatch(getColors())
+    },[]);
+
+    const colorstate= useSelector((state)=>state.color.colors);
+    const data1=[];
+
+    for(let i=0; i<colorstate.length; i++){
+        data1.push({
+            key:i+1,
+            name:colorstate[i].title,
+            action:(
+                <>
+                <Link className="fs-5"><AiTwotoneEdit/></Link>
+                <Link className="fs-5 ms-4 text-danger"><AiFillDelete/></Link>
+                </>
+            )
+        })
+    }
 
     return(
         <>

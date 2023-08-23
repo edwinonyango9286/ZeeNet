@@ -5,8 +5,6 @@ import { getBrands } from "../features/brands/brandSlice";
 import {Link} from "react-router-dom";
 import {AiTwotoneEdit,AiFillDelete} from "react-icons/ai";
 
-
-
 const columns = [
   {
     title: "SNO",

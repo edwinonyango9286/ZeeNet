@@ -188,6 +188,7 @@ const Store = () => {
                   </div>
                 </div>
               </div>
+              
               <div className="filter-card mb-2">
                 <h3 className="filter-title">Random Products</h3>
                 <div>

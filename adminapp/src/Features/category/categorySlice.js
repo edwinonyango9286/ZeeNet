@@ -44,6 +44,6 @@ export const categorySlice = createSlice({
             state.message=action.error
         })
     }
-})
+});
 
 export default categorySlice.reducer;

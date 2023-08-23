@@ -1,6 +1,5 @@
 import React from "react";
 import watchImage from "../images/watch.jpg";
-import headphones from "../images/headphone.jpg";
 import ReactStars from "react-rating-stars-component";
 import watchImage1 from "../images/watch-1.avif";
 import { Link } from "react-router-dom";
@@ -18,13 +17,14 @@ const ProductCard = (props) => {
       <div
         className={`${location.pathname == "/store" ? `gr-${grid}` : "col-3"}`}
       >
-        <Link to="/sigleproduct/:id" className="product-card position-relative">
+        <Link to={`${location.pathname=="/" ? "/sigleproduct/:id":location.pathname=="/sigleproduct/:id" ? "/sigleproduct/:id":"/sigleproduct/:id"}`}
+         className="product-card position-relative">
           <div className="wishlist-icon position-absolute">
             <button className="border-0 bg-transparent">
               <img src={wishlistIcon} alt="watch"></img>
             </button>
           </div>
-          <div className="product-image">
+          <div className="product-image"> 
             <img src={watchImage} className="img-fluid" alt="product image" />
             <img src={watchImage1} className="img-fluid" alt="watch"></img>
           </div>
