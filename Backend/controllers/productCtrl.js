@@ -23,8 +23,9 @@ const createProduct = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
 //UPDATE PRODUCT DETAILS ADMIN
-const updateProduct = asyncHandler(async (req, res) => {
+const updateProduct = asyncHandler(async (req,res) => {
   const id = req.params;
   validateMongodbId(id);
 
@@ -32,15 +33,17 @@ const updateProduct = asyncHandler(async (req, res) => {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
     }
-
-    const updateProduct = await Product.findByIdAndUpdate({ id }, req.body, {
+    const updatedProduct = await Product.findOneAndUpdate({id} , req.body, {
       new: true,
     });
-    res.json(updateProduct);
+    res.json(updatedProduct);
+    console.log(updatedProduct)
   } catch (error) {
     throw new Error(error);
   }
 });
+
+
 
 //DELETE A PRODUCT ADMIN
 const deleteProduct = asyncHandler(async (req, res) => {
