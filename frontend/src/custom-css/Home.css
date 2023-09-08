@@ -1,0 +1,39 @@
+/* Custom CSS for responsive typography */
+@media (max-width: 768px) {
+    .h-xl-responsive {
+      font-size: 14px;
+    }
+    .main-banner-content h5 {
+        font-size: 12px;
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    .h-sm-responsive {
+      font-size: 12px;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .h-md-responsive {
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .h-lg-responsive {
+      font-size: 20px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .h-xl-responsive {
+      font-size: 22px;
+    }
+  }
+  
+  @media (min-width: 375px) {
+    .h-xl-responsive {
+      font-size: 10px;
+    }
+  }
