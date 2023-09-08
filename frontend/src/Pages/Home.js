@@ -28,10 +28,11 @@ import Container from "../Components/Container";
 import services from "../utils/Data"
 import spaeker from "../images/speaker.jpg"
 import smartwatch from "../images/smartwatch.avif"
+import "../custom-css/Home.css";
 const Home = () => {
   return (
     <>
-  <Container className="home-wrapper-1 py-3">
+<Container className="home-wrapper-1 py-3">
   <div className="row">
     <div className="col-md-6">
       <div className="main-banner position-relative p-3">
@@ -41,9 +42,9 @@ const Home = () => {
           alt="main banner"
         ></img>
         <div className="main-banner-content position-absolute">
-          <h5 className="h5"> SUPPERCHARGED FOR PROS</h5>
-          <h6 className="h6">iPad S13+ Pro.</h6>
-          <p className="mb-0"> From Ksh : 56,000 To 98,000</p>
+          <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">SUPPERCHARGED FOR PROS</h5>
+          <h6 className="h6 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h6>
+          <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
           <Link className="btn btn-primary">BUY NOW</Link>
         </div>
       </div>
@@ -58,12 +59,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4"> SUPPERCHARGED PROS</h4>
-            <h5 className="h5">iPad S13+ Pro.</h5>
-            <p className="mb-0">
-              From Ksh : 56,000 <br />
-              To 98,000
-            </p>
+            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">SUPPERCHARGED PROS</h4>
+            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h5>
+            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
         <div className="small-banner position-relative p-2">
@@ -73,12 +71,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4">Best Sales</h4>
-            <h5 className="h5">iPad S13+ Pro.</h5>
-            <p className="mb-0">
-              From Ksh : 56,000 <br />
-              To 98,000
-            </p>
+            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">Best Sales</h4>
+            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h5>
+            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
 
@@ -89,11 +84,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4">New Arrivals</h4>
-            <h5 className="h5">Buy iPad Air</h5>
-            <p className="mb-0">
-              From Ksh : 56,000 <br /> To 98,000
-            </p>
+            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">New Arrivals</h4>
+            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">Buy iPad Air</h5>
+            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
         <div className="small-banner position-relative p-2">
@@ -103,12 +96,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4"> SUPPERCHARGED PROS</h4>
-            <h5 className="h5">iPad S13+ Pro.</h5>
-            <p className="mb-0">
-              From Ksh : 56,000 <br />
-              To 98,000
-            </p>
+            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">SUPPERCHARGED PROS</h4>
+            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h5>
+            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
       </div>
@@ -119,92 +109,63 @@ const Home = () => {
 
 
 
-      <Container class1="home-wrapper-2 py-3">
-        <div className="row">
-          <div className="col-12">
-            <div className="services d-flex align-items-center justify-content-between">
-              {services?.map((i,j)=>{
-                return( 
-                  <div className="d-flex align-items-center gap-15" key={j}>
-                <img src={i.image} alt="Services"></img>
-                <div>
-                  <h6>{i.title}</h6>
-                  <p className="mb-0">{i.tagline}</p>
-                </div>
-              </div>
-                )
-              })}
-              
-            </div> 
+<Container className="home-wrapper-2 py-3">
+  <div className="row">
+    {services?.map((service, index) => (
+      <div className="col-md-4 col-sm-6 col-12 mb-3" key={index}>
+        <div className="d-flex align-items-center gap-15">
+          <img src={service.image} alt="Services"></img>
+          <div>
+            <h6>{service.title}</h6>
+            <p className="mb-0">{service.tagline}</p>
           </div>
         </div>
-      </Container>
+      </div>
+    ))}
+  </div>
+</Container>
 
-      <Container class1="home-wrapper-2 py-3">
-        <div className="row">
-          <div className="col-12">
-            <div className="categories d-flex   justify-content-between flex-wrap align-items-center">
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Music & Gaming</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={spaeker} alt="camera"></img>
-              </div>
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Cameras</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={cameraImage} alt="camera"></img>
-              </div>
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Smart Tv</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={tvImage} alt="camera"></img>
-              </div>
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Smart Watch</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={smartwatch} alt="camera"></img>
-              </div>
-
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Music & Gaming</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={spaeker} alt="camera"></img>
-              </div>
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Cameras</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={cameraImage} alt="camera"></img>
-              </div>
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Smart Tv</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={tvImage} alt="camera"></img>
-              </div>
-              <div className="d-flex  align-items-center">
-                <div>
-                  <h6>Smart Watch</h6>
-                  <p>10 Items</p>
-                </div>
-                <img src={smartwatch} alt="smartwatch"></img>
-              </div>
-            </div>
-          </div>
+<Container className="home-wrapper-2 py-3">
+  <div className="row">
+    <div className="col-12 col-md-6 col-lg-3">
+      <div className="d-flex align-items-center mb-3">
+        <img src={spaeker} alt="speaker" />
+        <div className="ms-2">
+          <h6 className="mb-0">Music & Gaming</h6>
+          <p className="mb-0">10 Items</p>
         </div>
-      </Container>
+      </div>
+    </div>
+    <div className="col-12 col-md-6 col-lg-3">
+      <div className="d-flex align-items-center mb-3">
+        <img src={cameraImage} alt="camera" />
+        <div className="ms-2">
+          <h6 className="mb-0">Cameras</h6>
+          <p className="mb-0">10 Items</p>
+        </div>
+      </div>
+    </div>
+    <div className="col-12 col-md-6 col-lg-3">
+      <div className="d-flex align-items-center mb-3">
+        <img src={tvImage} alt="TV" />
+        <div className="ms-2">
+          <h6 className="mb-0">Smart TV</h6>
+          <p className="mb-0">10 Items</p>
+        </div>
+      </div>
+    </div>
+    <div className="col-12 col-md-6 col-lg-3">
+      <div className="d-flex align-items-center mb-3">
+        <img src={smartwatch} alt="smartwatch" />
+        <div className="ms-2">
+          <h6 className="mb-0">Smart Watch</h6>
+          <p className="mb-0">10 Items</p>
+        </div>
+      </div>
+    </div>
+    {/* Repeat these elements for additional items */}
+  </div>
+</Container>
 
       <Container class1="featured-wrapper  home-wrapper-2">
         <div className="row">
@@ -278,23 +239,35 @@ const Home = () => {
         </div>
       </Container>
 
-      <Container class1="popular-wrapper home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Our Popular Products </h3>
-          </div>
-        </div>
-        <div className="row">
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-        </div>
-      </Container>
+      <Container className="popular-wrapper home-wrapper-2">
+  <div className="row">
+    <div className="col-12">
+      <h3 className="section-heading">Our Popular Products</h3>
+    </div>
+  </div>
+  <div className="row">
+    <div className="col-md-3">
+      <ProductCard></ProductCard>
+    </div>
+    <div className="col-md-3">
+      <ProductCard></ProductCard>
+    </div>
+    <div className="col-md-3">
+      <ProductCard></ProductCard>
+    </div>
+    <div className="col-md-3">
+      <ProductCard></ProductCard>
+    </div>
+  </div>
+</Container>
 
+
+
+
+{/* no need to fix */}
       <Container class1="marquee-wrapper ">
         <div className="row">
-          <div className="col-12">
+          <div className="col-md-12">
             <div className="marquee-inner-wrapper card-wrapper">
               <Marquee className="d-flex">
                 <div className="mx-1 w-20%">
@@ -327,6 +300,7 @@ const Home = () => {
         </div>
       </Container>
 
+       {/* kinda fixed in some way */}
       <Container class1="blog-wrapper home-wrapper-2">
         <div className="row">
           <div className="col-12">
@@ -334,18 +308,17 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-3">
+          
+          <div className="col-md-4">
             <BlogCard></BlogCard>
           </div>
-          <div className="col-3">
+          <div className="col-md-4">
             <BlogCard></BlogCard>
           </div>
-          <div className="col-3">
+          <div className="col-md-4">
             <BlogCard></BlogCard>
           </div>
-          <div className="col-3">
-            <BlogCard></BlogCard>
-          </div>
+        
         </div>
       </Container>
     </>
