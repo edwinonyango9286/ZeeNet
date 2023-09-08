@@ -31,90 +31,91 @@ import smartwatch from "../images/smartwatch.avif"
 const Home = () => {
   return (
     <>
-      <Container class1="home-wrapper-1 py-3">
-        <div className="row">
-          <div className="col-6">
-            <div className="main-banner position-relative p-3">
-              <img
-                src={mainBanner}
-                className="img-fluid rounded-3"
-                alt="main banner"
-              ></img>
-              <div className="main-banner-content position-absolute">
-                <h5> SUPPERCHARGED FOR PROS</h5>
-                <h6>iPad S13+ Pro.</h6>
-                <p> From Ksh : 56,000 To 98,000</p>
-                <Link className="button">BUY NOW</Link>
-              </div>
-            </div>
-          </div>
+  <Container className="home-wrapper-1 py-3">
+  <div className="row">
+    <div className="col-md-6">
+      <div className="main-banner position-relative p-3">
+        <img
+          src={mainBanner}
+          className="img-fluid rounded-3"
+          alt="main banner"
+        ></img>
+        <div className="main-banner-content position-absolute">
+          <h5 className="h5"> SUPPERCHARGED FOR PROS</h5>
+          <h6 className="h6">iPad S13+ Pro.</h6>
+          <p className="mb-0"> From Ksh : 56,000 To 98,000</p>
+          <Link className="btn btn-primary">BUY NOW</Link>
+        </div>
+      </div>
+    </div>
 
-          <div className="col-6">
-            <div className="d-flex flex-wrap justify-content-between align-items-center">
-              <div className="small-banner  position-relative p-2">
-                <img
-                  src={catBanner1}
-                  className="img-fluid rounded-3"
-                  alt="small banner"
-                ></img>
-                <div className="small-banner-content position-absolute">
-                  <h4> SUPPERCHARGED PROS</h4>
-                  <h5>iPad S13+ Pro.</h5>
-                  <p>
-                    From Ksh : 56,000 <br />
-                    To 98,000
-                  </p>
-                </div>
-              </div>
-              <div className="small-banner position-relative p-2">
-                <img
-                  src={catBanner2}
-                  className="img-fluid rounded-3"
-                  alt="small banner"
-                ></img>
-                <div className="small-banner-content position-absolute">
-                  <h4>Best Sales</h4>
-                  <h5>iPad S13+ Pro.</h5>
-                  <p>
-                    From Ksh : 56,000 <br />
-                    To 98,000
-                  </p>
-                </div>
-              </div>
-
-              <div className="small-banner position-relative p-2">
-                <img
-                  src={catBanner3}
-                  className="img-fluid rounded-3"
-                  alt="small banner"
-                ></img>
-                <div className="small-banner-content position-absolute">
-                  <h4>New Arrivals</h4>
-                  <h5>Buy iPad Air</h5>
-                  <p>
-                    From Ksh : 56,000 <br /> To 98,000
-                  </p>
-                </div>
-              </div>
-              <div className="small-banner position-relative p-2">
-                <img
-                  src={catBanner4}
-                  className="img-fluid rounded-3"
-                  alt="small banner"
-                ></img>
-                <div className="small-banner-content position-absolute">
-                  <h4> SUPPERCHARGED PROS</h4>
-                  <h5>iPad S13+ Pro.</h5>
-                  <p>
-                    From Ksh : 56,000 <br />
-                    To 98,000
-                  </p>
-                </div>
-              </div>
-            </div>
+    <div className="col-md-6">
+      <div className="d-flex flex-wrap justify-content-between align-items-start">
+        <div className="small-banner position-relative p-2">
+          <img
+            src={catBanner1}
+            className="img-fluid rounded-3"
+            alt="small banner"
+          ></img>
+          <div className="small-banner-content position-absolute">
+            <h4 className="h4"> SUPPERCHARGED PROS</h4>
+            <h5 className="h5">iPad S13+ Pro.</h5>
+            <p className="mb-0">
+              From Ksh : 56,000 <br />
+              To 98,000
+            </p>
           </div>
         </div>
-      </Container>
+        <div className="small-banner position-relative p-2">
+          <img
+            src={catBanner2}
+            className="img-fluid rounded-3"
+            alt="small banner"
+          ></img>
+          <div className="small-banner-content position-absolute">
+            <h4 className="h4">Best Sales</h4>
+            <h5 className="h5">iPad S13+ Pro.</h5>
+            <p className="mb-0">
+              From Ksh : 56,000 <br />
+              To 98,000
+            </p>
+          </div>
+        </div>
+
+        <div className="small-banner position-relative p-2">
+          <img
+            src={catBanner3}
+            className="img-fluid rounded-3"
+            alt="small banner"
+          ></img>
+          <div className="small-banner-content position-absolute">
+            <h4 className="h4">New Arrivals</h4>
+            <h5 className="h5">Buy iPad Air</h5>
+            <p className="mb-0">
+              From Ksh : 56,000 <br /> To 98,000
+            </p>
+          </div>
+        </div>
+        <div className="small-banner position-relative p-2">
+          <img
+            src={catBanner4}
+            className="img-fluid rounded-3"
+            alt="small banner"
+          ></img>
+          <div className="small-banner-content position-absolute">
+            <h4 className="h4"> SUPPERCHARGED PROS</h4>
+            <h5 className="h5">iPad S13+ Pro.</h5>
+            <p className="mb-0">
+              From Ksh : 56,000 <br />
+              To 98,000
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Container>
+
 
 
 
