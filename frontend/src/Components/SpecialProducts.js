@@ -11,7 +11,7 @@ const SpecialProducts = (props) => {
  
     
 <div className={`col-lg-12 col-md-3 col-sm-12`} style={{
-  paddingBottom:"5%",
+  paddingBottom:"5const { grid } = props;%",
 }}>
   <div className="special-product-card">
     <div className="d-flex justify-content-between">
