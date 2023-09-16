@@ -32,6 +32,7 @@ import "../custom-css/Home.css";
 const Home = () => {
   return (
     <>
+    {/* responsivve */}
 <Container className="home-wrapper-1 py-3">
   <div className="row">
     <div className="col-md-6">
@@ -108,7 +109,7 @@ const Home = () => {
 
 
 
-
+{/* responsiev */}
 <Container className="home-wrapper-2 py-3">
   <div className="row">
     {services?.map((service, index) => (
@@ -125,6 +126,7 @@ const Home = () => {
   </div>
 </Container>
 
+{/* responsive */}
 <Container className="home-wrapper-2 py-3">
   <div className="row">
     <div className="col-12 col-md-6 col-lg-3">
@@ -166,96 +168,111 @@ const Home = () => {
     {/* Repeat these elements for additional items */}
   </div>
 </Container>
-
-      <Container class1="featured-wrapper  home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Featured Collections</h3>
-          </div>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
+{/* responsive */}
+<Container class1="featured-wrapper  home-wrapper-2">
+<div className="row">
+  <div className="col-12">
+    <h3 className="section-heading">Featured Collections</h3>
+  </div>
+  <ProductCard></ProductCard>
+  <ProductCard></ProductCard>
+  <ProductCard></ProductCard>
+  <ProductCard></ProductCard>
+</div>
+</Container>
+{/* responsive */}
+<Container className="famous-wrapper py-3 home-wrapper-2">
+  <div className="row">
+    <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div className="famous-card position-relative">
+        <img src={famous1} className="img-fluid" alt="famous1" />
+        <div className="famous-content position-absolute">
+          <h5 className="text-dark text-sm">Big Screen</h5>
+          <h6 className="text-dark text-sm">Smart Watch series 7</h6>
+          <p className="text-dark text-sm">From $399 or $16.62/mo</p>
         </div>
-      </Container>
+      </div>
+    </div>
 
-      <Container class1="famous-wrapper py-3 home-wrapper-2">
-        <div className="row">
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous1} className="img-fluid" alt="famous1" />
-              <div className="famous-content position-absolute">
-                <h5>Big Screen</h5>
-                <h6>Smart Watch series 7</h6>
-                <p>From $399 or $16.62/mo</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous2} className="img-fluid" alt="famous2" />
-              <div className="famous-content position-absolute">
-                <h5 className="text-dark">Big Screen</h5>
-                <h6 className="text-dark">Smart Watch series 7</h6>
-                <p className="text-dark">From $399 or $16.62/mo</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous3} className="img-fluid" alt="famous1" />
-              <div className="famous-content position-absolute">
-                <h5 className="text-dark">Big Screen</h5>
-                <h6 className="text-dark">Smart Watch series 7</h6>
-                <p className="text-dark">From $399 or $16.62/mo</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img src={famous4} className="img-fluid" alt="famous1" />
-              <div className="famous-content position-absolute">
-                <h5 className="text-dark">Big Screen</h5>
-                <h6 className="text-dark">Smart Watch series 7</h6>
-                <p className="text-dark">From $399 or $16.62/mo</p>
-              </div>
-            </div>
-          </div>
+    <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div className="famous-card position-relative">
+        <img src={famous2} className="img-fluid" alt="famous2" />
+        <div className="famous-content position-absolute">
+          <h5 className="text-dark text-sm">Big Screen</h5>
+          <h6 className="text-dark text-sm">Smart Watch series 7</h6>
+          <p className="text-dark text-sm">From $399 or $16.62/mo</p>
         </div>
-      </Container>
+      </div>
+    </div>
 
-      <Container class1="special-wrapper  home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Special Products</h3>
-          </div>
+    <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div className="famous-card position-relative">
+        <img src={famous3} className="img-fluid" alt="famous1" />
+        <div className="famous-content position-absolute">
+          <h5 className="text-dark text-sm">Big Screen</h5>
+          <h6 className="text-dark text-sm">Smart Watch series 7</h6>
+          <p className="text-dark text-sm">From $399 or $16.62/mo</p>
         </div>
-        <div className="row">
-          <SpecialProducts/>
-          <SpecialProducts/>
-        </div>
-      </Container>
+      </div>
+    </div>
 
-      <Container className="popular-wrapper home-wrapper-2">
+    <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div className="famous-card position-relative">
+        <img src={famous4} className="img-fluid" alt="famous1" />
+        <div className="famous-content position-absolute">
+          <h5 className="text-dark text-sm">Big Screen</h5>
+          <h6 className="text-dark text-sm">Smart Watch series 7</h6>
+          <p className="text-dark text-sm">From $399 or $16.62/mo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Container>
+{/* responsive  selct 6 from the db*/}
+<Container class1="special-wrapper  home-wrapper-2">
+<div className="row">
+  <div className="col-12">
+    <h3 className="section-heading">Special Products</h3>
+  </div>
+</div>
+{/* select max of at random 4 from the database */}
+<div className="row ">
+    
+    
+    <div className="col-md-6 col-lg-3">
+      <SpecialProducts/>  
+    </div>
+    <div className="col-md-6 col-lg-3">
+      <SpecialProducts/>  
+    </div>
+    <div className="col-md-6 col-lg-3">
+      <SpecialProducts/>  
+    </div>
+    <div className="col-md-6 col-lg-3">
+      <SpecialProducts/>  
+    </div>
+  
+</div>
+</Container>
+
+
+<Container className="popular-wrapper home-wrapper-2">
   <div className="row">
     <div className="col-12">
       <h3 className="section-heading">Our Popular Products</h3>
     </div>
   </div>
   <div className="row">
-    <div className="col-md-3">
+    <div className="col-md-6 col-lg-3">
       <ProductCard></ProductCard>
     </div>
-    <div className="col-md-3">
+    <div className="col-md-6 col-lg-3">
       <ProductCard></ProductCard>
     </div>
-    <div className="col-md-3">
+    <div className="col-md-6 col-lg-3">
       <ProductCard></ProductCard>
     </div>
-    <div className="col-md-3">
+    <div className="col-md-6 col-lg-3">
       <ProductCard></ProductCard>
     </div>
   </div>
@@ -265,62 +282,62 @@ const Home = () => {
 
 
 {/* no need to fix */}
-      <Container class1="marquee-wrapper ">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="marquee-inner-wrapper card-wrapper">
-              <Marquee className="d-flex">
-                <div className="mx-1 w-20%">
-                  <img src={brand1} className="img-fluid" alt="brand1"></img>
-                </div>
-                <div className="mx-1 w-20%">
-                  <img src={brand2} className="img-fluid" alt="brand2"></img>
-                </div>
-                <div className="mx-1 w-20%">
-                  <img src={brand3} className="img-fluid" alt="brand3"></img>
-                </div>
-                <div className="mx-1 w-20%">
-                  <img src={brand4} className="img-fluid" alt="brand4"></img>
-                </div>
-                <div className="mx-1 ww-20%">
-                  <img src={brand5} className="img-fluid" alt="brand5"></img>
-                </div>
-                <div className="mx-1 w-20%">
-                  <img src={brand6} className="img-fluid" alt="brand6"></img>
-                </div>
-                <div className="mx-1 w-20%">
-                  <img src={brand7} className="img-fluid" alt="brand7"></img>
-                </div>
-                <div className="mx-1 w-20% ">
-                  <img src={brand8} className="img-fluid" alt="brand8"></img>
-                </div>
-              </Marquee>
-            </div>
-          </div>
+<Container class1="marquee-wrapper ">
+<div className="row">
+  <div className="col-md-12">
+    <div className="marquee-inner-wrapper card-wrapper">
+      <Marquee className="d-flex">
+        <div className="mx-1 w-20%">
+          <img src={brand1} className="img-fluid" alt="brand1"></img>
         </div>
-      </Container>
+        <div className="mx-1 w-20%">
+          <img src={brand2} className="img-fluid" alt="brand2"></img>
+        </div>
+        <div className="mx-1 w-20%">
+          <img src={brand3} className="img-fluid" alt="brand3"></img>
+        </div>
+        <div className="mx-1 w-20%">
+          <img src={brand4} className="img-fluid" alt="brand4"></img>
+        </div>
+        <div className="mx-1 ww-20%">
+          <img src={brand5} className="img-fluid" alt="brand5"></img>
+        </div>
+        <div className="mx-1 w-20%">
+          <img src={brand6} className="img-fluid" alt="brand6"></img>
+        </div>
+        <div className="mx-1 w-20%">
+          <img src={brand7} className="img-fluid" alt="brand7"></img>
+        </div>
+        <div className="mx-1 w-20% ">
+          <img src={brand8} className="img-fluid" alt="brand8"></img>
+        </div>
+      </Marquee>
+    </div>
+  </div>
+</div>
+</Container>
 
        {/* kinda fixed in some way */}
-      <Container class1="blog-wrapper home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Our Latest Blogs</h3>
-          </div>
-        </div>
-        <div className="row">
-          
-          <div className="col-md-4">
-            <BlogCard></BlogCard>
-          </div>
-          <div className="col-md-4">
-            <BlogCard></BlogCard>
-          </div>
-          <div className="col-md-4">
-            <BlogCard></BlogCard>
-          </div>
-        
-        </div>
-      </Container>
+<Container class1="blog-wrapper home-wrapper-2">
+  <div className="row">
+    <div className="col-12">
+      <h3 className="section-heading">Our Latest Blogs</h3>
+    </div>
+  </div>
+  <div className="row">
+    
+    <div className="col-md-4">
+      <BlogCard></BlogCard>
+    </div>
+    <div className="col-md-4">
+      <BlogCard></BlogCard>
+    </div>
+    <div className="col-md-4">
+      <BlogCard></BlogCard>
+    </div>
+  
+  </div>
+</Container>
     </>
   );
 };
