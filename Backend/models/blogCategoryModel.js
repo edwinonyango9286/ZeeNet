@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); 
 
-var blogCategorySchema = new mongoose.Schema({
+var blogcategorySchema = new mongoose.Schema({
     title:{
         type:String,
         required:true,
@@ -8,7 +8,9 @@ var blogCategorySchema = new mongoose.Schema({
         index:true
     },
 },
-{timestamps:true});
+{
+    timestamps:true
+});
 
 //Export the model
-module.exports = mongoose.model('BlogCategory', blogCategorySchema);
+module.exports = mongoose.model('BCategory', blogcategorySchema);

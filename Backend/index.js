@@ -1,21 +1,20 @@
 const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const app = express();
-const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
-const authRoutes = require("./routes/authRoutes");
+const authRouter = require("./routes/authRoute");
 const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
 const cookieParser = require("cookie-parser");
-const productRoutes = require("./routes/productRoutes");
+const productRouter = require("./routes/productRoutes");
 const morgan = require("morgan");
-const blogRoute = require("./routes/blogRoute");
-const productCategoryRoute = require("./routes/productCategoryRoute");
-const blogCategoryRoute = require("./routes/blogCategoryRoute");
-const productBrandRoute = require("./routes/productBrandRoute");
-const couponRoute = require("./routes/couponRoute");
-const colorRoute = require("./routes/colorRoute");
-const enquiryRoute = require("./routes/enquiryRoute")
+const blogRouter = require("./routes/blogRoute");
+const productCategoryRouter = require("./routes/productCategoryRoute");
+const blogCatRouter = require("./routes/blogCatRoute")
+const BrandRouter = require("./routes/blogRoute");
+const couponRouter = require("./routes/couponRoute");
+const colorRouter = require("./routes/colorRoute");
+const enquiryRouter = require("./routes/enqRoute")
 const cors = require("cors")
 
 
@@ -27,23 +26,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //USER API
-app.use("/api/user", authRoutes);
+app.use("/api/user",authRouter);
 //PRODUCT API
-app.use("/api/products", productRoutes);
+app.use("/api/products", productRouter);
 //COLOR API
-app.use("/api/color", colorRoute);
+app.use("/api/color", colorRouter);
 //BLOGS API
-app.use("/api/blog", blogRoute);
+app.use("/api/blog", blogRouter);
 // PRODUCT CATEGORY API
-app.use("/api/productcategory", productCategoryRoute);
+app.use("/api/productcategory", productCategoryRouter);
 //BLOG CATEGORY API
-app.use("/api/blogcategory", blogCategoryRoute);
+app.use("/api/blogcategory", blogCatRouter);
 //PRODUCT BRAND API
-app.use("/api/productbrand", productBrandRoute);
+app.use("/api/productbrand",BrandRouter);
 //COUPON BRAND API
-app.use("/api/coupon", couponRoute);
+app.use("/api/coupon", couponRouter);
 //ENQUIRIES API 
-app.use("/api/enquiry",enquiryRoute);
+app.use("/api/enquiry",enquiryRouter);
 
 app.use(notFound);
 app.use(errorHandler);

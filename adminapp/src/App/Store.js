@@ -21,6 +21,5 @@ export const store = configureStore({
     blog:blogReducer,
     bCategory:blogCategoryReducer,
     enquiry:enquiryReducer,
-
   },
 });

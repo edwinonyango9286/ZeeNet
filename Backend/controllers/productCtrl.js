@@ -3,15 +3,8 @@ const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const validateMongodbId = require("../utils/validateMongodbId");
-const {
-  cloudinaryUploadImg,
-  cloudinaryDeleteImg,
-} = require("../utils/cloudinary");
+ 
 
-const cloudinaryUploadingImg = require("cloudinary");
-const fs = require("fs");
-
-//CREATE A NEW PRODUCT ADMIN
 const createProduct = asyncHandler(async (req, res) => {
   try {
     if (req.body.title) {
@@ -24,7 +17,6 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//UPDATE PRODUCT DETAILS ADMIN
 const updateProduct = asyncHandler(async (req,res) => {
   const id = req.params;
   validateMongodbId(id);
@@ -37,7 +29,6 @@ const updateProduct = asyncHandler(async (req,res) => {
       new: true,
     });
     res.json(updatedProduct);
-    console.log(updatedProduct)
   } catch (error) {
     throw new Error(error);
   }
@@ -45,7 +36,6 @@ const updateProduct = asyncHandler(async (req,res) => {
 
 
 
-//DELETE A PRODUCT ADMIN
 const deleteProduct = asyncHandler(async (req, res) => {
   const id = req.params;
   validateMongodbId(id);
@@ -57,7 +47,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//GET A SINGLE PRODUCT
 const getaProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
@@ -69,11 +58,8 @@ const getaProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//GET ALL PRODUCTS
-
-const getAllProduct = asyncHandler(async (req, res) => {
+const getallProduct = asyncHandler(async (req, res) => {
   try {
-    //FILTERING
     const queryObj = { ...req.query };
     const excludeFields = ["page", "sort", "limit", "fields"];
     excludeFields.forEach((el) => delete queryObj[el]);
@@ -81,15 +67,13 @@ const getAllProduct = asyncHandler(async (req, res) => {
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
     let query = Product.find(JSON.parse(queryStr));
 
-    //SORTING
     if (req.query.sort) {
-      const sortBy = req.query.sort.split("").join("");
+      const sortBy = req.query.sort.split(",").join("");
       query = query.sort(sortBy);
     } else {
       query = query.sort("-createdAt");
     }
 
-    //LIMITING FIELDS
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       query = query.select(fields);
@@ -97,14 +81,13 @@ const getAllProduct = asyncHandler(async (req, res) => {
       query = query.select("-__V");
     }
 
-    //PAGINATION
     const page = req.query.page;
     const limit = req.query.limit;
     const skip = (page - 1) * limit;
     query = query.skip(skip).limit(limit);
     if (req.query.page) {
       const productCount = await Product.countDocuments();
-      if (skip >= productCount) throw new Error("This Page does not exists");
+      if (skip >= productCount) throw new Error("This page does not exists");
     }
 
     const product = await query;
@@ -114,7 +97,6 @@ const getAllProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//ADD TO WHISHLIST
 const addToWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { prodId } = req.body;
@@ -149,7 +131,6 @@ const addToWishlist = asyncHandler(async (req, res) => {
   }
 });
 
-//PRODUCT RATING
 const rating = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { star, prodId, comment } = req.body;
@@ -203,49 +184,13 @@ const rating = asyncHandler(async (req, res) => {
   }
 });
 
-const uploadImages = asyncHandler(async (req, res) => {
-  try {
-    const uploader = (path) => cloudinaryUploadImg(path, "images");
-    const urls = [];
-    const files = req.files;
-
-    for (const file of files) {
-      const { path } = file;
-      const newPath = await uploader(path);
-      urls.push(newPath);
-      fs.unlinkSync(path);
-    }
-
-    const images = urls.map((file) => {
-      return file;
-    });
-
-    res.json(images);
-  } catch (error) {
-    throw new Error(error);
-  }
-});
-
-const deleteImages = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  try {
-    const deletedImage = cloudinaryDeleteImg(id, "images");
-    res.json({
-      message: "Deleted",
-    });
-  } catch (error) {
-    throw new Error(error);
-  }
-});
 
 module.exports = {
   createProduct,
-  getAllProduct,
+  getallProduct,
   getaProduct,
   updateProduct,
   deleteProduct,
   addToWishlist,
   rating,
-  uploadImages,
-  deleteImages,
 };

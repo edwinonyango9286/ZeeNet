@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); 
 
 
-var productBrandSchema = new mongoose.Schema({
+var brandSchema = new mongoose.Schema({
     title:{
         type:String,
         required:true,
@@ -9,7 +9,9 @@ var productBrandSchema = new mongoose.Schema({
         index:true,
     },
  
-},{timestamps:true});
+},
+{timestamps:true}
+);
 
 
-module.exports = mongoose.model('ProductBrand', productBrandSchema);
+module.exports = mongoose.model('Brand', brandSchema);
