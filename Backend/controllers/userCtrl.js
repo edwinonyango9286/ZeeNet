@@ -1,21 +1,18 @@
-const User = require("../models/userModel");
+const User = require("../models/userModel")
 const Product = require("../models/productModel");
 const Cart = require("../models/cartModel");
 const Coupon = require("../models/couponModel");
 const Order = require("../models/orderModel");
 const uniqid = require("uniqid");
-
-
 const asyncHandler = require("express-async-handler");
 const { generateToken } = require("../config/jwtToken");
 const validateMongodbId = require("../utils/validateMongodbId");
-const generateRefreshToken = require("../config/refreshToken");
+const {generateRefreshToken}= require("../config/refreshToken");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../controllers/emailCtrl");
 
 
-// CHECK IF USER EXIST AND IF NOT CREATES A NEW USER
 const createUser = asyncHandler(async (req, res) => {
   const email = req.body.email;
   const findUser = await User.findOne({ email: email });
@@ -24,13 +21,11 @@ const createUser = asyncHandler(async (req, res) => {
     res.json(newUser);
   } else {
     throw new Error("User Already Exists");
-  }
+ }
 });
 
-// USER LOGS IN WITH AN EMAIL AND  A PASSWORD AND A TOKEN GENERATED FOR THE USER
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  //CHECKS IF A USER EXISTS IN THE DB
   const findUser = await User.findOne({ email });
 
   if (findUser && (await findUser.isPasswordMatched(password))) {
@@ -93,7 +88,6 @@ const adminLogin = asyncHandler(async (req, res) => {
 });
 
 
-//HANDLE THE REFRESH TOKEN
 
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
@@ -110,9 +104,8 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
   });
 });
 
-//LOGOUT FUNCTIONALITY
 
-const logout = asyncHandler(async (req, res) => {
+const logout = asyncHandler(async (req,res) => {
   const cookie = req.cookies;
   if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
   const refreshToken = cookie.refreshToken;
@@ -122,7 +115,7 @@ const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       secure: true,
     });
-    return res.sendStatus(204); // FORBIDDEN REQUEST
+    return res.sendStatus(204); 
   }
   await User.findOneAndUpdate(
     { refreshToken },
@@ -134,10 +127,9 @@ const logout = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: true,
   });
-  res.sendStatus(204); // FORBIDDEN REQUEST
+  res.sendStatus(204); 
 });
 
-//UPDATE USER ADMIN AND USERS
 
 const updateAUser = asyncHandler(async (req, res) => {
   const { id } = req.user;
@@ -180,7 +172,6 @@ const saveUserAddress = asyncHandler(async (req, res) => {
   }
 });
 
-//GET ALL USERS
 const getAllUsers = asyncHandler(async (req, res) => 
 {
   try {
@@ -191,7 +182,6 @@ const getAllUsers = asyncHandler(async (req, res) =>
   }
 });
 
-//GET A SINGLE USER
 
 const getAUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -206,7 +196,6 @@ const getAUser = asyncHandler(async (req, res) => {
   }
 });
 
-//DELETE A USER
 const deleteAUsers = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
@@ -220,7 +209,6 @@ const deleteAUsers = asyncHandler(async (req, res) => {
   }
 });
 
-//ADMIN BLOCK A USER FUNCTIONALITY
 const blockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
@@ -240,7 +228,6 @@ const blockUser = asyncHandler(async (req, res) => {
   }
 });
 
-//ADMIN UNBLOCKS A USER FUNCTIONALITY
 const unBlockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
@@ -335,7 +322,6 @@ const addToCart = asyncHandler(async (req, res) => {
     let products = [];
     const user = await User.findById(_id);
 
-    // check if user already have product in cart
     const alreadyExistCart = await Cart.findOne({ orderby: user._id });
     if (alreadyExistCart) {
       alreadyExistCart.remove();
@@ -346,7 +332,6 @@ const addToCart = asyncHandler(async (req, res) => {
       object.count = cart[i].count;
       object.color = cart[i].color;
 
-      //NOT ABLE TO GET THE PRICE FROM THE DB WITH REFERENCE TO THE PRODUCT ID AND ADD IT TO CART
       let getPrice = await Product.findById(cart[i]._id).select('price').exec();
       object.price = getPrice.price;
       products.push(object);
@@ -413,7 +398,6 @@ const addToCart = asyncHandler(async (req, res) => {
   res.json(totalAfterDiscount);
 });
 
-//CREATE CASH ORDER
 const createOrder = asyncHandler(async(req,res)=>{
   const {COD,couponApplied} = req.body;
   const {_id} = req.user;

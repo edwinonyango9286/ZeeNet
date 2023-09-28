@@ -25,23 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//USER API
 app.use("/api/user",authRouter);
-//PRODUCT API
 app.use("/api/products", productRouter);
-//COLOR API
 app.use("/api/color", colorRouter);
-//BLOGS API
 app.use("/api/blog", blogRouter);
-// PRODUCT CATEGORY API
 app.use("/api/productcategory", productCategoryRouter);
-//BLOG CATEGORY API
 app.use("/api/blogcategory", blogCatRouter);
-//PRODUCT BRAND API
 app.use("/api/productbrand",BrandRouter);
-//COUPON BRAND API
 app.use("/api/coupon", couponRouter);
-//ENQUIRIES API 
 app.use("/api/enquiry",enquiryRouter);
 
 app.use(notFound);

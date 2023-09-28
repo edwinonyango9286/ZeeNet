@@ -47,12 +47,12 @@ router.delete("/emptycart",authMiddleware,emptyCart);
 router.get("/allUsers",getAllUsers);
 router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);
-router.get("/getuserwishlist",authMiddleware,getWishlist);
+router.get("/wishlist",authMiddleware,getWishlist);
 router.get("/:id", authMiddleware,getAUser);
 router.delete("/delete/:id", authMiddleware,deleteAUsers);
-router.put("/update/:id",authMiddleware, updateAUser);
-router.put("/saveuseraddress",authMiddleware,saveUserAddress)
-router.put("/block/:id", authMiddleware, isAdmin, blockUser);
-router.put("/unBlock/:id", authMiddleware, isAdmin, unBlockUser);
+router.put("/update-user/:id",authMiddleware, updateAUser);
+router.put("/save-address",authMiddleware,saveUserAddress)
+router.put("/block-user/:id", authMiddleware, isAdmin, blockUser);
+router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser);
 
 module.exports = router;

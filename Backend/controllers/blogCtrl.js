@@ -5,7 +5,6 @@ const validateMongodbId = require("../utils/validateMongodbId");
 const cloudinaryUploadingImg = require("../utils/cloudinary");
 const fs = require("fs")
 
-// CREATE A BLOG
 const createBlog = asyncHandler(async (req, res) => {
   try {
     const newBlog = await Blog.create(req.body);
@@ -15,7 +14,6 @@ const createBlog = asyncHandler(async (req, res) => {
   }
 });
 
-// UPDATE A BLOG
 const updateBlog = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
