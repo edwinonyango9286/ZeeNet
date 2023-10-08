@@ -28,11 +28,10 @@ import Container from "../Components/Container";
 import services from "../utils/Data"
 import spaeker from "../images/speaker.jpg"
 import smartwatch from "../images/smartwatch.avif"
-import "../custom-css/Home.css";
+
 const Home = () => {
   return (
     <>
-    {/* responsivve */}
 <Container className="home-wrapper-1 py-3">
   <div className="row">
     <div className="col-md-6">
@@ -43,9 +42,9 @@ const Home = () => {
           alt="main banner"
         ></img>
         <div className="main-banner-content position-absolute">
-          <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">SUPPERCHARGED FOR PROS</h5>
-          <h6 className="h6 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h6>
-          <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
+          <h5 className="">SUPPERCHARGED FOR PROS</h5>
+          <h6 className="">iPad S13+ Pro.</h6>
+          <p className="">From Ksh: 56,000 to 98,000</p>
           <Link className="btn btn-primary">BUY NOW</Link>
         </div>
       </div>
@@ -60,9 +59,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">SUPPERCHARGED PROS</h4>
-            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h5>
-            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
+            <h4 className="">SUPPERCHARGED PROS</h4>
+            <h5 className="">iPad S13+ Pro.</h5>
+            <p className="">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
         <div className="small-banner position-relative p-2">
@@ -72,9 +71,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">Best Sales</h4>
-            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h5>
-            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
+            <h4 className="">Best Sales</h4>
+            <h5 className="">iPad S13+ Pro.</h5>
+            <p className="">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
 
@@ -85,9 +84,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">New Arrivals</h4>
-            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">Buy iPad Air</h5>
-            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
+            <h4 className="">New Arrivals</h4>
+            <h5 className="">Buy iPad Air</h5>
+            <p className="">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
         <div className="small-banner position-relative p-2">
@@ -97,9 +96,9 @@ const Home = () => {
             alt="small banner"
           ></img>
           <div className="small-banner-content position-absolute">
-            <h4 className="h4 h-md-responsive h-sm-responsive h-xs-responsive">SUPPERCHARGED PROS</h4>
-            <h5 className="h5 h-md-responsive h-sm-responsive h-xs-responsive">iPad S13+ Pro.</h5>
-            <p className="mb-2 mb-md-responsive mb-sm-responsive mb-xs-responsive">From Ksh: 56,000 to 98,000</p>
+            <h4 className="">SUPPERCHARGED PROS</h4>
+            <h5 className="">iPad S13+ Pro.</h5>
+            <p className="">From Ksh: 56,000 to 98,000</p>
           </div>
         </div>
       </div>
@@ -109,7 +108,6 @@ const Home = () => {
 
 
 
-{/* responsiev */}
 <Container className="home-wrapper-2 py-3">
   <div className="row">
     {services?.map((service, index) => (
@@ -126,7 +124,6 @@ const Home = () => {
   </div>
 </Container>
 
-{/* responsive */}
 <Container className="home-wrapper-2 py-3">
   <div className="row">
     <div className="col-12 col-md-6 col-lg-3">
@@ -165,10 +162,8 @@ const Home = () => {
         </div>
       </div>
     </div>
-    {/* Repeat these elements for additional items */}
   </div>
 </Container>
-{/* responsive */}
 <Container class1="featured-wrapper  home-wrapper-2">
 <div className="row">
   <div className="col-12">
@@ -228,14 +223,12 @@ const Home = () => {
     </div>
   </div>
 </Container>
-{/* responsive  selct 6 from the db*/}
 <Container class1="special-wrapper  home-wrapper-2">
 <div className="row">
   <div className="col-12">
     <h3 className="section-heading">Special Products</h3>
   </div>
 </div>
-{/* select max of at random 4 from the database */}
 <div className="row ">
     
     
@@ -281,7 +274,6 @@ const Home = () => {
 
 
 
-{/* no need to fix */}
 <Container class1="marquee-wrapper ">
 <div className="row">
   <div className="col-md-12">
@@ -317,7 +309,6 @@ const Home = () => {
 </div>
 </Container>
 
-       {/* kinda fixed in some way */}
 <Container class1="blog-wrapper home-wrapper-2">
   <div className="row">
     <div className="col-12">

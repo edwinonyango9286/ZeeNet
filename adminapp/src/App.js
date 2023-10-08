@@ -24,13 +24,12 @@ import AddProduct from './Pages/AddProduct';
 function App() {
   return (
     <>
-    
      <Router>
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/reset-password' element={<ResestPassword/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
-        <Route path="admin" element={<MainLayout/>}>
+        <Route path="/admin" element={<MainLayout/>}>
           <Route index element={<Dashboard/>}/>
           <Route path='enquiries' element={<Enquiries/>}/>
           <Route path='blog' element={<AddBlog/>}/>

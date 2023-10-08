@@ -4,7 +4,6 @@ const {
   Types: { ObjectId },
 } = require("mongoose");
 
-//PRODUCTS MODEL SCHEMA
 var productSchema = new mongoose.Schema(
   {
     title: {

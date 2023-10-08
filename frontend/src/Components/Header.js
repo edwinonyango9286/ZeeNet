@@ -6,13 +6,8 @@ import wishlistImage from "../images/wishlist.svg";
 import accountImage from "../images/user.svg";
 import cartImage from "../images/cart.svg";
 import menu from "../images/menu.svg";
-// eslint-disable-next-line no-unused-vars
-import { useState } from 'react'; // Iimport { NavLink } from 'react-router-dom';
-// import { Navbar, Nav } from 'react-bootstrap';
+import { useState } from 'react';
 
-
-
-import "../custom-css/headers.css";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -21,7 +16,6 @@ const Header = () => {
   };
   return (
     <>
-    {/* header-top-strip === responsive */}
       <header className="header-top-strip py-2">
         <div className="container-md">
           <div className="row">

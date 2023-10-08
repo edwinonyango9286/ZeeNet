@@ -9,7 +9,6 @@ import Colors from "../Components/Colors";
 import { VscGitCompare } from 'react-icons/vsc';
 import {AiOutlineHeart} from "react-icons/ai"
 import Container from "../Components/Container";
-import "../custom-css/singleproductpage.css";
 const SingleProduct = () => {
   const [isDescriptionVisible, setDescriptionVisible] = useState(false);
   const [isReviewFormVisible, setReviewFormVisible] = useState(false);
@@ -43,7 +42,6 @@ const SingleProduct = () => {
     <>
       <Meta title={"product name"} />
       <BreadCrumb title="product name" />
-      {/* Almost responsive */}
       <Container className="main-product-wrapper py-3 home-wrapper-2">
         <div className="row">
         

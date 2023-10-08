@@ -17,16 +17,16 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-const updateProduct = asyncHandler(async (req,res) => {
-  const id = req.params;
-  validateMongodbId(id);
 
+const updateProduct = asyncHandler(async (req, res) => {
+  const {id}= req.params;
+  validateMongodbId(id);
   try {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
     }
-    const updatedProduct = await Product.findOneAndUpdate({id} , req.body, {
-      new: true,
+    const updatedProduct = await Product.findOneAndUpdate({ _id:id },req.body, {
+      new:true,
     });
     res.json(updatedProduct);
   } catch (error) {
@@ -35,12 +35,11 @@ const updateProduct = asyncHandler(async (req,res) => {
 });
 
 
-
 const deleteProduct = asyncHandler(async (req, res) => {
-  const id = req.params;
+  const {id} = req.params;
   validateMongodbId(id);
   try {
-    const deleteProduct = await Product.findOneAndDelete(id);
+    const deleteProduct = await Product.findOneAndDelete({ _id: id });
     res.json(deleteProduct);
   } catch (error) {
     throw new Error(error);
