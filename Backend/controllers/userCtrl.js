@@ -311,7 +311,6 @@ const addToCart = asyncHandler(async (req, res) => {
   try {
     let products = [];
     const user = await User.findById(_id);
-
     const alreadyExistCart = await Cart.findOne({ orderby: user._id });
     if (alreadyExistCart) {
       alreadyExistCart.remove();
@@ -321,7 +320,6 @@ const addToCart = asyncHandler(async (req, res) => {
       object.product = cart[i]._id;
       object.count = cart[i].count;
       object.color = cart[i].color;
-
       let getPrice = await Product.findById(cart[i]._id).select("price").exec();
       object.price = getPrice.price;
       products.push(object);
@@ -340,6 +338,8 @@ const addToCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
 
 const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -396,7 +396,7 @@ const createOrder = asyncHandler(async (req, res) => {
   validateMongodbId(_id);
   try {
     if (!COD) throw new Error("create Cash order failed");
-    const user = await Cart.find(_id);
+    const user = await User.findById(_id);
     let userCart = await Cart.findOne({ orderby: user._id });
     let finalAmount = 0;
     if (couponApplied && userCart.totalAfterDiscount) {
@@ -405,9 +405,9 @@ const createOrder = asyncHandler(async (req, res) => {
       finalAmount = userCart.cartTotal;
     }
 
-    let newOrder = await new order({
+    let newOrder = await new Order({
       products: userCart.products,
-      paymentItent: {
+      paymentIntent: {
         id: uniqid(),
         method: "COD",
         amount: finalAmount,
@@ -415,8 +415,8 @@ const createOrder = asyncHandler(async (req, res) => {
         created: Date.now(),
         currency: "ksh",
       },
-      orderby: user.Id,
-      orderStatus: "Cash On Delivery",
+      orderby: user._Id,
+      orderStatus: "Cash on Delivery",
     }).save();
 
     let update = userCart.products.map((item) => {
@@ -429,7 +429,9 @@ const createOrder = asyncHandler(async (req, res) => {
     });
     const updated = await Product.bulkWrite(update, {});
     res.json({ message: "success" });
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(error);
+  }
 });
 
 const getOrders = asyncHandler(async (req, res) => {
@@ -437,7 +439,7 @@ const getOrders = asyncHandler(async (req, res) => {
   validateMongodbId(_id);
   try {
     const userorders = await Order.findOne({ orderby: _id })
-      .populate("product.product")
+      .populate("products.product")
       .populate("orderby")
       .exec();
     res.json(userorders);

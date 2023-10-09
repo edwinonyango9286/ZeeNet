@@ -3,11 +3,11 @@ const router = express.Router();
 const {isAdmin ,authMiddleware}= require("../middlewares/authMiddleware");
 const { createCoupon,updateCoupon,getAllCoupons,deleteCoupon,getACoupon} = require("../controllers/couponCtrl");
 
-router.post("/createcoupon",authMiddleware,isAdmin,createCoupon)
-router.put("/updatecoupon/:id",authMiddleware,isAdmin,updateCoupon)
-router.delete("/deleteacoupon/:id",authMiddleware,isAdmin,deleteCoupon)
-router.get("/getasinglecoupon/:id",authMiddleware,isAdmin,getACoupon);
-router.get("/getallcoupons", authMiddleware,isAdmin,getAllCoupons);
+router.post("/create",authMiddleware,isAdmin,createCoupon)
+router.put("/update/:id",authMiddleware,isAdmin,updateCoupon)
+router.delete("/delete/:id",authMiddleware,isAdmin,deleteCoupon)
+router.get("/get/:id",authMiddleware,isAdmin,getACoupon);
+router.get("/getall", authMiddleware,isAdmin,getAllCoupons);
 
 
 
