@@ -127,11 +127,11 @@ const logout = asyncHandler(async (req, res) => {
 });
 
 const updateAUser = asyncHandler(async (req, res) => {
-  const { id } = req.user;
-  validateMongodbId(id);
+  const { _id } = req.user;
+  validateMongodbId(_id);
   try {
-    const updateAUser = await User.findByIdAndUpdate(
-      id,
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
       {
         firstname: req?.body?.firstname,
         lastname: req?.body?.lastname,
@@ -143,7 +143,7 @@ const updateAUser = asyncHandler(async (req, res) => {
       }
     );
     res.json({
-      updateAUser,
+      updatedUser,
     });
   } catch (error) {
     throw new Error(error);
@@ -294,7 +294,7 @@ const resetPassword = asyncHandler(async (req, res) => {
 
 const getWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
-
+  validateMongodbId(_id);
   try {
     const findUser = await User.findById(_id).populate("wishlist");
     res.json(findUser);
@@ -423,7 +423,7 @@ const createOrder = asyncHandler(async (req, res) => {
       return {
         updateOne: {
           filter: { _id: item.product._id },
-          update: { sinc: { quality: -item.count, sold: +item.count } },
+          update: { $inc: { quantity: -item.count, sold: +item.count } },
         },
       };
     });
@@ -448,9 +448,10 @@ const getOrders = asyncHandler(async (req, res) => {
   }
 });
 
+
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
-    const alluserorders = await User.find()
+    const alluserorders = await Order.find()
       .populate("products:product")
       .populate("orderby")
       .exec();
@@ -459,6 +460,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
 
 const getOrderByUserId = asyncHandler(async (req, res) => {
   const { id } = req.params;

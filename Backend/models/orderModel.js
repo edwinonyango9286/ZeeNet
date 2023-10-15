@@ -1,13 +1,11 @@
-const mongoose = require("mongoose"); 
-
-const {Schema,Types:{ObjectId}} = require("mongoose");
+const mongoose = require("mongoose");
 
 var orderSchema = new mongoose.Schema(
   {
     products: [
       {
         product: {
-          type: ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "Product",
         },
         count: Number,
@@ -28,7 +26,7 @@ var orderSchema = new mongoose.Schema(
       ],
     },
     orderby: {
-      type:ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
   },
