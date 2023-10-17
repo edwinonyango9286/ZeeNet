@@ -6,8 +6,7 @@ import {store} from "./App/Store"
 import { Provider } from 'react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
-        <App />
-
+        <App/>
 );
 
 
