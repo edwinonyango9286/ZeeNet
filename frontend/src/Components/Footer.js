@@ -44,10 +44,10 @@ const Footer = () => {
               <br />
               Suite 718, Nairobi
             </address>
-            <a href="tel:+2540719547267" className="text-white d-block">
+            <a href="tel:+2540719547267" className="text-white d-block link">
               Phone : +254 0719547267
             </a>
-            <a href="mailto:technologieszeenet@gmail.com" className="text-white d-block">
+            <a href="mailto:technologieszeenet@gmail.com" className="text-white d-block link">
               Email : technologieszeenet@gmail.com
             </a>
             <div className="social-icons d-flex align-items-center gap-3 mt-4">
@@ -69,30 +69,30 @@ const Footer = () => {
           <div className="col-md-3 col-sm-12 mb-3">
             <h5 className="text-white">Information</h5>
             <div className="footer-links d-flex flex-column">
-              <Link to="/privacy-policy" className="text-white">Privacy Policy</Link>
-              <Link to="/refund-policy" className="text-white">Refund Policy</Link>
-              <Link to="/shipping-policy" className="text-white">Shipping Policy</Link>
-              <Link to="/terms-and-conditions" className="text-white">Terms & Conditions</Link>
-              <Link className="text-white">Blogs</Link>
+              <Link to="/privacy-policy" className="text-white link">Privacy Policy</Link>
+              <Link to="/refund-policy" className="text-white link">Refund Policy</Link>
+              <Link to="/shipping-policy" className="text-white link">Shipping Policy</Link>
+              <Link to="/terms-and-conditions" className="text-white link">Terms & Conditions</Link>
+              <Link className="text-white link">Blogs</Link>
             </div>
           </div>
 
           <div className="col-md-3 col-sm-12 mb-3">
             <h5 className="text-white">Account</h5>
             <div className="footer-links d-flex flex-column">
-              <Link className="text-white">About Us</Link>
-              <Link className="text-white">FQA</Link>
-              <Link className="text-white">Contact</Link>
+              <Link className="text-white link">About Us</Link>
+              <Link className="text-white link">FQA</Link>
+              <Link className="text-white link">Contact</Link>
             </div>
           </div>
 
           <div className="col-md-2 col-sm-12">
             <h5 className="text-white">Quick Links</h5>
             <div className="footer-links d-flex flex-column">
-              <Link className="text-white">Laptops</Link>
-              <Link className="text-white">Headphones</Link>
-              <Link className="text-white">Tablets</Link>
-              <Link className="text-white">Watches</Link>
+              <Link className="text-white link">Laptops</Link>
+              <Link className="text-white link">Headphones</Link>
+              <Link className="text-white link">Tablets</Link>
+              <Link className="text-white link">Watches</Link>
             </div>
           </div>
         </div>

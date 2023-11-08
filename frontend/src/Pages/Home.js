@@ -8,7 +8,6 @@ import catBanner3 from "../images/catbanner-03.jpg";
 import catBanner4 from "../images/catbanner-04.jpg";
 import cameraImage from "../images/camera.jpg";
 import tvImage from "../images/tv.jpg";
-import headphoneImage from "../images/headphone.jpg";
 import brand1 from "../images/brand-01.png";
 import brand2 from "../images/brand-02.png";
 import brand3 from "../images/brand-03.png";
