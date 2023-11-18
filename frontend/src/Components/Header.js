@@ -6,68 +6,59 @@ import wishlistImage from "../images/wishlist.svg";
 import accountImage from "../images/user.svg";
 import cartImage from "../images/cart.svg";
 import menu from "../images/menu.svg";
-import { useState } from "react";
 
 const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
-
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
   return (
     <>
-      <header className="header-top-strip py-3">
-        <div className="container-xxl">
+      <header className="header-top-strip py-2 container-fluid px-5">
           <div className="row">
             <div className="col-6">
               <p className="text-white mb-0">
-                Free Shipping Over Ksh 1000 & Free Returns
+                Free Delivery for oders above Ksh100,000 & Free Returns
               </p>
             </div>
             <div className="col-6">
               <p className="text-end text-white mb-0">
                 Hotline:
-                <a className="text-white link " href="Tel:+254 719547267">
+                <a className="text-white link" href="Tel:+254 719547267">
                   +254 719547267
                 </a>
               </p>
             </div>
           </div>
-        </div>
       </header>
 
-      <header className="header-upper py-3">
-        <div className="container-xxl">
-          <div className="row align-items-center">
+      <header className="header-upper py-2 container-fluid px-5">
+          <div className="row align-items-center ">
             <div className="col-2">
               <h2>
-                <Link className="link text-white logo">ZeeNet</Link>
+                <Link className="text-white link logo ">ZeeNet.</Link>
               </h2>
             </div>
 
-            <div className="col-5 ">
+            <div className="col-5">
               <div className="input-group">
                 <input
-                  type="text"  
-                  className="form-control py-2"
+                  type="text"
+                  className="form-control py-1"
                   placeholder="Search Product Here..."
                   aria-label="Search Product Here..."
                   aria-describedby="basic-addon2"
                 />
-                <span className="input-group-text p-3" id="basic-addon2">
+                <span className="input-group-text" id="basic-addon2">
                   <BsSearch className="fs-6"></BsSearch>
                 </span>
               </div>
             </div>
 
-            <div className="col-5">
+            <div className="col-5 px-5">
               <div className="header-upper-links d-flex align-items-center justify-content-between">
                 <div>
                   <Link
                     to="/compare-products"
                     className="d-flex align-items-center gap-10 text-white link"
                   >
-                    <img src={compareImage} alt="compare"></img>
+                    <img src={compareImage} alt="compare" className="img-fluid"  ></img>
                     <h6 className="mb-0" id="hidden">
                       compare
                       <br />
@@ -80,7 +71,7 @@ const Header = () => {
                     to="/wishlist"
                     className="d-flex align-items-center gap-10 text-white link"
                   >
-                    <img src={wishlistImage} alt="wishlist"></img>
+                    <img src={wishlistImage} alt="wishlist" className="img-fluid"></img>
                     <h6 className="mb-0" id="hidden">
                       favourite
                       <br /> wishlist
@@ -92,7 +83,7 @@ const Header = () => {
                     to="/login"
                     className="d-flex align-items-center gap-10 text-white link"
                   >
-                    <img src={accountImage} alt="user"></img>
+                    <img src={accountImage} alt="user" className="img-fluid" ></img>
                     <h6 className="mb-0" id="hidden">
                       Log in <br />
                       My Account
@@ -104,7 +95,7 @@ const Header = () => {
                     to="/cart"
                     className="d-flex align-items-center gap-10 text-white link"
                   >
-                    <img src={cartImage} alt="cart"></img>
+                    <img src={cartImage} alt="cart" className="img-fluid"></img>
                     <div className="d-flex flex-column gap-10">
                       <span className="badge bg-white text-dark">0</span>
                       <h6 className="mb-0" id="hidden">
@@ -116,109 +107,81 @@ const Header = () => {
               </div>
             </div>
           </div>
-        </div>
       </header>
-      <header className="header-bottom py-1">
-        <div className="container-md">
+      <header className="header-bottom py-1 container-fluid px-5">
           <div className="row">
-            <div className="col">
-              <div className="menu-bottom d-flex align-items-center justify-content-between">
+            <div className="col-12">
+              <div className="menu-bottom d-flex align-items-center">
                 <div>
                   <div className="dropdown">
                     <button
-                      className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15 d-flex align-items-center"
+                      className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15  me-5 d-flex align-items-center"
                       type="button"
                       id="dropdownMenuButton1"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <img src={menu} alt=""></img>
-                      <span className="me-5 d-inline-block">
-                        Shop Categories
-                      </span>
+                      <img src={menu} alt="" className="img-fluid"></img>
+                      <span className="d-inline-block">Shop Categories</span>
                     </button>
                     <ul
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton1"
                     >
                       <li>
-                        <Link className="dropdown-item text-white" to="">
-                          Action
+                        <Link className="dropdown-item text-white" to="/">
+                          Home
                         </Link>
                       </li>
                       <li>
                         <Link className="dropdown-item text-white" to="">
-                          Another action
+                          Cameras and videos
                         </Link>
                       </li>
                       <li>
                         <Link className="dropdown-item text-white" to="">
-                          Something else here
+                          Computers & Laptops
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item text-white" to="">
+                          Home Appliances
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item text-white" to="">
+                          Handbag
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item text-white" to="">
+                          Smart Phones
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item text-white" to="">
+                          Portable Speakers
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item text-white" to="">
+                          Music & Gaming
                         </Link>
                       </li>
                     </ul>
                   </div>
                 </div>
-
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                  <div className="container">
-                    <button
-                      className="navbar-toggler"
-                      type="button"
-                      onClick={toggleNav}
-                    >
-                      <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div
-                      className={`collapse navbar-collapse ${
-                        isNavOpen ? "show" : ""
-                      }`}
-                    >
-                      <ul className="navbar-nav">
-                        <li className="nav-item">
-                          <NavLink
-                            className="nav-link"
-                            to="/"
-                            onClick={toggleNav}
-                          >
-                            Home
-                          </NavLink>
-                        </li>
-                        <li className="nav-item">
-                          <NavLink
-                            className="nav-link"
-                            to="/store"
-                            onClick={toggleNav}
-                          >
-                            Store
-                          </NavLink>
-                        </li>
-                        <li className="nav-item">
-                          <NavLink
-                            className="nav-link"
-                            to="/blogs"
-                            onClick={toggleNav}
-                          >
-                            Blogs
-                          </NavLink>
-                        </li>
-                        <li className="nav-item">
-                          <NavLink
-                            className="nav-link"
-                            to="/contact"
-                            onClick={toggleNav}
-                          >
-                            Contact
-                          </NavLink>
-                        </li>
-                      </ul>
-                    </div>
+                <div className="menu-links">
+                  <div className="d-flex align-items-center gap-15">
+                    <NavLink to="/">HOME</NavLink>
+                    <NavLink to="/store">OUR Store</NavLink>
+                    <NavLink to="/blogs">BLOGS</NavLink>
+                    <NavLink to="/contact">CONTACT</NavLink>
                   </div>
-                </nav>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </header>
     </>
   );

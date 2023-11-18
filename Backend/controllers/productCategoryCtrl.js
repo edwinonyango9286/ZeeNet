@@ -55,6 +55,4 @@ try {
    }
  });
 
-// https://meet.google.com/ymf-abux-wrg
-
  module.exports = {createProductCategory,updateProductCategory,deleteProductCategory,getAProductCategory,getAllProductCartegories};

@@ -10,4 +10,14 @@ const dbConnect = () => {
   }
 };
 
+//PORT = 8080;
+//MONGODB_URL ="mongodb+srv://edwinonyango:5056@zeenet.rqrvlgb.mongodb.net/?retryWrites=true&w=majority";
+//JWT_SECRET = "omollodev";
+
+//CLOUDINARY
+//CLOUD_NAME =
+//API_KEY =
+//API_SECRET =
+//GITHUBPERSONALACCESSTOKEN ="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";
+
 module.exports = dbConnect;
