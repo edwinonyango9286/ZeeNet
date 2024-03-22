@@ -16,6 +16,14 @@
   --color-f2f2f2: #f2f2f2;
   --color-eaeaea: #eaeaea;
 }
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
 .section-heading {
   font-size: 18px;
   line-height: 24px;
@@ -27,13 +35,6 @@
   box-shadow: 0 0 10px #0000001a;
   padding: 15px;
 }
-body {
-  font-family: "Roboto", sans-serif;
-}
-a {
-  text-decoration: none;
-  display: inline-block;
-}
 
 .form-control:focus {
   box-shadow: none;
@@ -43,7 +44,8 @@ a {
   text-decoration: none;
 }
 
-/* Header Styling  Start here */
+
+/* Header part styling starts here  */
 .header-top-strip {
   border-bottom: 1px solid var(--color-3b4149);
   background-color: var(--color-131921);
@@ -83,9 +85,8 @@ a {
 .gap-30 {
   gap: 30px;
 }
-.logo{
+.logo {
   font-weight: 700;
-
 }
 
 .button {
@@ -129,7 +130,7 @@ a {
   background-color: transparent;
   color: var(--color-febd69) !important;
 }
-/* Header Styling Ends here */
+/* Header part styling ends here */
 
 /* Footer Styling Starts */
 footer {
@@ -146,8 +147,6 @@ footer .input-group-text {
   padding: 6px 14px;
 }
 /* Footer Styling Ends */
-
-
 
 /*Home page Styling*/
 .main-banner-content {
@@ -217,7 +216,6 @@ footer .input-group-text {
 }
 
 /* Homepage Styling Ends  */
-
 
 /* Home wrapper-2 styling starts here */
 

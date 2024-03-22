@@ -104,7 +104,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-12">
             <p className="text-center mb-0 text-white">
-              &copy;{new Date().getFullYear()}: Powered by Dev@git-init
+              &copy;{new Date().getFullYear()}: Powered by dev@git-init
             </p>
           </div>
         </div>
