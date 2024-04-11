@@ -12,6 +12,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../controllers/emailCtrl");
 
+// Check if the user exist is the database using the email from the req.body.email (form input)
 const createUser = asyncHandler(async (req, res) => {
   const email = req.body.email;
   const findUser = await User.findOne({ email: email });
@@ -23,10 +24,13 @@ const createUser = asyncHandler(async (req, res) => {
   }
 });
 
+//Checks if user exist in the database using the email gotten from req.body.
+// If the user exist in the database the password from the req.body
+// is compared to the one in the database to confirm if the
+// password from the req.body matches the password in the database.
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const findUser = await User.findOne({ email });
-
   if (findUser && (await findUser.isPasswordMatched(password))) {
     const refreshToken = await generateRefreshToken(findUser?._id);
     const updateuser = await User.findByIdAndUpdate(
@@ -42,7 +46,6 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       httpOnly: true,
       maxAge: 72 * 60 * 60 * 1000,
     });
-
     res.json({
       _id: findUser?._id,
       firstname: findUser?.firstname,
@@ -91,10 +94,10 @@ const handleRefreshToken = asyncHandler(async (req, res) => {
   if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
   const refreshToken = cookie.refreshToken;
   const user = await User.findOne({ refreshToken });
-  if (!user) throw new Error(" No Refresh token present in db or not matched");
+  if (!user) throw new Error("Refresh token not matched");
   jwt.verify(refreshToken, process.env.JWT_SECRET, (err, decoded) => {
     if (err || user.id !== decoded.id) {
-      throw new Error("There is something wrong with refresh token");
+      throw new Error("Something wrong with the refreshtoken...");
     }
     const accessToken = generateToken(user?._id);
     res.json({ accessToken });
@@ -167,6 +170,7 @@ const saveUserAddress = asyncHandler(async (req, res) => {
   }
 });
 
+// Getting all users from the database
 const getAllUsers = asyncHandler(async (req, res) => {
   try {
     const getUsers = await User.find();
@@ -189,13 +193,13 @@ const getAUser = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteAUsers = asyncHandler(async (req, res) => {
+const deleteAUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
   try {
-    const deleteAUsers = await User.findByIdAndDelete(id);
+    const deletedUsers = await User.findByIdAndDelete(id);
     res.json({
-      deleteAUsers,
+      deletedUsers,
     });
   } catch (error) {
     throw new Error(error);
@@ -206,15 +210,16 @@ const blockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
   try {
-    const block = User.findByIdAndUpdate(
-      { id },
+    const blockedUser = await User.findByIdAndUpdate(
+      id,
       {
         isBlocked: true,
       },
       { new: true }
     );
     res.json({
-      message: "User Blocked",
+      blockedUser,
+      message: "User is blocked and can not make purchases",
     });
   } catch (error) {
     throw new Error(error);
@@ -225,15 +230,16 @@ const unBlockUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
   try {
-    const unblock = User.findByIdAndUpdate(
-      { id },
+    const unblockedUser = await User.findByIdAndUpdate(
+      id,
       {
         isBlocked: false,
       },
       { new: true }
     );
     res.json({
-      message: "User Unblocked",
+      unblockedUser,
+      message: "User has been unblocked and can now make purchases",
     });
   } catch (error) {
     throw new Error(error);
@@ -254,18 +260,21 @@ const updatePassword = asyncHandler(async (req, res) => {
   }
 });
 
+
+
+
 const forgotPasswordToken = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
-  if (!user) throw new Error("User With This Email Not Found ");
+  if (!user) throw new Error("User with this email not found");
   try {
     const token = await user.createPasswordResetToken();
     await user.save();
-    const resetURL = `Hi, Please follow this link to reset Your Password. This link is valid till 10 minutes from now. <a href='http://localhost:8000/api/user/reset-password/${token}'>Click Here</>`;
+    const resetURL = `Hi, Please follow this link to reset Your Password. This link is valid 10 minutes from now. <a href='http://localhost:8000/api/user/reset-password/${token}'>Click Here</>`;
     const data = {
       to: email,
-      text: "Hey User",
-      subject: "Forgot Password Link",
+      text: "Zeenet App Developers",
+      subject: "Password Reset Link",
       htm: resetURL,
     };
     sendEmail(data);
@@ -338,8 +347,6 @@ const addToCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
-
 
 const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -448,7 +455,6 @@ const getOrders = asyncHandler(async (req, res) => {
   }
 });
 
-
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
     const alluserorders = await Order.find()
@@ -460,7 +466,6 @@ const getAllOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
 
 const getOrderByUserId = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -502,7 +507,7 @@ module.exports = {
   loginUserCtrl,
   getAllUsers,
   getAUser,
-  deleteAUsers,
+  deleteAUser,
   updateAUser,
   blockUser,
   unBlockUser,

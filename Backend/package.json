@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon index.js",
+    "server": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +28,8 @@
     "nodemon": "^3.0.1",
     "sharp": "^0.32.4",
     "slugify": "^1.6.6",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "validator": "^13.11.0"
   },
   "description": "",
   "devDependencies": {

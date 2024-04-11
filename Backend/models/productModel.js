@@ -10,6 +10,9 @@ var productSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      lowercase: true,
+      minlength: 2,
+      maxlength: 32,
     },
     slug: {
       type: String,
@@ -20,6 +23,9 @@ var productSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true,
+      minlength: 2,
+      maxlength: 200,
+      lowercase: true,
     },
     price: {
       type: Number,
