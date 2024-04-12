@@ -5,7 +5,11 @@ var blogcategorySchema = new mongoose.Schema({
         type:String,
         required:true,
         unique:true,
-        index:true
+        index:true,
+        trim:true,
+        lowercase:true,
+        minlength: 2,
+        maxlength: 16,
     },
 },
 {

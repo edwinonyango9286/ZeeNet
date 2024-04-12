@@ -89,6 +89,8 @@ const adminLogin = asyncHandler(async (req, res) => {
   }
 });
 
+
+
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
   if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
@@ -292,7 +294,6 @@ const resetPassword = asyncHandler(async (req, res) => {
     passwordResetToken: hashedToken,
     passwordResetExpires: { $gt: Date.now() },
   });
-  console.log();
   if (!user) throw new Error(" Token Expired,Please try again later");
   user.password = password;
   user.passwordResetToken = undefined;
@@ -316,7 +317,6 @@ const addToCart = asyncHandler(async (req, res) => {
   const { cart } = req.body;
   const { _id } = req.user;
   validateMongodbId(_id);
-
   try {
     let products = [];
     const user = await User.findById(_id);
@@ -347,6 +347,7 @@ const addToCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
 
 const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -389,13 +390,14 @@ const applyCoupon = asyncHandler(async (req, res) => {
     cartTotal -
     (cartTotal * validCoupon.discount) / 100
   ).toFixed(2);
-  await Cart.findOneAndUpdate(
+    await Cart.findOneAndUpdate(
     { orderby: user._id },
     { totalAfterDiscount },
     { new: true }
   );
   res.json(totalAfterDiscount);
 });
+
 
 const createOrder = asyncHandler(async (req, res) => {
   const { COD, couponApplied } = req.body;

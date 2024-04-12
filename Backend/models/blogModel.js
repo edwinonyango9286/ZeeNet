@@ -6,14 +6,26 @@ var blogSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      minlength: 2,
+      maxlength: 32,
+      trim: true,
+      lowercase: true,
     },
     description: {
       type: String,
       required: true,
+      minlength: 2,
+      maxlength: 200,
+      trim: true,
+      lowercase: true,
     },
     category: {
       type: String,
       required: true,
+      minlength: 2,
+      maxlength: 16,
+      trim: true,
+      lowercase: true,
     },
     numViews: {
       type: Number,
@@ -41,7 +53,7 @@ var blogSchema = new mongoose.Schema(
     ],
     author: {
       type: String,
-      default: "Admin",
+      default: "admin",
     },
     images: [],
   },
