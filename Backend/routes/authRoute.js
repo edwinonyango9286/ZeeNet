@@ -37,7 +37,7 @@ router.post("/login", loginUserCtrl);
 router.post("/admin-login", adminLogin);
 router.post("/addtocart", authMiddleware, addToCart);
 router.get("/getusercart", authMiddleware, getUserCart);
-router.post("/applycoupon", authMiddleware, applyCoupon);
+router.post("/addtocart/applycoupon", authMiddleware, applyCoupon);
 router.post("/createorder", authMiddleware, createOrder);
 router.get("/getuserorders", authMiddleware, getOrders);
 router.put("/updateorderstatus", authMiddleware, isAdmin, updateOrderStatus);
@@ -56,3 +56,14 @@ router.put("/block-user/:id", authMiddleware, isAdmin, blockUser);
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser);
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+

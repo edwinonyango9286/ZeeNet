@@ -31,52 +31,52 @@ import smartwatch from "../images/smartwatch.avif"
 const Home = () => {
   return (
     <>
-      <Container className="home-wrapper-1 py-3">
+      <Container className="home-wrapper-1 py-5">
         <div className="row">
           <div className="col-6">
-            <div className="main-banner position-relative py-2">
+            <div className="main-banner position-relative py-3">
               <img
                 src={mainBanner}
                 className="img-fluid rounded-3"
                 alt="main banner"
               ></img>
               <div className="main-banner-content position-absolute">
-                <h5 className="">SUPPERCHARGED FOR PROS</h5>
-                <h6 className="">iPad S13+ Pro.</h6>
-                <p className="">From Ksh: 56,000 to 98,000</p>
-                <Link className="btn btn-primary">BUY NOW</Link>
+                <h4 >SUPPERCHARGED FOR PROS</h4>
+                <h5 >iPad S13+ Pro.</h5>
+                <p >From Ksh: 56,000 to 98,000</p>
+                <Link className="button">BUY NOW</Link>
               </div>
             </div>
           </div>
 
           <div className="col-6">
-            <div className="d-flex flex-wrap justify-content-between align-items-start">
-              <div className="small-banner position-relative py-2">
+            <div className="d-flex flex-wrap gap-10 justify-content-between align-items-center py-3">
+              <div className="small-banner position-relative">
                 <img
                   src={catBanner1}
                   className="img-fluid rounded-3"
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4 className="">SUPPERCHARGED PROS</h4>
-                  <h5 className="">iPad S13+ Pro.</h5>
-                  <p className="">From Ksh: 56,000 to 98,000</p>
+                  <h4>SUPPERCHARGED PROS</h4>
+                  <h5>MacBook Pro met M3-</h5>
+                  <p>From Ksh: 120,000 to 360,000</p>
                 </div>
               </div>
-              <div className="small-banner position-relative py-2">
+              <div className="small-banner position-relative">
                 <img
                   src={catBanner2}
                   className="img-fluid rounded-3"
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4 className="">Best Sales</h4>
-                  <h5 className="">iPad S13+ Pro.</h5>
-                  <p className="">From Ksh: 56,000 to 98,000</p>
+                  <h4 >Best Sales</h4>
+                  <h5 >watchOS 10+</h5>
+                  <p>From Ksh: 20,000 to 64,000</p>
                 </div>
               </div>
 
-              <div className="small-banner position-relative py-2">
+              <div className="small-banner position-relative">
                 <img
                   src={catBanner3}
                   className="img-fluid rounded-3"
@@ -84,20 +84,20 @@ const Home = () => {
                 ></img>
                 <div className="small-banner-content position-absolute">
                   <h4 className="">New Arrivals</h4>
-                  <h5 className="">Buy iPad Air</h5>
-                  <p className="">From Ksh: 56,000 to 98,000</p>
+                  <h5 className="">Apple iPad Air</h5>
+                  <p className="">From Ksh: 56,000 to 120,000</p>
                 </div>
               </div>
-              <div className="small-banner position-relative py-2">
+              <div className="small-banner position-relative">
                 <img
                   src={catBanner4}
                   className="img-fluid rounded-3"
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4 className="">SUPPERCHARGED PROS</h4>
-                  <h5 className="">iPad S13+ Pro.</h5>
-                  <p className="">From Ksh: 56,000 to 98,000</p>
+                  <h4 className="">Bose QuietComfort Ultra</h4>
+                  <h5 className="">Sony WH-1000XM5</h5>
+                  <p className="">From Ksh: 10,000 to 16,000</p>
                 </div>
               </div>
             </div>
@@ -105,7 +105,10 @@ const Home = () => {
         </div>
       </Container>
 
-      <Container className="home-wrapper-2  py-4">
+
+
+      <Container className="home-wrapper-2  py-5">
+        <div className="conatiner-xxl">
         <div className="row d-flex align-items-center">
           {services?.map((service, index) => (
             <div className="" key={index}>
@@ -123,11 +126,12 @@ const Home = () => {
             </div>
           ))}
         </div>
+        </div>
       </Container>
 
-      <Container className="home-wrapper-2 py-3">
+      <Container className="home-wrapper-2 py-5">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="">
             <div className="d-flex align-items-center mb-3">
               <img src={spaeker} alt="speaker" className="img-fluid" />
               <div className="ms-2">

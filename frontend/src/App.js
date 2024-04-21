@@ -28,7 +28,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="store" element={<Store />} />
@@ -39,8 +38,8 @@ function App() {
             <Route path="compare-products" element={<CompareProducts />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="login" element={<Login />} />
-            <Route path="cart" element={<Cart/>}/>
-            <Route path="checkout" element={<Checkout/>}/>
+            <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="signup" element={<Signup />} />
             <Route path="reset-password" element={<ResetPassword />} />

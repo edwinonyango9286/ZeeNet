@@ -88,9 +88,6 @@ const adminLogin = asyncHandler(async (req, res) => {
     throw new Error("Invalid Credentials");
   }
 });
-
-
-
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
   if (!cookie?.refreshToken) throw new Error("No Refresh Token in Cookies");
@@ -262,9 +259,6 @@ const updatePassword = asyncHandler(async (req, res) => {
   }
 });
 
-
-
-
 const forgotPasswordToken = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
@@ -277,7 +271,7 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
       to: email,
       text: "Zeenet App Developers",
       subject: "Password Reset Link",
-      htm: resetURL,
+      html: resetURL,
     };
     sendEmail(data);
     res.json(token);
@@ -317,12 +311,13 @@ const addToCart = asyncHandler(async (req, res) => {
   const { cart } = req.body;
   const { _id } = req.user;
   validateMongodbId(_id);
+
   try {
     let products = [];
     const user = await User.findById(_id);
     const alreadyExistCart = await Cart.findOne({ orderby: user._id });
     if (alreadyExistCart) {
-      alreadyExistCart.remove();
+     await Cart.deleteOne({_id: alreadyExistCart._id});
     }
     for (let i = 0; i < cart.length; i++) {
       let object = {};
@@ -347,6 +342,8 @@ const addToCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
 
 
 const getUserCart = asyncHandler(async (req, res) => {
@@ -379,6 +376,7 @@ const applyCoupon = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
   const validCoupon = await Coupon.findOne({ name: coupon });
+  console.log(validCoupon)
   if (validCoupon === null) {
     throw new Error("Invalid Coupon");
   }
@@ -386,11 +384,13 @@ const applyCoupon = asyncHandler(async (req, res) => {
   let { cartTotal } = await Cart.findOne({
     orderby: user._id,
   }).populate("products.product");
+
+console.log(cartTotal)
   let totalAfterDiscount = (
     cartTotal -
     (cartTotal * validCoupon.discount) / 100
   ).toFixed(2);
-    await Cart.findOneAndUpdate(
+  await Cart.findOneAndUpdate(
     { orderby: user._id },
     { totalAfterDiscount },
     { new: true }

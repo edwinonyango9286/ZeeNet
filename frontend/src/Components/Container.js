@@ -5,7 +5,7 @@ const Container =(props)=>{
         <>
         <section className={props.class1}>
             <div className="container-fluid px-5 ">
-                {props.children}<></>
+                {props.children}
                 </div>
         </section>
         </>

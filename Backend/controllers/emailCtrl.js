@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
     from: '"Zeenet App Developers" <technologieszeent@gmail.com>', 
     to:data.to, 
     subject: data.subject, 
-    text: data.next,
-    html: data.htm, 
+    text: data.text,
+    html: data.html, 
   });
 
   console.log("Message sent: %s", info.messageId);
