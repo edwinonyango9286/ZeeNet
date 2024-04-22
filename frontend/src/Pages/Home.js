@@ -31,7 +31,7 @@ import smartwatch from "../images/smartwatch.avif"
 const Home = () => {
   return (
     <>
-      <Container className="home-wrapper-1 py-5">
+      <Container class1="home-wrapper-1 py-5 ">
         <div className="row">
           <div className="col-6">
             <div className="main-banner position-relative py-3">
@@ -83,9 +83,9 @@ const Home = () => {
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4 className="">New Arrivals</h4>
-                  <h5 className="">Apple iPad Air</h5>
-                  <p className="">From Ksh: 56,000 to 120,000</p>
+                  <h4>New Arrivals</h4>
+                  <h5>Apple iPad Air</h5>
+                  <p>From Ksh: 56,000 to 120,000</p>
                 </div>
               </div>
               <div className="small-banner position-relative">
@@ -95,9 +95,9 @@ const Home = () => {
                   alt="small banner"
                 ></img>
                 <div className="small-banner-content position-absolute">
-                  <h4 className="">Bose QuietComfort Ultra</h4>
-                  <h5 className="">Sony WH-1000XM5</h5>
-                  <p className="">From Ksh: 10,000 to 16,000</p>
+                  <h4>Bose QuietComfort Ultra</h4>
+                  <h5>Sony WH-1000XM5</h5>
+                  <p>From Ksh: 10,000 to 16,000</p>
                 </div>
               </div>
             </div>
@@ -107,68 +107,106 @@ const Home = () => {
 
 
 
-      <Container className="home-wrapper-2  py-5">
-        <div className="conatiner-xxl">
-        <div className="row d-flex align-items-center">
-          {services?.map((service, index) => (
-            <div className="" key={index}>
-              <div className="d-flex align-items-center gap-15">
-                <img
-                  src={service.image}
-                  alt="Services"
-                  className="img-fluid"
-                ></img>
-                <div>
-                  <h6>{service.title}</h6>
-                  <p className="mb-0">{service.tagline}</p>
-                </div>
+      <section className="home-wrapper-2 py-5">
+        <div className="container-xxl">
+          <div className="row">
+            <div className="col-12">
+              <div className="services d-flex align-items-center justify-content-between">
+                {services?.map((service, index) => (
+                  <div className="d-flex align-items-center gap-15" key={index}>
+                    <div>
+                      <img
+                        src={service.image}
+                        alt="Services"
+                        className="img-fluid"
+                      ></img>
+                      <div>
+                        <h6>{service.title}</h6>
+                        <p className="mb-0">{service.tagline}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
-        </div>
-      </Container>
+      </section>
 
-      <Container className="home-wrapper-2 py-5">
+      <Container class1="home-wrapper-2 py-5 ">
         <div className="row">
-          <div className="">
-            <div className="d-flex align-items-center mb-3">
-              <img src={spaeker} alt="speaker" className="img-fluid" />
-              <div className="ms-2">
-                <h6 className="mb-0">Music & Gaming</h6>
-                <p className="mb-0">10 Items</p>
+          <div className="col-12">
+            <div className="categories d-flex justify-content-between flex-wrap align-items-center">
+              <div className="d-flex align-items-center">
+                <div className="ms-2">
+                  <h6 className="mb-0">Music & Gaming</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={spaeker} alt="speaker" className="img-fluid" />
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="d-flex align-items-center mb-3">
-              <img src={cameraImage} alt="camera" />
-              <div className="ms-2">
-                <h6 className="mb-0">Cameras</h6>
-                <p className="mb-0">10 Items</p>
+              <div className="d-flex align-items-center">
+                <div className="ms-2">
+                  <h6 className="mb-0">Cameras</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={cameraImage} alt="camera" className="img-fluid" />
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="d-flex align-items-center mb-3">
-              <img src={tvImage} alt="TV" className="img-fluid" />
-              <div className="ms-2">
-                <h6 className="mb-0">Smart TV</h6>
-                <p className="mb-0">10 Items</p>
+              <div className="d-flex align-items-center">
+                <div className="ms-2">
+                  <h6 className="mb-0">Smart TV</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={tvImage} alt="TV" className="img-fluid" />
               </div>
-            </div>
-          </div>
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="d-flex align-items-center mb-3">
-              <img src={smartwatch} alt="smartwatch" className="img-fluid" />
-              <div className="ms-2">
-                <h6 className="mb-0">Smart Watch</h6>
-                <p className="mb-0">10 Items</p>
+              <div className="d-flex align-items-center gap-30">
+                <div className="ms-2">
+                  <h6 className="mb-0">Smart Watch</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={smartwatch} alt="smartwatch" className="img-fluid" />
+              </div>
+
+              <div className="d-flex align-items-center gap-30">
+                <div className="ms-2">
+                  <h6 className="mb-0">Smart Watch</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={smartwatch} alt="smartwatch" className="img-fluid" />
+              </div>
+
+
+              <div className="d-flex align-items-center gap-30">
+                <div className="ms-2">
+                  <h6 className="mb-0">Smart Watch</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={smartwatch} alt="smartwatch" className="img-fluid" />
+              </div>
+
+
+              <div className="d-flex align-items-center">
+                <div className="ms-2">
+                  <h6 className="mb-0">Smart Watch</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={smartwatch} alt="smartwatch" className="img-fluid" />
+              </div>
+
+
+              <div className="d-flex align-items-center ">
+                <div className="ms-2">
+                  <h6 className="mb-0">Smart Watch</h6>
+                  <p className="mb-0">10 Items</p>
+                </div>
+                <img src={smartwatch} alt="smartwatch" className="img-fluid" />
               </div>
             </div>
           </div>
         </div>
       </Container>
+
+
+
       <Container class1="featured-wrapper  home-wrapper-2 ">
         <div className="row">
           <div className="col-12">
@@ -181,7 +219,7 @@ const Home = () => {
         </div>
       </Container>
 
-      <Container className="famous-wrapper py-3 home-wrapper-2 ">
+      <Container class1="famous-wrapper py-3 home-wrapper-2 ">
         <div className="container">
           <div className="row">
             <div className="col-lg-3 col-md-4 col-sm-6 col-12">
@@ -252,55 +290,55 @@ const Home = () => {
         </div>
       </Container>
 
-      <Container className="popular-wrapper home-wrapper-2">
+      <Container class1="popular-wrapper home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Our Popular Products</h3>
+
+            <div className="flex flex-wrap">
+
+            <div>
+              <ProductCard></ProductCard>
+            </div>
+
+            <div>
+              <ProductCard></ProductCard>
+            </div>
+
+            </div>
+          
           </div>
         </div>
-        <div className="row">
-          <div className="">
-            <ProductCard></ProductCard>
-          </div>
-          <div className="col-md-6 col-lg-3">
-            <ProductCard></ProductCard>
-          </div>
-          <div className="col-md-6 col-lg-3">
-            <ProductCard></ProductCard>
-          </div>
-          <div className="col-md-6 col-lg-3">
-            <ProductCard></ProductCard>
-          </div>
-        </div>
+
       </Container>
 
-      <Container class1="marquee-wrapper ">
+      <Container class1="marquee-wrapper py-5">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-12">
             <div className="marquee-inner-wrapper card-wrapper">
               <Marquee className="d-flex">
-                <div className="mx-1 w-20%">
+                <div className="mx-4 w-25%">
                   <img src={brand1} className="img-fluid" alt="brand1"></img>
                 </div>
-                <div className="mx-1 w-20%">
+                <div className="mx-4 w-25%">
                   <img src={brand2} className="img-fluid" alt="brand2"></img>
                 </div>
-                <div className="mx-1 w-20%">
+                <div className="mx-4 w-25%">
                   <img src={brand3} className="img-fluid" alt="brand3"></img>
                 </div>
-                <div className="mx-1 w-20%">
+                <div className="mx-4 w-25%">
                   <img src={brand4} className="img-fluid" alt="brand4"></img>
                 </div>
-                <div className="mx-1 ww-20%">
+                <div className="mx-4 ww-25%">
                   <img src={brand5} className="img-fluid" alt="brand5"></img>
                 </div>
-                <div className="mx-1 w-20%">
+                <div className="mx-4 w-25%">
                   <img src={brand6} className="img-fluid" alt="brand6"></img>
                 </div>
-                <div className="mx-1 w-20%">
+                <div className="mx-4 w-25%">
                   <img src={brand7} className="img-fluid" alt="brand7"></img>
                 </div>
-                <div className="mx-1 w-20% ">
+                <div className="mx-4 w-25%">
                   <img src={brand8} className="img-fluid" alt="brand8"></img>
                 </div>
               </Marquee>
@@ -316,13 +354,16 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-3">
             <BlogCard></BlogCard>
           </div>
-          <div>
+          <div className="col-3">
             <BlogCard></BlogCard>
           </div>
-          <div className="col-md-4">
+          <div className="col-3">
+            <BlogCard></BlogCard>
+          </div>
+          <div className="col-3">
             <BlogCard></BlogCard>
           </div>
         </div>
