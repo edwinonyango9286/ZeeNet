@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -17,9 +18,7 @@
   --color-f2f2f2: #f2f2f2;
   --color-eaeaea: #eaeaea;
 }
-body {
-  font-family: "Roboto", sans-serif;
-}
+
 
 body a {
   text-decoration: none;

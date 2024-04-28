@@ -4,7 +4,6 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const validateMongodbId = require("../utils/validateMongodbId");
 
-
 const createProduct = asyncHandler(async (req, res) => {
   try {
     if (req.body.title) {
@@ -17,7 +16,6 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-
 const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
@@ -25,16 +23,18 @@ const updateProduct = asyncHandler(async (req, res) => {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
     }
-    const updatedProduct = await Product.findOneAndUpdate({ _id: id }, req.body, {
-      new: true,
-    });
+    const updatedProduct = await Product.findOneAndUpdate(
+      { _id: id },
+      req.body,
+      {
+        new: true,
+      }
+    );
     res.json(updatedProduct);
   } catch (error) {
     throw new Error(error);
   }
 });
-
-
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -61,7 +61,7 @@ const getaProduct = asyncHandler(async (req, res) => {
 const getallProduct = asyncHandler(async (req, res) => {
   // Filtering
   try {
-    // 
+    //
     const queryObj = { ...req.query };
     const excludeFields = ["page", "sort", "limit", "fields"];
     excludeFields.forEach((el) => delete queryObj[el]);
@@ -100,12 +100,11 @@ const getallProduct = asyncHandler(async (req, res) => {
   }
 });
 
-
 const addToWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { prodId } = req.body;
-  validateMongodbId(_id)
-  validateMongodbId(prodId)
+  validateMongodbId(_id);
+  validateMongodbId(prodId);
   try {
     const user = await User.findById(_id);
     const alreadyadded = user.wishlist.find((id) => id.toString() === prodId);
@@ -140,8 +139,8 @@ const addToWishlist = asyncHandler(async (req, res) => {
 const rating = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { star, prodId, comment } = req.body;
-  validateMongodbId(_id)
-  validateMongodbId(prodId)
+  validateMongodbId(_id);
+  validateMongodbId(prodId);
   try {
     const product = await Product.findById(prodId);
     let alreadyRated = product.ratings.find(
@@ -155,13 +154,12 @@ const rating = asyncHandler(async (req, res) => {
         },
         { new: true }
       );
-
     } else {
       const rateProduct = await Product.findByIdAndUpdate(
         prodId,
         {
           $push: {
-            ratings: { 
+            ratings: {
               star: star,
               comment: comment,
               postedby: _id,
@@ -192,7 +190,6 @@ const rating = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
 
 module.exports = {
   createProduct,

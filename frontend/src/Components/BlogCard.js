@@ -2,6 +2,8 @@ import React from "react";
 import blogImage from "../images/blog-1.jpg";
 import {Link} from "react-router-dom"
 
+
+
 const BlogCard = () => {
   return (
       <div className="blog-card">

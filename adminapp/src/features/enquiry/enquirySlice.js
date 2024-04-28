@@ -10,9 +10,7 @@ export const getEnquiries = createAsyncThunk(
             return thunkAPI.rejectWithValue(error);
         }
     }
-
 );
-
 const initialState={
     enquiries:[],
     isError:false,

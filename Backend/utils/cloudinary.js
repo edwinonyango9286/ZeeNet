@@ -12,7 +12,7 @@ const cloudinaryUploadImg = async (fileToUploads) => {
       resolve(
         {
           url: result.secure_url,
-          asset_id: result.asset_id,
+          asset_id: result.asset_id, 
           public_id: result.public_id,
         },
         {
@@ -22,6 +22,7 @@ const cloudinaryUploadImg = async (fileToUploads) => {
     });
   });
 };
+
 
 const cloudinaryDeleteImg = async (filetoDelete) => {
   return new Promise((resolve) => {

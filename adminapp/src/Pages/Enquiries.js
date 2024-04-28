@@ -26,18 +26,22 @@ const columns =[
         dataIndex:"mobile",
     },
     {
-        title:"Satus",
+        title:"Comment",
+        dataIndex:"comment",
+
+    },
+    {
+        title:"Status",
         dataIndex:"status",
 
-    },{
+    },
+    
+    {
         title:"Action",
         dataIndex:"action",
     },
 
 ];
-
-
-
 const Enquiries =()=>{
     const dispatch =useDispatch();
     useEffect(()=>{
@@ -53,6 +57,8 @@ const Enquiries =()=>{
             name:enquiryState[i].name,
             email:enquiryState[i].email,
             mobile:enquiryState[i].mobile,
+            comment:enquiryState[i].comment,
+        
             status:(
                 <>
                 <select 

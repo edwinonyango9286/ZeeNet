@@ -3,7 +3,7 @@ import { base_url } from "../../utils/baseUrl";
 
 
 const getEnquiries = async ()=>{
-    const response = await axios.get(`${base_url}enquiry/getallenquiries`)
+    const response = await axios.get(`${base_url}enquiry/getall`)
     return response.data;
 }
 

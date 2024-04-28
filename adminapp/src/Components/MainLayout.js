@@ -22,8 +22,6 @@ import userImage from "../Images/user.jpg";
 import { MdNotificationsNone } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
-
-
 const { Header, Sider, Content } = Layout;
 
 const MainLayout = () => {

@@ -28,13 +28,13 @@ const ColorList = ()=>{
         dispatch(getColors())
     },[]);
 
-    const colorstate= useSelector((state)=>state.color.colors);
+    const colorState= useSelector((state)=>state.color.colors);
     const data1=[];
 
-    for(let i=0; i<colorstate.length; i++){
+    for(let i=0; i<colorState.length; i++){
         data1.push({
-            key:i+1,
-            name:colorstate[i].title,
+            key:i+1, 
+            name:colorState[i].title,
             action:(
                 <>
                 <Link className="fs-5"><AiTwotoneEdit/></Link>

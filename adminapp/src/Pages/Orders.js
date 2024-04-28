@@ -33,13 +33,7 @@ const columns =[
     },
 ];
 
-
-
-
-
-
 const Orders = ()=>{
-
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getOrders());
