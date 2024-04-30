@@ -317,7 +317,7 @@ const addToCart = asyncHandler(async (req, res) => {
     const user = await User.findById(_id);
     const alreadyExistCart = await Cart.findOne({ orderby: user._id });
     if (alreadyExistCart) {
-     await Cart.deleteOne({_id: alreadyExistCart._id});
+      await Cart.deleteOne({ _id: alreadyExistCart._id });
     }
     for (let i = 0; i < cart.length; i++) {
       let object = {};
@@ -343,9 +343,6 @@ const addToCart = asyncHandler(async (req, res) => {
   }
 });
 
-
-
-
 const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
@@ -370,9 +367,6 @@ const emptyCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
-
-
 const applyCoupon = asyncHandler(async (req, res) => {
   const { coupon } = req.body;
   const { _id } = req.user;
@@ -397,7 +391,6 @@ const applyCoupon = asyncHandler(async (req, res) => {
   res.json(totalAfterDiscount);
 });
 
-
 const createOrder = asyncHandler(async (req, res) => {
   const { COD, couponApplied } = req.body;
   const { _id } = req.user;
@@ -412,7 +405,6 @@ const createOrder = asyncHandler(async (req, res) => {
     } else {
       finalAmount = userCart.cartTotal;
     }
-
     let newOrder = await new Order({
       products: userCart.products,
       paymentIntent: {
@@ -425,7 +417,7 @@ const createOrder = asyncHandler(async (req, res) => {
       },
       orderby: user._id,
       orderStatus: "Cash on Delivery",
-     }).save();
+    }).save();
 
     let update = userCart.products.map((item) => {
       return {
@@ -443,19 +435,16 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 
-
 const getOrders = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
   try {
-    const userOrders = await Order.findOne( {orderby: _id} )
+    const userOrders = await Order.findOne({ orderby: _id });
     res.json(userOrders);
   } catch (error) {
     throw new Error(error);
   }
 });
-
-
 
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
@@ -473,7 +462,7 @@ const getOrderByUserId = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongodbId(id);
   try {
-    const userOrders = await Order.findOne({orderby: id})
+    const userOrders = await Order.findOne({ orderby: id })
       .populate("products.product")
       .populate("orderby")
       .exec();
@@ -495,7 +484,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
         paymentIntent: {
           status: status,
         },
-       },
+      },
       { new: true }
     );
     res.json(updateOrderStatus);

@@ -1,93 +1,134 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomInput from "../Components/CustomInput";
 import ReactQuill from "react-quill";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { getBrands } from "../features/brands/brandSlice";
+import { getCategories } from "../features/category/categorySlice";
+import { getColors } from "../features/color/colorSlice";
+import "react-widgets/styles.css";
+import Multiselect from "react-widgets/Multiselect";
 
-import { InboxOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
-const { Dragger } = Upload;
 
+const schema = Yup.object().shape({
+  title: Yup.string().required("Title is required"),
+  description: Yup.string().required("Description is required"),
+  price: Yup.number().required("Price is required"),
+});
 
-const props = {
-    name: 'file',
-    multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    onChange(info) {
-        const { status } = info.file;
-        if (status !== 'uploading') {
-            console.log(info.file, info.fileList);
-        }
-        if (status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully.`);
-        } else if (status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
+const AddProduct = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBrands());
+    dispatch(getCategories());
+    dispatch(getColors());
+  }, []);
+
+  const brandState = useSelector((state) => state.brand.brands);
+  const categoryState = useSelector((state) => state.category.categories);
+  const colorState = useSelector((state) => state.color.colors);
+  const colors = [];
+  colorState.forEach((i)=>{
+    colors.push({
+        _id:i._id,
+        color:i.title
+    })
+  })
+
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      price: "",
     },
-    onDrop(e) {
-        console.log('Dropped files', e.dataTransfer.files);
+    validationSchema: schema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values));
     },
-};
+  });
+  const [desc, setDesc] = useState();
+  const handleDesc = (e) => {
+    setDesc(e);
+  };
 
-
-const AddProduct =()=>{
-    const [desc,setDesc] = useState();
-    const handleDesc = (e)=>{
-        setDesc(e)
-    };
-
-    return(
-        <>
-        <div>
-            <h5 className="mb-2 title"> Add Product</h5>
-        <form action="">
-            <CustomInput type="text" label="Enter Product Title"/>
-            <div className="mb-3">
+  return (
+    <>
+      <div>
+        <h5 className="mb-4 title"> Add Product</h5>
+        <form
+          onSubmit={formik.handleSubmit}
+          className="d-flex gap-3 flex-column"
+        >
+          <CustomInput
+            type="text"
+            label="Enter Product Title"
+            name="title"
+            onChng={formik.handleChange("title")}
+            onBlr={formik.handleBlur("title")}
+            value={formik.values.title}
+          />
+          <div className="error">
+            {formik.touched.title && formik.errors.title}
+          </div>
+          <div>
             <ReactQuill
-             theme="snow"
-             value={desc}
-             onChange={(evt) =>{
-                handleDesc(evt);
-             }}
+              theme="snow"
+              name="description"
+              onChange={formik.handleChange("description")}
+              onBlur={formik.handleBlur("description")}
+              value={formik.values.description}
             />
-            </div>
-            <CustomInput type="number" label="Enter Product price"/>
-            <select name="" className="form-control py-3 mb-3" id="">
-                <option>
-                    Select Brand
+          </div>
+          <div className="error">
+            {formik.touched.description && formik.errors.description}
+          </div>
+          <CustomInput
+            type="number"
+            label="Enter Product price"
+            name="price"
+            onChng={formik.handleChange("price")}
+            onBlr={formik.handleBlur("price")}
+            value={formik.values.price}
+          />
+          <div className="error">
+            {formik.touched.price && formik.errors.price}
+          </div>
+          <select name="" className="form-control py-3 mb-3" id="">
+            <option>Select Brand</option>
+            {brandState.map((i, j) => {
+              return (
+                <option key={j} value={i.title}>
+                  {" "}
+                  {i.title}
                 </option>
-            </select>
-
-            <select name="" className="form-control py-3 mb-3">
-                <option>
-                    Select Category
+              );
+            })}
+          </select>
+          <select name="" className="form-control py-3 mb-3">
+            <option>Select Category</option>
+            {categoryState.map((i, j) => {
+              return (
+                <option key={j} value={i.title}>
+                  {" "}
+                  {i.title}
                 </option>
-            </select>
-            <select name="" className="form-control py-3 mb-3" id="">
-                <option>
-                    Select Color
-                </option>
-            </select>
-
-            <CustomInput type="number" label="Enter Product price"/>
-            <Dragger {...props}>
-                            <p className="ant-upload-drag-icon">
-                                <InboxOutlined />
-                            </p>
-                            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                            <p className="ant-upload-hint">
-                                Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                                band files
-                            </p>
-                        </Dragger>
-
-            <button className="btn btn-success border-0 rounded-3 mt-3">
-                Add Product
-            </button>
-
+              );
+            })}
+          </select>
+          <Multiselect
+            dataKey="id"
+            textField="color"
+            data={colors}
+          />
+          ;
+          <button className="btn btn-success border-0 rounded-3 my-5">
+            Add Product
+          </button>
         </form>
-        </div>
-        
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 
 export default AddProduct;

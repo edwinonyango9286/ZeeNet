@@ -2,7 +2,7 @@ import axios  from "axios";
 import { base_url } from "../../utils/baseUrl";
 
 const getBrands =async ()=>{
-    const response = await axios.get(`${base_url}productbrand/getallproductbrands`)
+    const response = await axios.get(`${base_url}productbrand/getallbrands`)
     return response.data;
 };
 const brandService ={

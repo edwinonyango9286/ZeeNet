@@ -23,7 +23,7 @@ const columns=[
         dataIndex:'category'
     },
     {
-        title:"action",
+        title:"Action",
         dataIndex:"action",
     },
 ];
