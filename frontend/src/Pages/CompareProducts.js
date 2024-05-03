@@ -8,9 +8,9 @@ import Container from "../Components/Container";
 const CompareProducts = () => {
   return (
     <>
-      <Meta title={"compare products"} />
-      <BreadCrumb title="compare products" />
-      <Container clas1="compare-products-wrapper  home-wrapper-2 ">
+      <Meta title={"Compare Products"} />
+      <BreadCrumb title="Compare Products" />
+      <Container clas1="compare-products-wrapper home-wrapper-2 py-5 ">
           <div className="row">
             <div className="col-3">
               <div className="compare-product-card position-relative">

@@ -6,6 +6,8 @@ import wishlistImage from "../images/wishlist.svg";
 import accountImage from "../images/user.svg";
 import cartImage from "../images/cart.svg";
 import menu from "../images/menu.svg";
+// (xs, sm, md, lg, xl, xxl)
+
 
 const Header = () => {
   return (
@@ -13,12 +15,12 @@ const Header = () => {
       <header className="header-top-strip py-3">
         <div className="container-xxl">
           <div className="row">
-            <div className="col-6">
+            <div className="col-6 d-none d-sm-block">
               <p className="text-white mb-0">
                 Free Delivery for orders above Ksh100,000 & Free Returns
               </p>
             </div>
-            <div className="col-6">
+            <div className="col-6 text-center">
               <p className="text-end text-white mb-0">
                 Hotline:
                 <a className="text-white" href="tel:+254 719547267">
@@ -26,8 +28,6 @@ const Header = () => {
                 </a>
               </p>
             </div>
-
-          
           </div>
         </div>
       </header>
@@ -37,7 +37,9 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="col-2">
               <h2>
-                <Link to="/" className="text-white logo">ZeeNet.</Link>
+                <Link to="/" className="text-white logo">
+                  ZeeNet.
+                </Link>
               </h2>
             </div>
 
@@ -127,8 +129,6 @@ const Header = () => {
         </div>
       </header>
 
-
-
       <header className="header-bottom py-3">
         <div className="container-xxl">
           <div className="row">
@@ -144,7 +144,9 @@ const Header = () => {
                       aria-expanded="false"
                     >
                       <img src={menu} alt="" className="img-fluid"></img>
-                      <span className=" me-5 d-inline-block">Shop Categories</span>
+                      <span className=" me-5 d-inline-block">
+                        Shop Categories
+                      </span>
                     </button>
                     <ul
                       className="dropdown-menu"
@@ -209,5 +211,6 @@ const Header = () => {
     </>
   );
 };
+
 
 export default Header;

@@ -12,6 +12,7 @@ import Colors from "../Components/Colors";
 import Container from "../Components/Container";
 const Store = () => {
   const [grid, setGrid] = useState(4);
+  
 
   return (
     <>
