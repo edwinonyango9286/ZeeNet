@@ -1,10 +1,10 @@
-const getUserFromLocalStorge = localStorage.getItem("user")
+const getTokenFromLocalStorge = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
   : null;
 
 export const config = {
   headers: {
-    Authorization: `Bearer ${getUserFromLocalStorge.token}`,
+    Authorization: `Bearer ${getTokenFromLocalStorge.token}`,
     Accept: "application/json",
   },
 };

@@ -16,6 +16,7 @@ const BrandRouter = require("./routes/brandRoute");
 const couponRouter = require("./routes/couponRoute");
 const colorRouter = require("./routes/colorRoute");
 const enquiryRouter = require("./routes/enqRoute");
+const uploadRouter = require("./routes/uploadRoute");
 const cors = require("cors");
 
 dbConnect();
@@ -34,6 +35,7 @@ app.use("/api/blogcategory", blogCatRouter);
 app.use("/api/productbrand", BrandRouter);
 app.use("/api/coupon", couponRouter);
 app.use("/api/enquiry", enquiryRouter);
+app.use("/api/upload", enquiryRouter);
 
 app.use(notFound);
 app.use(errorHandler);
