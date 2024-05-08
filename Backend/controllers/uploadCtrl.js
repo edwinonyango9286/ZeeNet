@@ -11,10 +11,9 @@ const uploadImages = asyncHandler(async(req,res)=>{
         for(const file of files){
             const {path} =file;
             const newpath = await uploader(path);
-            console.log(newpath)
             urls.push(newpath)
             fs.unlinkSync(path);
-        }
+        }  
         const images = urls.map((file)=>{
             return file;
         });
@@ -29,13 +28,11 @@ const deleteImages = asyncHandler(async(req,res)=>{
     const {id}= req.params
     try {
         const  deleted  = cloudinaryDeleteImg(id,"images");
-        res.json({message:"The image has been deleted successfully"});
+        res.json({message:"Image deleted successfully"});
     } catch (error) {
         throw new Error(error)
     }
 });
-
-
 
 module.exports={
     uploadImages,

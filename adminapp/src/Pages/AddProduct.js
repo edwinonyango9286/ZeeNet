@@ -7,40 +7,75 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../features/brands/brandSlice";
 import { getCategories } from "../features/category/categorySlice";
 import { getColors } from "../features/color/colorSlice";
-import "react-widgets/styles.css";
-import Multiselect from "react-widgets/Multiselect";
 import Dropzone from "react-dropzone";
+import { delImg, uploadImg } from "../features/upload/uploadSlice";
+import { createProduct } from "../features/product/productSlice";
+import { Select } from "antd";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const schema = Yup.object().shape({
-  title: Yup.string().required("Title is required"),
+  title: Yup.string().required("Product Name is required"),
   description: Yup.string().required("Description is required"),
   price: Yup.number().required("Price is required"),
   brand: Yup.string().required("Brand is required"),
   category: Yup.string().required("Category is required"),
-  color: Yup.array().required("Color are required"),
+  tags: Yup.string().required("Tags are required"),
   quantity: Yup.number().required("Quntity is required"),
+  color: Yup.array()
+    .min(1, "Select at least one color")
+    .required("Color are required"),
 });
 
 const AddProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [color, setColor] = useState([]);
+  const [images, setImages] = useState([]);
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(getColors());
-    formik.values.color = color;
   }, []);
 
   const brandState = useSelector((state) => state.brand.brands);
   const categoryState = useSelector((state) => state.category.categories);
   const colorState = useSelector((state) => state.color.colors);
-  const colors = [];
+  const imgState = useSelector((state) => state.upload.images);
+  const newProduct = useSelector((state) => state.product);
+  const {isSuccess , isError,isLoading, createdProduct} = newProduct
+  useEffect(()=>{
+    if(isSuccess && createdProduct ){
+      toast.success("Product added Successfully!!");
+    }
+    if(isError ){
+      toast.error("Something went Wrong Please Try Again!!");
+    }
+    if(isLoading ){
+      toast.info("Please wait!!");
+    }
+  },[isSuccess, isError,isLoading])
+
+  const coloropt = [];
   colorState.forEach((i) => {
-    colors.push({
-      _id: i._id,
-      color: i.title,
+    coloropt.push({
+      label: i.title,
+      value: i._id,
     });
   });
+
+  const img = [];
+  imgState.forEach((i) => {
+    img.push({
+      public_id: i.public_id,
+      url: i.url,
+    });
+  });
+
+  useEffect(() => {
+    formik.values.color = color ? color : "";
+    formik.values.images = img;
+  }, [color, img]);
 
   const formik = useFormik({
     initialValues: {
@@ -50,16 +85,23 @@ const AddProduct = () => {
       brand: "",
       category: "",
       quantity: "",
-      color: colors.map((color) => color._id),
+      color: "",
+      images: "",
+      tags: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      dispatch(createProduct(values));
+      formik.resetForm();
+      setColor(null);
+      setTimeout(() => {
+        navigate("/admin/product-list");
+      }, 3000);
     },
   });
-  const [desc, setDesc] = useState();
-  const handleDesc = (e) => {
-    setDesc(e);
+
+  const handleColors = (e) => {
+    setColor(e);
   };
 
   return (
@@ -72,7 +114,7 @@ const AddProduct = () => {
         >
           <CustomInput
             type="text"
-            label="Enter Product Title"
+            label="Enter Product Name"
             name="title"
             onChng={formik.handleChange("title")}
             onBlr={formik.handleBlur("title")}
@@ -143,15 +185,32 @@ const AddProduct = () => {
           <div className="error">
             {formik.touched.category && formik.errors.category}
           </div>
-          <Multiselect
-            name="color"
-            dataKey="id"
-            textField="color"
-            data={colors}
-            onChange={(e) => {
-              setColor(e);
-              formik.setFieldValue("color", e);
-            }}
+          <select
+            name="tags"
+            className="form-control py-3 mb-3"
+            onChange={formik.handleChange("tags")}
+            onBlur={formik.handleBlur("tags")}
+            value={formik.values.tags}
+          >
+            <option value="" disabled>
+              Select Tag
+            </option>
+            <option value="featured">Featured</option>
+            <option value="popular">Popular</option>
+            <option value="special">Special</option>
+          </select>
+
+          <div className="error">
+            {formik.touched.tags && formik.errors.tags}
+          </div>
+          <Select
+            mode="multiple"
+            allowClear
+            className="w-100"
+            placeholder="Select Colors"
+            defaultValue={color}
+            onChange={(i) => handleColors(i)}
+            options={coloropt}
           />
 
           <div className="error">
@@ -171,7 +230,9 @@ const AddProduct = () => {
           </div>
 
           <div className="bg-white text-center boder-1 p-5  ">
-            <Dropzone onDrop={(acceptedFiles) => console.log(acceptedFiles)}>
+            <Dropzone
+              onDrop={(acceptedFiles) => dispatch(uploadImg(acceptedFiles))}
+            >
               {({ getRootProps, getInputProps }) => (
                 <section>
                   <div {...getRootProps()}>
@@ -183,6 +244,27 @@ const AddProduct = () => {
                 </section>
               )}
             </Dropzone>
+          </div>
+
+          <div className="showImages d-flex flex-wrap gap-3">
+            {imgState.map((i, j) => {
+              return (
+                <div className="position-relative" key={j}>
+                  <button
+                    type="button"
+                    onClick={() => dispatch(delImg(i.public_id))}
+                    className="btn-close position-absolute"
+                    style={{ top: "10px", right: "10px" }}
+                  ></button>
+                  <img
+                    src={i.url}
+                    alt="productImage"
+                    width={200}
+                    height={200}
+                  />
+                </div>
+              );
+            })}
           </div>
 
           <button className="btn btn-success border-0 rounded-3 my-5">

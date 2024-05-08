@@ -35,7 +35,7 @@ app.use("/api/blogcategory", blogCatRouter);
 app.use("/api/productbrand", BrandRouter);
 app.use("/api/coupon", couponRouter);
 app.use("/api/enquiry", enquiryRouter);
-app.use("/api/upload", enquiryRouter);
+app.use("/api/upload", uploadRouter);
 
 app.use(notFound);
 app.use(errorHandler);
