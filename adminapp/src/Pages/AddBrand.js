@@ -26,7 +26,7 @@ const AddBrand = () => {
     if (isLoading) {
       toast.info("Please wait!!");
     }
-  }, [isSuccess, isError, isLoading]);
+  }, [isSuccess, isError, isLoading, createdBrand]);
 
   const formik = useFormik({
     initialValues: {

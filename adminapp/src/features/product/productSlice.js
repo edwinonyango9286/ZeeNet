@@ -13,7 +13,7 @@ export const getProducts = createAsyncThunk(
 );
 export const createProduct = createAsyncThunk(
   "product/create-products",
-  async (productData,thunkAPI) => {
+  async (productData, thunkAPI) => {
     try {
       return await productService.createProduct(productData);
     } catch (error) {
@@ -21,7 +21,6 @@ export const createProduct = createAsyncThunk(
     }
   }
 );
-
 
 const initialState = {
   products: [],
@@ -53,7 +52,6 @@ export const productSlice = createSlice({
         state.isSuccess = false;
         state.message = action.error;
       })
-
       .addCase(createProduct.pending, (state) => {
         state.isLoading = true;
       })
