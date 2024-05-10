@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { createCategory } from "../features/category/categorySlice";
+import { createCategory, resetState } from "../features/category/categorySlice";
 
 const schema = Yup.object().shape({
   title: Yup.string().required("Product Category Name is Required"),
@@ -23,9 +23,7 @@ const AddCategory = () => {
     if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-    if (isLoading) {
-      toast.info("Please wait!!");
-    }
+   
   }, [isSuccess, isError, isLoading]);
 
   const formik = useFormik({
@@ -37,7 +35,7 @@ const AddCategory = () => {
       dispatch(createCategory(values));
       formik.resetForm();
       setTimeout(() => {
-        navigate("/admin/category-list");
+        dispatch(resetState())
       }, 3000);
     },
   });

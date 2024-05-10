@@ -5,7 +5,10 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { createBlogCategory } from "../features/blogcategory/blogCategorySlice";
+import {
+  createBlogCategory,
+  resetState,
+} from "../features/blogcategory/blogCategorySlice";
 
 const schema = Yup.object().shape({
   title: Yup.string().required("Blog Category Name is required"),
@@ -24,9 +27,6 @@ const AddBlogCategory = () => {
     if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-    if (isLoading) {
-      toast.info("Please wait!!");
-    }
   }, [isSuccess, isError, isLoading, createdBlogCategory]);
 
   const formik = useFormik({
@@ -38,7 +38,7 @@ const AddBlogCategory = () => {
       dispatch(createBlogCategory(values));
       formik.resetForm();
       setTimeout(() => {
-        navigate("/admin/blog-category-list");
+        dispatch(resetState());
       }, 3000);
     },
   });
@@ -58,10 +58,9 @@ const AddBlogCategory = () => {
               val={formik.values.title}
               id="blogcat"
             />
-             <div className="error">
+            <div className="error">
               {formik.touched.title && formik.errors.title}
             </div>
-
 
             <button className="btn btn-success border-0 mt-3 rounded-3 ">
               Add Blog Category

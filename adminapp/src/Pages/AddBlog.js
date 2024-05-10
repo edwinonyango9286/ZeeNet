@@ -7,7 +7,7 @@ import Dropzone from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { createBlog } from "../features/blogs/blogSlice";
+import { createBlog, resetState } from "../features/blogs/blogSlice";
 import { delImg, uploadImg } from "../features/upload/uploadSlice";
 import ReactQuill from "react-quill";
 import { getBlogCategory } from "../features/blogcategory/blogCategorySlice";
@@ -37,9 +37,7 @@ const AddBlog = () => {
     if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-    if (isLoading) {
-      toast.info("Please wait!!");
-    }
+   
   }, [isSuccess, isError, isLoading]);
 
   const img = [];
@@ -65,7 +63,7 @@ const AddBlog = () => {
       dispatch(createBlog(values));
       formik.resetForm();
       setTimeout(() => {
-        navigate("/admin/blog-list");
+        dispatch(resetState())
       }, 3000);
     },
   });

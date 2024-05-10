@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { createBrand } from "../features/brands/brandSlice";
+import { createBrand, resetState } from "../features/brands/brandSlice";
 
 const schema = Yup.object().shape({
   title: Yup.string().required("Brand Name is required"),
@@ -23,9 +23,7 @@ const AddBrand = () => {
     if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-    if (isLoading) {
-      toast.info("Please wait!!");
-    }
+  
   }, [isSuccess, isError, isLoading, createdBrand]);
 
   const formik = useFormik({
@@ -37,7 +35,7 @@ const AddBrand = () => {
       dispatch(createBrand(values));
       formik.resetForm();
       setTimeout(() => {
-        navigate("/admin/brand-list");
+        dispatch(resetState())
       }, 3000);
     },
   });

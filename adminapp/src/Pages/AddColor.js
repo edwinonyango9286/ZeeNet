@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { createColor } from "../features/color/colorSlice";
+import { createColor, resetState } from "../features/color/colorSlice";
 
 const schema = Yup.object().shape({
   title: Yup.string().required("Select color  is required"),
@@ -23,9 +23,7 @@ const AddColor = () => {
     if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-    if (isLoading) {
-      toast.info("Please wait!!");
-    }
+   
   }, [isSuccess, isError, isLoading, createdColor]);
 
   const formik = useFormik({
@@ -36,7 +34,7 @@ const AddColor = () => {
     onSubmit: (values) => {
       dispatch(createColor(values));
       setTimeout(() => {
-        navigate("/admin/color-list");
+        dispatch(resetState())
       }, 3000);
     },
   });

@@ -4,7 +4,6 @@ import { Layout, Menu, Button, theme } from "antd";
 import { MdDashboardCustomize } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineShopping } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
 import { SiBrandfolder } from "react-icons/si";
 import { TbCategory } from "react-icons/tb";
@@ -19,6 +18,9 @@ import { MdNotificationsNone } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RiCoupon5Fill } from "react-icons/ri";
+import { SiMarketo } from "react-icons/si";
+import { GrCatalog } from "react-icons/gr";
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,6 +31,7 @@ const MainLayout = () => {
   } = theme.useToken();
   const navigate = useNavigate();
 
+  // onContextMenu={(e)=>e.preventDefault()}
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -61,7 +64,7 @@ const MainLayout = () => {
             },
             {
               key: "catalog",
-              icon: <AiOutlineShopping className="fs-5 " />,
+              icon: <GrCatalog className="fs-5 " />,
               label: "Catalog",
               children: [
                 {
@@ -106,11 +109,31 @@ const MainLayout = () => {
                 },
               ],
             },
+
             {
               key: "orders",
               icon: <FaClipboardList className="fs-5" />,
               label: "Orders",
             },
+
+            {
+              key: "marketing",
+              icon: <SiMarketo className="fs-5" />,
+              label: "Marketing",
+              children: [
+                {
+                  key: "coupon",
+                  icon: <RiCoupon5Fill className="fs-5" />,
+                  label: " Add Coupon ",
+                },
+                {
+                  key: "coupon-list",
+                  icon: <RiCoupon5Fill className="fs-5" />,
+                  label: " Coupon List ",
+                },
+              ],
+            },
+  
             {
               key: "blogs",
               icon: <ImBlogger2 className="fs-5" />,
@@ -170,8 +193,14 @@ const MainLayout = () => {
               </span>
             </div>
 
-            <div className="d-flex gap-3 align-items-center">
-              <img width={32} height={32} src={userImage} alt="userimage"></img>
+            <div className="d-flex gap-3 align-items-center ">
+              <img
+                width={34}
+                height={34}
+                src={userImage}
+                alt="userimage"
+                className="rounded-circle"
+              ></img>
             </div>
             <div
               role="button"

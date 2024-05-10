@@ -9,7 +9,7 @@ import { getCategories } from "../features/category/categorySlice";
 import { getColors } from "../features/color/colorSlice";
 import Dropzone from "react-dropzone";
 import { delImg, uploadImg } from "../features/upload/uploadSlice";
-import { createProduct } from "../features/product/productSlice";
+import { createProduct, resetState } from "../features/product/productSlice";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -51,9 +51,7 @@ const AddProduct = () => {
     if(isError ){
       toast.error("Something went Wrong Please Try Again!!");
     }
-    if(isLoading ){
-      toast.info("Please wait!!");
-    }
+   
   },[isSuccess, isError,isLoading])
 
   const coloropt = [];
@@ -95,7 +93,7 @@ const AddProduct = () => {
       formik.resetForm();
       setColor(null);
       setTimeout(() => {
-        navigate("/admin/product-list");
+        dispatch(resetState())
       }, 3000);
     },
   });
