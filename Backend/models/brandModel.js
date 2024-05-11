@@ -9,8 +9,7 @@ var brandSchema = new mongoose.Schema({
         index: true,
         trim: true,
         minlength: 2,
-        maxlength: 16,
-        lowercase: true,
+        maxlength: 32,
     },
 
 },

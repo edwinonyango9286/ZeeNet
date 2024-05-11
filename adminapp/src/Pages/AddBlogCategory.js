@@ -62,7 +62,8 @@ const AddBlogCategory = () => {
               {formik.touched.title && formik.errors.title}
             </div>
 
-            <button className="btn btn-success border-0 mt-3 rounded-3 ">
+            <button type="submit"
+            className="btn btn-success border-0 mt-3 rounded-3 my-2 ">
               Add Blog Category
             </button>
           </form>

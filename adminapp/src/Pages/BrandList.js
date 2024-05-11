@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getBrands } from "../features/brands/brandSlice";
-import {Link} from "react-router-dom";
-import {AiTwotoneEdit,AiFillDelete} from "react-icons/ai";
+import {
+  deleteABrand,
+  getBrands,
+  resetState,
+} from "../features/brands/brandSlice";
+import { Link } from "react-router-dom";
+import { AiFillDelete } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
+import CustomModal from "../Components/CustomModal";
 
 const columns = [
   {
@@ -22,31 +28,65 @@ const columns = [
 ];
 
 const BrandList = () => {
+  const [open, setOpen] = useState(false);
+  const [brandId, setBrandId] = useState("");
+  const showModal = (e) => {
+    setOpen(true);
+    setBrandId(e);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(resetState());
     dispatch(getBrands());
   }, []);
 
-  const brandstate = useSelector((state) => state.brand.brands);
+  const brandState = useSelector((state) => state.brand.brands);
   const data1 = [];
-  for (let i = 0; i < brandstate.length; i++) {
+  for (let i = 0; i < brandState.length; i++) {
     data1.push({
       key: i + 1,
-      name: brandstate[i].title,
+      name: brandState[i].title,
       action: (
         <>
-        <Link className="fs-5"> <AiTwotoneEdit/></Link>
-        <Link className="ms-4 text-danger border-0 fs-5"><AiFillDelete/></Link>
+          <Link to={`/admin/brand/${brandState[i]._id}`} className="fs-3">
+            <FiEdit />
+          </Link>
+
+          <button
+            className="ms-3 fs-3 text-danger bg-transparent border-0"
+            onClick={() => showModal(brandState[i]._id)}
+          >
+            <AiFillDelete />
+          </button>
         </>
       ),
     });
   }
 
+  const deleteBrand = (e) => {
+    dispatch(deleteABrand(e));
+
+    setOpen(false);
+    setTimeout(() => {
+      dispatch(getBrands());
+    }, 100);
+  };
   return (
     <>
       <div>
-        <h5 className="mb-2 title">Product Brands</h5>
+        <h5 className="mb-4 title">Product Brands</h5>
         <div>{<Table columns={columns} dataSource={data1} />}</div>
+        <CustomModal
+          open={open}
+          hideModal={hideModal}
+          perfomAction={() => {
+            deleteBrand(brandId);
+          }}
+          title="Are You sure you want to delete this Brand"
+        />
       </div>
     </>
   );
