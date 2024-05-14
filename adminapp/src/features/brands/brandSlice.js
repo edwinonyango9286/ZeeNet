@@ -100,7 +100,7 @@ export const brandSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;
-      })  
+      })
       .addCase(getABrand.pending, (state) => {
         state.isLoading = true;
       })
@@ -108,7 +108,7 @@ export const brandSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.brandName= action.payload.title;
+        state.brandName = action.payload.title;
       })
       .addCase(getABrand.rejected, (state, action) => {
         state.isLoading = false;
@@ -123,7 +123,7 @@ export const brandSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.updatedBrand= action.payload;
+        state.updatedBrand = action.payload;
       })
       .addCase(updateABrand.rejected, (state, action) => {
         state.isLoading = false;
@@ -138,7 +138,7 @@ export const brandSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.deletedBrand= action.payload;
+        state.deletedBrand = action.payload;
       })
       .addCase(deleteABrand.rejected, (state, action) => {
         state.isLoading = false;

@@ -9,7 +9,7 @@ var blogcategorySchema = new mongoose.Schema({
         trim:true,
         lowercase:true,
         minlength: 2,
-        maxlength: 16,
+        maxlength: 32,
     },
 },
 {
