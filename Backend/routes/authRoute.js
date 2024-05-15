@@ -40,7 +40,7 @@ router.get("/getusercart", authMiddleware, getUserCart);
 router.post("/addtocart/applycoupon", authMiddleware, applyCoupon);
 router.post("/cash-order", authMiddleware, createOrder);
 router.put("/update-order/:id", authMiddleware, isAdmin, updateOrderStatus);
-router.get("/getorderbyuserid/:id", authMiddleware, isAdmin, getOrderByUserId);
+router.post("/getorderbyuserId/:id", authMiddleware, isAdmin, getOrderByUserId);
 router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
 router.delete("/emptycart", authMiddleware, emptyCart);
 router.get("/getallUsers", authMiddleware,isAdmin,getAllUsers);

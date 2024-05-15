@@ -467,10 +467,12 @@ const getOrderByUserId = asyncHandler(async (req, res) => {
       .populate("orderby")
       .exec();
     res.json(userOrders);
-  } catch (error) {
+  } catch (error) { 
     throw new Error(error);
   }
 });
+
+
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
   const { status } = req.body;

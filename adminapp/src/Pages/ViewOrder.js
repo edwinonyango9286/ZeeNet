@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders } from "../features/auth/authSlice";
-import { Link } from "react-router-dom";
+import { getAOrderByUserId, } from "../features/auth/authSlice";
+import { Link, useLocation } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 
@@ -12,12 +12,20 @@ const columns = [
     dataIndex: "key",
   },
   {
-    title: "Name",
+    title: "Product Name",
     dataIndex: "name",
   },
   {
-    title: "Product",
-    dataIndex: "product",
+    title: "Brand",
+    dataIndex: "brand",
+  },
+  {
+    title: "Count",
+    dataIndex: "count",
+  },
+  {
+    title: "Color",
+    dataIndex: "color",
   },
   {
     title: "Amount",
@@ -33,24 +41,27 @@ const columns = [
   },
 ];
 
-const Orders = () => {
+const ViewOrder = () => {
+  const location = useLocation();
+  const userId = location.pathname.split("/")[3];
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getOrders());
+    dispatch(getAOrderByUserId(userId));
   }, []);
 
-  const orderState = useSelector((state) => state.auth.orders);
+  const orderState = useSelector((state) => state.auth.orderByUser[0].products);
+  console.log(orderState);
 
   const data1 = [];
   for (let i = 0; i < orderState.length; i++) {
     data1.push({
       key: i + 1,
-      name: orderState[i].orderby.firstname,
-      product: (
-        <Link to={`/admin/order/${orderState[i].orderby._id}`}>view Order</Link>
-      ),
-      amount: orderState[i].paymentIntent.amount,
-      date: new Date(orderState[i].createdAt).toLocaleString(),
+      name: orderState[i].product.title,
+      brand: orderState[i].product.brand,
+      count: orderState[i].count,
+      amount: orderState[i].product.price,
+      color: orderState[i].product.color,
+      date: orderState[i].product.createdAt,
       action: (
         <>
           <Link to="/" className="fs-4">
@@ -64,15 +75,14 @@ const Orders = () => {
     });
   }
 
-
   return (
     <>
       <div>
-        <h5 className="mb-2">Orders</h5>
+        <h5 className="mb-2">View  Order</h5>
         <div>{<Table columns={columns} dataSource={data1} />}</div>
       </div>
     </>
   );
 };
 
-export default Orders;
+export default ViewOrder;
