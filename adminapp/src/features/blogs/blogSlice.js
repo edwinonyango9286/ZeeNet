@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import blogsService from "./blogService";
 
 export const getBlogs = createAsyncThunk(
-  "blogs/get-blogs",
+  "blog/get-blogs",
   async (thunkAPI) => {
     try {
       return await blogsService.getBlogs();

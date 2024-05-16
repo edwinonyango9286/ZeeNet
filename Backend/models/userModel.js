@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const validator = require("validator");
 
 const {
   Schema,
@@ -17,12 +16,6 @@ var userSchema = new mongoose.Schema(
       maxlength: 16,
       trim: true,
       lowercase: true,
-      validate: {
-        validator: function (value) {
-          return /^[a-zA-Z\s]+$/.test(value);
-        },
-        message: "Name should only contain letters and whitespaces",
-      },
     },
     lastname: {
       type: String,
@@ -31,12 +24,6 @@ var userSchema = new mongoose.Schema(
       maxlength: 16,
       trim: true,
       lowercase: true,
-      validate: {
-        validator: function (value) {
-          return /^[a-zA-Z\s]+$/.test(value);
-        },
-        message: "Name should only contain letters and whitespaces",
-      },
     },
     email: {
       type: String,
@@ -44,26 +31,15 @@ var userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      validate: [validator.isEmail, "Please provide a valid email address"],
     },
     mobile: {
       type: String,
       required: true,
       unique: true,
-      maxlength:[10],
-      minlength:[10],
     },
     password: {
       type: String,
       required: true,
-      // minlength: [8, "Password must be at least 8 characters long"],
-      // maxlength: [16, "Password must be less than 16 characters long"],
-      // validate: {
-      //   validator: function(value) {
-      //     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/.test(value);
-      //   },
-      //   message: 'Password must be between 8 and 16 characters long, and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.'
-      // }
     },
     role: {
       type: String,

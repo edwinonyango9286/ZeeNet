@@ -49,8 +49,7 @@ const ViewOrder = () => {
     dispatch(getAOrderByUserId(userId));
   }, []);
 
-  const orderState = useSelector((state) => state.auth.orderByUser[0].products);
-  console.log(orderState);
+  const orderState = useSelector((state) => state.auth);
 
   const data1 = [];
   for (let i = 0; i < orderState.length; i++) {

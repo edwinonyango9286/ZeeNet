@@ -43,9 +43,9 @@ const CategoryList = () => {
   useEffect(() => {
     dispatch(resetState());
     dispatch(getCategories());
-  }, []);
+  }, [dispatch]);
 
-  const categoryState = useSelector((state) => state.category.categories);
+  const categoryState = useSelector((state) => state.pCategory.categories);
   const data1 = [];
   for (let i = 0; i < categoryState.length; i++) {
     data1.push({

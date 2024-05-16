@@ -11,17 +11,16 @@ import Dropzone from "react-dropzone";
 import { delImg, uploadImg } from "../features/upload/uploadSlice";
 import { createProduct, resetState } from "../features/product/productSlice";
 import { Select } from "antd";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const schema = Yup.object().shape({
-  title: Yup.string().required("Product Name is required"),
-  description: Yup.string().required("Description is required"),
-  price: Yup.number().required("Price is required"),
-  brand: Yup.string().required("Brand is required"),
-  category: Yup.string().required("Category is required"),
-  tags: Yup.string().required("Tags are required"),
-  quantity: Yup.number().required("Quntity is required"),
+  title: Yup.string().required("Add product name."),
+  description: Yup.string().required(" Add product description."),
+  price: Yup.number().required("Add product price."),
+  brand: Yup.string().required("Add product brand."),
+  category: Yup.string().required("Add product category"),
+  tags: Yup.string().required("Select product tag"),
+  quantity: Yup.number().required("Add product quantity"),
   color: Yup.array()
     .min(1, "Select at least one color")
     .required("Color are required"),
@@ -29,7 +28,6 @@ const schema = Yup.object().shape({
 
 const AddProduct = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [color, setColor] = useState([]);
   const [images, setImages] = useState([]);
   useEffect(() => {
@@ -39,20 +37,19 @@ const AddProduct = () => {
   }, []);
 
   const brandState = useSelector((state) => state.brand.brands);
-  const categoryState = useSelector((state) => state.category.categories);
+  const categoryState = useSelector((state) => state.pCategory.categories);
   const colorState = useSelector((state) => state.color.colors);
   const imgState = useSelector((state) => state.upload.images);
   const newProduct = useSelector((state) => state.product);
-  const {isSuccess , isError,isLoading, createdProduct} = newProduct
-  useEffect(()=>{
-    if(isSuccess && createdProduct ){
+  const { isSuccess, isError, isLoading, createdProduct } = newProduct;
+  useEffect(() => {
+    if (isSuccess && createdProduct) {
       toast.success("Product added Successfully!!");
     }
-    if(isError ){
+    if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-   
-  },[isSuccess, isError,isLoading])
+  }, [isSuccess, isError, isLoading]);
 
   const coloropt = [];
   colorState.forEach((i) => {
@@ -93,7 +90,7 @@ const AddProduct = () => {
       formik.resetForm();
       setColor(null);
       setTimeout(() => {
-        dispatch(resetState())
+        dispatch(resetState());
       }, 3000);
     },
   });
@@ -265,7 +262,7 @@ const AddProduct = () => {
             })}
           </div>
 
-          <button className="btn btn-success border-0 rounded-3 my-5">
+          <button type="submit" className="btn btn-success border-0 rounded-3 my-5">
             Add Product
           </button>
         </form>

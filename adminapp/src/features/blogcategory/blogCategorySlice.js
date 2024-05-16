@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import bCategoryService from "./blogCategoryService";
 
 export const getBlogCategory = createAsyncThunk(
-  "blogCategory/get-blog-categories",
+  "bCategory/get-blog-categories",
   async (thunkAPI) => {
     try {
       return await bCategoryService.getBlogCategory();
@@ -14,7 +14,7 @@ export const getBlogCategory = createAsyncThunk(
 
 
 export const createBlogCategory = createAsyncThunk(
-  "blogCategory/create-blog-cat",
+  "bCategory/create-blog-cat",
   async (blogCatData, thunkAPI) => {
     try {
       return await bCategoryService.createBlogCategory(blogCatData);
@@ -26,7 +26,7 @@ export const createBlogCategory = createAsyncThunk(
 
 
 export const getABlogCat = createAsyncThunk(
-  "blogCategory/get-blog-cat",
+  "bCategory/get-blog-cat",
   async (id, thunkAPI) => {
     try {
       return await bCategoryService.getBlogCat(id);
@@ -36,7 +36,7 @@ export const getABlogCat = createAsyncThunk(
   }
 );
 export const updateABLogCat = createAsyncThunk(
-  "blogCategory/update-blog-cat",
+  "bCategory/update-blog-cat",
   async (blog, thunkAPI) => {
     try {
       return await bCategoryService.updateBLogCat(blog);
@@ -46,7 +46,7 @@ export const updateABLogCat = createAsyncThunk(
   }
 );
 export const deleteABlogCat = createAsyncThunk(
-  "blogCategory/delete-blog-cat",
+  "bCategory/delete-blog-cat",
   async (id, thunkAPI) => {
     try {
       return await bCategoryService.deleteBLogCat(id);

@@ -21,7 +21,7 @@ const AddCategory = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const getCategoryId = location.pathname.split("/")[3];
-  const newCategory = useSelector((state) => state.category);
+  const newCategory = useSelector((state) => state.pCategory);
   const {
     isSuccess,
     isError,

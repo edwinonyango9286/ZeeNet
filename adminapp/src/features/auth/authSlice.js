@@ -4,15 +4,6 @@ const getUserFromLocalStorge = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
   : null;
 
-const initialState = {
-  user: getUserFromLocalStorge,
-  orders: [],
-  isError: false,
-  isLoading: false,
-  isSuccess: false,
-  message: "",
-};
-
 export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   try {
     return await authService.login(user);
@@ -41,6 +32,15 @@ export const getAOrderByUserId = createAsyncThunk(
     }
   }
 );
+
+const initialState = {
+  user: getUserFromLocalStorge,
+  orders: [],
+  isError: false,
+  isLoading: false,
+  isSuccess: false,
+  message: "",
+};
 
 export const authSlice = createSlice({
   name: "auth",

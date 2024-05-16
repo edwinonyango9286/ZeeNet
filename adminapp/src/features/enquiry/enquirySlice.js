@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import enquiryService from "./enquiryService";
 
 export const getEnquiries = createAsyncThunk(
-  "enquiries/get-enquries",
+  "enquiry/get-enquries",
   async (thunkAPI) => {
     try {
       return await enquiryService.getEnquiries();
@@ -13,7 +13,7 @@ export const getEnquiries = createAsyncThunk(
 );
 
 export const createAEnquiry = createAsyncThunk(
-  "enquiries/create-enqury",
+  "enquiry/create-enqury",
   async (enquiryData, thunkAPI) => {
     try {
       return await enquiryService.createEnquiry(enquiryData);
@@ -24,7 +24,7 @@ export const createAEnquiry = createAsyncThunk(
 );
 
 export const getAEnquiry = createAsyncThunk(
-  "enquiries/get-enquiry",
+  "enquiry/get-enquiry",
   async (id, thunkAPI) => {
     try {
       return await enquiryService.getEnquiry(id);
@@ -35,7 +35,7 @@ export const getAEnquiry = createAsyncThunk(
 );
 
 export const updateAEnquiry = createAsyncThunk(
-  "enquiries/update-enquiry",
+  "enquiry/update-enquiry",
   async (enq, thunkAPI) => {
     try {
       return await enquiryService.updateEnquiry(enq);
@@ -46,7 +46,7 @@ export const updateAEnquiry = createAsyncThunk(
 );
 
 export const deleteAEnquiry = createAsyncThunk(
-  "enquiries/delete-enquiry",
+  "enquiry/delete-enquiry",
   async (id, thunkAPI) => {
     try { 
       return await enquiryService.deleteEnquiry(id);

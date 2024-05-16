@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import categoryService from "./categoryService";
 
 export const getCategories = createAsyncThunk(
-  "productCategory/get-categories",
+  "pCategory/get-categories",
   async (thunkAPI) => {
     try {
       return await categoryService.getCategories();
@@ -13,7 +13,7 @@ export const getCategories = createAsyncThunk(
 );
 
 export const createCategory = createAsyncThunk(
-  "productCategory/create-category",
+  "pCategory/create-category",
   async (categoryData, thunkAPI) => {
     try {
       return await categoryService.createCategory(categoryData);
@@ -24,7 +24,7 @@ export const createCategory = createAsyncThunk(
 );
 
 export const getACategory = createAsyncThunk(
-  "category/get-category",
+  "pCategory/get-category",
   async (id, thunkAPI) => {
     try {
       return await categoryService.getCategory(id);
@@ -34,7 +34,7 @@ export const getACategory = createAsyncThunk(
   }
 );
 export const updateACategory = createAsyncThunk(
-  "category/update-category",
+  "pCategory/update-category",
   async (category, thunkAPI) => {
     try {
       return await categoryService.updateCategory(category);
@@ -45,7 +45,7 @@ export const updateACategory = createAsyncThunk(
 );
 
 export const deleteACategory = createAsyncThunk(
-  "category/delete-category",
+  "pCategory/delete-category",
   async (id, thunkAPI) => {
     try {
       return await categoryService.deleteCategory(id);

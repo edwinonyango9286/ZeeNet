@@ -18,7 +18,7 @@ export const store = configureStore({
     customer: customerReducer,
     product: productReducer,
     brand: brandReducer,
-    category: categoryReducer,
+    pCategory: categoryReducer,
     color: colorReducer,
     blog:blogReducer,
     bCategory:blogCategoryReducer,
