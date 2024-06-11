@@ -32,6 +32,7 @@ const MainLayout = () => {
   const navigate = useNavigate();
 
   // onContextMenu={(e)=>e.preventDefault()}
+  
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>

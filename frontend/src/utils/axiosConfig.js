@@ -1,5 +1,5 @@
 const getTokenFromLocalStorge = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
+  ? JSON.parse(localStorage.getItem("customer"))
   : null;
 
 export const config = {

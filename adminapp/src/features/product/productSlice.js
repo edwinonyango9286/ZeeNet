@@ -12,7 +12,6 @@ export const getProducts = createAsyncThunk(
   }
 );
 
-export const resetState = createAction("Reset_all");
 
 export const createProduct = createAsyncThunk(
   "product/create-products",
@@ -24,6 +23,9 @@ export const createProduct = createAsyncThunk(
     }
   }
 );
+
+export const resetState = createAction("Reset_all");
+
 
 const initialState = {
   products: [],

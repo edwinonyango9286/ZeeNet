@@ -28,7 +28,6 @@ const AddBlog = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const getBlogId = location.pathname.split("/")[3];
-  const [images, setImages] = useState([]);
   useEffect(() => {
     dispatch(getBlogCategory());
   }, []);
@@ -58,7 +57,7 @@ const AddBlog = () => {
   useEffect(() => {
     dispatch(resetState);
     dispatch(getBlogCategory);
-  });
+  },[]);
 
   useEffect(() => {
     if (isSuccess && createdBlog) {
@@ -91,7 +90,7 @@ const AddBlog = () => {
       title: blogName || "",
       description: blogDescription || "",
       category: blogCategory || "",
-      images: "",  
+      images: "",
     },
     validationSchema: schema,
     onSubmit: (values) => {

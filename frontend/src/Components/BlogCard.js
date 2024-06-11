@@ -1,25 +1,41 @@
 import React from "react";
-import blogImage from "../images/blog-1.jpg";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
-const BlogCard = () => {
+const BlogCard = (props) => {
+  const { data } = props;
+
   return (
-      <div className="blog-card">
-        <div className="card-image">
-          <img src={blogImage} alt="blog" className="img-fluid w-100%"></img>
-        </div>
-        <div className="blog-content">
-           <p className="date"> 12 June 2023</p>
-          <h5 className="title">The World of Virtual...</h5>
-          <p className="desc">
-            Virtual Reality has emerged as one of the most exciting and
-            transformative technologies of our time.
-          </p>
-          <Link to="/blogs/singleblog/:id" className="button">
-            Read More
-          </Link>
-        </div>
-      </div>
+    <>
+      {data?.map((item, index) => {
+        return (
+          <div key={index} className="blog-card">
+            <div className="card-image">
+              <img
+                src={item.images[0]?.url}
+                alt="blog"
+                className="img-fluid w-100%"
+              ></img>
+            </div>
+            <div className="blog-content">
+              <p className="date">
+                {moment(item?.createdAt).format("MMMM DO YY, h:mm a")}
+              </p>
+              <h5 className="title text-uppercase">{item?.title}</h5>
+              <p
+                className="desc text-capitalize"
+                dangerouslySetInnerHTML={{
+                  __html: item?.description.substr(0, 70) + "...",
+                }}
+              ></p>
+              <Link to={`/blogs/singleblog/${item?._id}`} className="button">
+                Read More
+              </Link>
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 };
 

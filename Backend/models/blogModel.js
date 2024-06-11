@@ -9,7 +9,6 @@ var blogSchema = new mongoose.Schema(
       minlength: 2,
       maxlength: 32,
       trim: true,
-      lowercase: true,
     },
     description: {
       type: String,
@@ -17,7 +16,6 @@ var blogSchema = new mongoose.Schema(
       minlength: 2,
       maxlength: 200,
       trim: true,
-      lowercase: true,
     },
     category: {
       type: String,
@@ -25,7 +23,6 @@ var blogSchema = new mongoose.Schema(
       minlength: 2,
       maxlength: 16,
       trim: true,
-      lowercase: true,
     },
     numViews: {
       type: Number,

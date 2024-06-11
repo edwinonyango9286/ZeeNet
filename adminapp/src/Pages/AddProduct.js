@@ -29,7 +29,6 @@ const schema = Yup.object().shape({
 const AddProduct = () => {
   const dispatch = useDispatch();
   const [color, setColor] = useState([]);
-  const [images, setImages] = useState([]);
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
@@ -42,6 +41,7 @@ const AddProduct = () => {
   const imgState = useSelector((state) => state.upload.images);
   const newProduct = useSelector((state) => state.product);
   const { isSuccess, isError, isLoading, createdProduct } = newProduct;
+
   useEffect(() => {
     if (isSuccess && createdProduct) {
       toast.success("Product added Successfully!!");
@@ -49,7 +49,7 @@ const AddProduct = () => {
     if (isError) {
       toast.error("Something went Wrong Please Try Again!!");
     }
-  }, [isSuccess, isError, isLoading]);
+  }, [isSuccess, isError, isLoading,createdProduct]);
 
   const coloropt = [];
   colorState.forEach((i) => {
@@ -84,6 +84,7 @@ const AddProduct = () => {
       images: "",
       tags: "",
     },
+
     validationSchema: schema,
     onSubmit: (values) => {
       dispatch(createProduct(values));
@@ -262,7 +263,10 @@ const AddProduct = () => {
             })}
           </div>
 
-          <button type="submit" className="btn btn-success border-0 rounded-3 my-5">
+          <button
+            type="submit"
+            className="btn btn-success border-0 rounded-3 my-5"
+          >
             Add Product
           </button>
         </form>

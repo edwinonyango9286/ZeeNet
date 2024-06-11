@@ -7,7 +7,6 @@ var blogcategorySchema = new mongoose.Schema({
         unique:true,
         index:true,
         trim:true,
-        lowercase:true,
         minlength: 2,
         maxlength: 32,
     },

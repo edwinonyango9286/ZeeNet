@@ -6,7 +6,6 @@ import wishlistImage from "../images/wishlist.svg";
 import accountImage from "../images/user.svg";
 import cartImage from "../images/cart.svg";
 import menu from "../images/menu.svg";
-// (xs, sm, md, lg, xl, xxl)
 
 
 const Header = () => {

@@ -43,7 +43,7 @@ const CategoryList = () => {
   useEffect(() => {
     dispatch(resetState());
     dispatch(getCategories());
-  }, [dispatch]);
+  }, []);
 
   const categoryState = useSelector((state) => state.pCategory.categories);
   const data1 = [];
