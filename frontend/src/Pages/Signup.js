@@ -84,6 +84,8 @@ const Signup = () => {
                 <CustomInput
                   type="tel"
                   name="mobile"
+                  max={0}
+                  min={14}
                   placeholder="Mobile Number"
                   onChange={formik.handleChange("mobile")}
                   onBlur={formik.handleBlur("mobile")}
@@ -105,7 +107,7 @@ const Signup = () => {
                   {formik.touched.password && formik.errors.password}
                 </div>
 
-                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                <div className="mt-2 d-flex justify-content-center gap-15 align-items-center">
                   <button type="submit" className="button border-0">
                     Sign Up
                   </button>

@@ -307,35 +307,18 @@ const getWishlist = asyncHandler(async (req, res) => {
   }
 });
 
-const addToCart = asyncHandler(async (req, res) => {
-  const { cart } = req.body;
+const userCart = asyncHandler(async (req, res) => {
+  const { productId, color, quantity, price } = req.body;
   const { _id } = req.user;
   validateMongodbId(_id);
 
   try {
-    let products = [];
-    const user = await User.findById(_id);
-    const alreadyExistCart = await Cart.findOne({ orderby: user._id });
-    if (alreadyExistCart) {
-      await Cart.deleteOne({ _id: alreadyExistCart._id });
-    }
-    for (let i = 0; i < cart.length; i++) {
-      let object = {};
-      object.product = cart[i]._id;
-      object.count = cart[i].count;
-      object.color = cart[i].color;
-      let getPrice = await Product.findById(cart[i]._id).select("price").exec();
-      object.price = getPrice.price;
-      products.push(object);
-    }
-    let cartTotal = 0;
-    for (let i = 0; i < products.length; i++) {
-      cartTotal = cartTotal + products[i].price * products[i].count;
-    }
     let newCart = await new Cart({
-      products,
-      cartTotal,
-      orderby: user?._id,
+      userId: _id,
+      productId,
+      color,
+      quantity,
+      price,
     }).save();
     res.json(newCart);
   } catch (error) {
@@ -347,9 +330,9 @@ const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
   try {
-    const cart = await Cart.findOne({ orderby: _id }).populate(
-      "products.product"
-    );
+    const cart = await Cart.find({ userId: _id })
+      .populate("productId")
+      .populate("color");
     res.json(cart);
   } catch (error) {
     throw new Error(error);
@@ -434,7 +417,6 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 });
 
-
 const getOrders = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
@@ -467,12 +449,10 @@ const getOrderByUserId = asyncHandler(async (req, res) => {
       .populate("orderby")
       .exec();
     res.json(userOrders);
-  } catch (error) { 
+  } catch (error) {
     throw new Error(error);
   }
 });
-
-
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
   const { status } = req.body;
@@ -512,7 +492,7 @@ module.exports = {
   adminLogin,
   getWishlist,
   saveUserAddress,
-  addToCart,
+  userCart,
   getUserCart,
   emptyCart,
   applyCoupon,

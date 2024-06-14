@@ -21,11 +21,12 @@ var orderSchema = new mongoose.Schema(
     orderStatus: {
       type: String,
       default: "Not Processed",
+      trim: true,
       enum: [
         "Not Processed",
         "Cash on Delivery",
         "Processing",
-        "Dispatched", 
+        "Dispatched",
         "Cancelled",
         "Delivered",
       ],

@@ -7,8 +7,9 @@ const colorSchema = new mongoose.Schema(
       required: true,
       unique: true,
       index: true,
+      trim: true,
     },
-  }, 
+  },
   {
     timestamps: true,
   }

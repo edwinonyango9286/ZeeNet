@@ -35,6 +35,7 @@ export const getABlogCat = createAsyncThunk(
     }
   }
 );
+
 export const updateABLogCat = createAsyncThunk(
   "bCategory/update-blog-cat",
   async (blog, thunkAPI) => {

@@ -72,7 +72,7 @@ const BlogList = () => {
     setOpen(false);
     setTimeout(() => {
       dispatch(getBlogs());
-    }, 100);
+    }, 500);
   };
 
   return (
@@ -81,7 +81,7 @@ const BlogList = () => {
         <h4 className="mb-2 title">Blog List</h4>
         <div>
           <Table columns={columns} dataSource={data1} />
-        </div>   
+        </div>
         <CustomModal
           open={open}
           hideModal={hideModal}

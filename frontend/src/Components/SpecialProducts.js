@@ -6,9 +6,9 @@ const SpecialProducts = (props) => {
   const { brand, title, totalrating, price, sold, quantity, image, id } = props;
   return (
     <>
-      <div className="col-4 mb-3">
+      <div className="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-3  mb-2">
         <div className="special-product-card">
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between gap-10">
             <div>
               <img src={image} className="img-fluid" alt="watch" />
             </div>

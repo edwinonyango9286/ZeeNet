@@ -9,9 +9,8 @@ import { addToWishlist } from "../features/products/productSlice";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(getWishlistfromDb());
+    getWishlistfromDb();
   }, []);
 
   const getWishlistfromDb = () => {

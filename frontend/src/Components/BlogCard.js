@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import blogImage from "../images/blog-1.jpg"
 
 const BlogCard = (props) => {
   const { data } = props;
@@ -12,8 +13,8 @@ const BlogCard = (props) => {
           <div key={index} className="blog-card">
             <div className="card-image">
               <img
-                src={item.images[0]?.url}
-                alt="blog"
+                src={item.images[0]?.url ? item.images[0]?.url : blogImage }
+                alt="Blog Image"
                 className="img-fluid w-100%"
               ></img>
             </div>

@@ -16,7 +16,7 @@ const {
   adminLogin,
   getWishlist,
   saveUserAddress,
-  addToCart,
+  userCart,
   getUserCart,
   emptyCart,
   applyCoupon,
@@ -35,7 +35,7 @@ router.put("/reset-password/:token", resetPassword);
 router.put("/update-password", authMiddleware, updatePassword);
 router.post("/login", loginUserCtrl);
 router.post("/admin-login", adminLogin);
-router.post("/addtocart", authMiddleware, addToCart);
+router.post("/cart", authMiddleware, userCart);
 router.get("/getusercart", authMiddleware, getUserCart);
 router.post("/addtocart/applycoupon", authMiddleware, applyCoupon);
 router.post("/cash-order", authMiddleware, createOrder);
@@ -43,7 +43,7 @@ router.put("/update-order/:id", authMiddleware, isAdmin, updateOrderStatus);
 router.post("/getorderbyuserId/:id", authMiddleware, isAdmin, getOrderByUserId);
 router.get("/getallorders", authMiddleware, isAdmin, getAllOrders);
 router.delete("/emptycart", authMiddleware, emptyCart);
-router.get("/getallUsers", authMiddleware,isAdmin,getAllUsers);
+router.get("/getallUsers", authMiddleware, isAdmin, getAllUsers);
 router.get("/get-orders", authMiddleware, getOrders);
 router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);
@@ -56,14 +56,3 @@ router.put("/block-user/:id", authMiddleware, isAdmin, blockUser);
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser);
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-

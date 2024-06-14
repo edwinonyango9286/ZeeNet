@@ -60,7 +60,7 @@ const AddColor = () => {
         dispatch(createColor(values));
         setTimeout(() => {
           dispatch(resetState());
-        }, 300);
+        }, 500);
       }
     },
   });

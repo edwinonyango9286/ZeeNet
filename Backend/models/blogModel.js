@@ -14,7 +14,7 @@ var blogSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 2,
-      maxlength: 200,
+      maxlength: 2000,
       trim: true,
     },
     category: {
@@ -51,6 +51,7 @@ var blogSchema = new mongoose.Schema(
     author: {
       type: String,
       default: "admin",
+      trim: true,
     },
     images: [],
   },

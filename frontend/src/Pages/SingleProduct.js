@@ -11,26 +11,57 @@ import Container from "../Components/Container";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAproduct } from "../features/products/productSlice";
+import { toast } from "react-toastify";
+import { addProductToCart, getUserCart } from "../features/users/userSlice";
 
 const SingleProduct = () => {
+  const [color, setColor] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [alreadyAdded, setAlreadyAdded] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const getProductId = location.pathname.split("/")[2];
   const productState = useSelector((state) => state.product.singleProduct);
-  console.log(productState);
+  const cartState = useSelector((state) => state.auth.cartProducts);
 
   useEffect(() => {
     dispatch(getAproduct(getProductId));
+    dispatch(getUserCart());
   }, []);
+
+  useEffect(() => {
+    for (let index = 0; index < cartState?.length; index++) {
+      if (getProductId === cartState[index]?.productId?._id) {
+        setAlreadyAdded(true);
+      }
+    }
+  }, []);
+
+  const uploadCart = () => {
+    if (color === null) {
+      toast.error("Choose Product Color");
+      return false;
+    } else {
+      dispatch(
+        addProductToCart({
+          productId: productState?._id,
+          quantity,
+          color,
+          price: productState?.price,
+        })
+      );
+    }
+  };
 
   const props = {
     width: 594,
     height: 600,
     zoomWidth: 600,
-    img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg",
+    img: productState?.images[0]?.url
+      ? productState?.images[0]?.url
+      : "https://m.media-amazon.com/images/I/41jJtitW+KL._SY300_SX300_.jpg",
   };
-
-  const [orderedProduct, setorderedProduct] = useState(true);
+  const [orderedProduct, setOrderedProduct] = useState(true);
 
   const copyToClipboard = (text) => {
     var textField = document.createElement("textarea");
@@ -44,7 +75,7 @@ const SingleProduct = () => {
     <>
       <Meta title={productState?.title} />
       <BreadCrumb title={productState?.title} />
-      <Container className="main-product-wrapper py-5 home-wrapper-2">
+      <Container class1="main-product-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-6">
             <div className="main-product-image">
@@ -148,32 +179,48 @@ const SingleProduct = () => {
                     </span>
                   </div>
                 </div>
-                
 
-                <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                  <h3 className="product-heading">Color:</h3>
-                  <Colors />
-                </div>
+                {alreadyAdded === false && (
+                  <>
+                    <div className="d-flex gap-10 flex-column mt-2 mb-3">
+                      <h3 className="product-heading">Color:</h3>
+                      <Colors
+                        setColor={setColor}
+                        colorData={productState?.color}
+                      />
+                    </div>
+                  </>
+                )}
 
-                <div className="d-flex  flex-row align-items-center gap-15  mt-2 mb-3">
-                  <h3 className="product-heading">Quantity:</h3>
-                  <div className="">
-                    <input
-                      type="number"
-                      name=""
-                      min={1}
-                      max={10}
-                      className="form-control"
-                      style={{ width: "70px" }}
-                      id=""
-                    />
-                  </div>
+                <div className="d-flex   align-items-center gap-15  flex-row mt-2 mb-2">
+                  {alreadyAdded === false && (
+                    <>
+                      <h3 className="product-heading">Quantity:</h3>
+                      <div className="">
+                        <input
+                          type="number"
+                          name="quantity"
+                          min={1}
+                          max={10}
+                          className="form-control"
+                          style={{ width: "70px" }}
+                          id="quantity"
+                          onChange={(e) => setQuantity(e.target.value)}
+                          value={quantity}
+                        />
+                      </div>
+                    </>
+                  )}
+
                   <div className="d-flex align-items-center  gap-30 ms-5">
                     <button
                       className="button border-0"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
+                      // data-bs-toggle="modal"
+                      // data-bs-target="#staticBackdrop"
                       type="button"
+                      onClick={() => {
+                        uploadCart();
+                      }}
                     >
                       Add to Cart
                     </button>
@@ -222,7 +269,7 @@ const SingleProduct = () => {
         </div>
       </Container>
 
-      <Container className="description-wrapper py-5 home-wrapper-2">
+      <Container class1="description-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h4>Description</h4>

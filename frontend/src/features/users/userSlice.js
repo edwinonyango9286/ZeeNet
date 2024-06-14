@@ -34,6 +34,27 @@ export const getUserProductWishlist = createAsyncThunk(
     }
   }
 );
+export const addProductToCart = createAsyncThunk(
+  "user/add-cart",
+  async (cartData, thunkAPI) => {
+    try {
+      return await authService.addToCart(cartData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const getUserCart = createAsyncThunk(
+  "user/get-cart",
+  async (thunkAPI) => {
+    try {
+      return await authService.getCart();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const getCustomerFromLocalStorge = localStorage.getItem("customer")
   ? JSON.parse(localStorage.getItem("customer"))
@@ -106,6 +127,39 @@ export const authSlice = createSlice({
         state.wishlistProducts = action.payload;
       })
       .addCase(getUserProductWishlist.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.error;
+      })
+      .addCase(addProductToCart.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addProductToCart.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.userCart = action.payload;
+        if (state.isSuccess === true) {
+          toast.success("Product Added to Cart");
+        }
+      })
+      .addCase(addProductToCart.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.error;
+      })
+      .addCase(getUserCart.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserCart.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.cart = action.payload;
+      })
+      .addCase(getUserCart.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;

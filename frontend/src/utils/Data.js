@@ -1,14 +1,14 @@
-import service1 from "../images/service.png";
-import service2 from "../images/service-02.png";
-import service3 from "../images/service-03.png";
-import service4 from "../images/service-04.png";
-import service5 from "../images/service-05.png";
+import service1 from "../images/free delivery.jpg";
+import service2 from "../images/daily offers.jpg";
+import service3 from "../images/24h support.jpg";
+import service4 from "../images/affordable prices.png";
+import service5 from "../images/secure payment.jpg";
 
 
 const services = [
   {
     title: "Free Delivery",
-    tagline: "For Orders Above 1000/-",
+    tagline: "For all our customers",
     image: service1,
   },
   {

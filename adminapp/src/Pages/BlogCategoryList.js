@@ -72,8 +72,9 @@ const BlogCategoryList = () => {
     setOpen(false);
     setTimeout(() => {
       dispatch(getBlogCategory());
-    }, 100);
+    }, 500);
   };
+  
 
   return (
     <>

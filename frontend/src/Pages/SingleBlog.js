@@ -39,7 +39,7 @@ const SingleBlog = () => {
               <img
                 src={blogState?.images[0]?.url ? blogState?.images[0]?.url: blogImage }
                 alt="blog image"
-                className="img-fluid w-100 my-4 "
+                className="img-fluid w-100 my-4  rounded "
               />
               <p
                 dangerouslySetInnerHTML={{ __html: blogState?.description }}

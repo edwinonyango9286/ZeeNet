@@ -8,8 +8,8 @@ import CustomInput from "../Components/CustomInput";
 const ForgotPassword = ()=>{
     return(
         <>
-        <Meta title={"forgot-password"}/>
-        <BreadCrump title="forgot-passsword"/>
+        <Meta title={"Forgot-Password"}/>
+        <BreadCrump title="Forgot-Passsword"/>
         <Container class1="forgot-passwrod-wrapper home-wrapper-2">
             <div className="row">
                 <div className="col-12">

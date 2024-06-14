@@ -56,7 +56,7 @@ const AddBlog = () => {
   }, [getBlogId]);
   useEffect(() => {
     dispatch(resetState);
-    dispatch(getBlogCategory);
+    dispatch(getBlogCategory());
   },[]);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const AddBlog = () => {
         formik.resetForm();
         setTimeout(() => {
           dispatch(resetState());
-        }, 300);
+        }, 500);
       }
     },
   });
@@ -112,7 +112,7 @@ const AddBlog = () => {
     <>
       <d iv>
         <h5 className="mb-4 title">
-          {getBlogId !== undefined ? "Edit" : "Add"} Blog
+          {getBlogId !== undefined ? "Update" : "Add"} Blog
         </h5>
         <div className="">
           <form
@@ -170,7 +170,7 @@ const AddBlog = () => {
                     <div {...getRootProps()}>
                       <input {...getInputProps()} />
                       <p>
-                        Drag 'n' drop some files here, or click to select files
+                        Drag and Drop some files here, or Click to select files
                       </p>
                     </div>
                   </section>
@@ -203,7 +203,7 @@ const AddBlog = () => {
               type="submit"
               className="btn btn-success border-0 rounded-3 mt-3 my-2"
             >
-              {getBlogId !== undefined ? "Edit" : "Add"} Blog
+              {getBlogId !== undefined ? "Update" : "Add"} Blog
             </button>
           </form>
         </div>

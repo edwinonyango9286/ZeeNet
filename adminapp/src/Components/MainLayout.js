@@ -241,14 +241,14 @@ const MainLayout = () => {
         >
           <ToastContainer
             position="top-center"
-            autoClose={250}
-            hideProgressBar={false}
+            autoClose={1000}
+            hideProgressBar={true}
             newestOnTop={true}
             closeOnClick
             rtl={false}
             pauseOnFocusLoss
             draggable
-            theme="light"
+            theme="dark"
           />
           <Outlet />
         </Content>

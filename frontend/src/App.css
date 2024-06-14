@@ -19,7 +19,7 @@
   --color-eaeaea: #eaeaea;
 }
 
-.error{
+.error {
   color: red;
   font-size: 12px;
 }
@@ -40,12 +40,11 @@ body a {
   padding: 15px;
 }
 
-.form-control:focus {
-  box-shadow: none;
-  border-color: inherit;
-}
 .link {
   text-decoration: none;
+}
+.gap-2 {
+  gap: 2px;
 }
 .gap-5 {
   gap: 5px;
@@ -59,11 +58,19 @@ body a {
 .gap-30 {
   gap: 30px;
 }
+.gap-50 {
+  gap: 50px;
+}
+.badge {
+  width: 20px;
+  height: 20px;
+}
+
 .button {
   background-color: var(--color-232f3e);
   color: white;
-  font-size: 14px;
-  padding: 10px 30px;
+  font-size: 12px;
+  padding: 8px 30px;
   border-radius: 25px;
 }
 .button:hover {
@@ -72,15 +79,26 @@ body a {
 }
 
 /* Header part styling starts here*/
-.header-top-strip {
+
+.header-top {
   border-bottom: 1px solid var(--color-3b4149);
   background-color: var(--color-131921);
 }
-.header-top-strip p {
-  font-size: 14px;
+.header-info {
+  font-size: 12px;
 }
+
 .header-upper {
   background-color: var(--color-131921);
+}
+
+.form-control {
+  height: 38px;
+}
+
+.form-control:focus {
+  border: none;
+  box-shadow: none;
 }
 .header-bottom {
   background-color: #232f3e;
@@ -89,22 +107,24 @@ body a {
   background-color: #febd69;
 }
 .header-upper .header-upper-links img {
-  width: 35px;
-  height: 35px;
+  width: 24px;
+  height: 24px;
 }
-.header-upper .header-upper-links h6 {
+.header-upper .header-upper-links p {
   font-size: 12px;
 }
 
 .logo {
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 2px;
 }
 
 .header-bottom .menu-links a,
 .header-bottom .dropdown button {
   color: white;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 14px;
   font-weight: 400;
   letter-spacing: 0.3;
   text-transform: uppercase;
@@ -145,8 +165,18 @@ footer:not(:first-child) {
 footer .input-group-text {
   background-color: var(--color-232f3e);
   color: white;
-  padding: 8px 17px;
+  padding: 8px 16px;
 }
+.footer-text {
+  font-size: 12px;
+  line-height: 2px;
+}
+
+.newsLetter {
+  font-size: 14px;
+  line-height: 2px;
+}
+
 /* Footer Styling Ends Here */
 
 /*Home page Styling*/
@@ -213,6 +243,12 @@ footer .input-group-text {
 
 .small-banner {
   width: 49%;
+}
+
+.advertImages {
+  width: 50px;
+  height: 50px;
+  background: transparent;
 }
 
 /* Homepage Styling Ends  */
@@ -319,7 +355,7 @@ footer .input-group-text {
   width: 100%;
 }
 .product-card .product-image {
-  height: 270px;
+  height: 240px;
 }
 .product-card .product-image img {
   object-fit: contain;
@@ -338,7 +374,8 @@ footer .input-group-text {
   right: 15px;
 }
 .product-card .product-details h6 {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 700;
   color: var(--color-bf4800);
 }
 
@@ -552,7 +589,7 @@ footer .input-group-text {
 .contact-inner-wrapper form .form-control {
   background-color: var(--color-f5f5f7);
   border-color: transparent;
-  padding: 10px;
+  padding: 10 px;
   border-radius: 10px;
 }
 
@@ -570,7 +607,7 @@ footer .input-group-text {
 /* compare products page starts here */
 .compare-product-card {
   padding: 10px 10px;
-  background-color:white;
+  background-color: white;
   border-radius: 10px;
 }
 .compare-product-card .cross,
@@ -608,15 +645,15 @@ footer .input-group-text {
 /* styling for the auth card starts here*/
 
 .auth-card {
-  padding: 20px;
+  padding: 10px;
   background-color: white;
-  width: 500px;
-  margin: 30px auto;
+  margin: 10px auto;
+  width: 400px;
   border-radius: 10px;
 }
 .auth-card h3 {
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--color-777777);
 }
 .auth-card p {
@@ -625,10 +662,10 @@ footer .input-group-text {
 }
 
 .auth-card .form-control {
-  height: 50px;
+  height: 40px;
   background-color: var(--color-f5f5f7);
   color: var(--color-777777);
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 10px;
   border-color: transparent;
 }

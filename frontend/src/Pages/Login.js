@@ -29,17 +29,17 @@ const Login = () => {
 
   return (
     <>
-      <Meta title={"login"} />
-      <BreadCrump title="login" />
-      <Container class1="login-wrapper home-wrapper-2">
+      <Meta title={"Login"} />
+      <BreadCrump title="Login" />
+      <Container class1="home-wrapper-2">
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 d-flex items-center ">
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
               <form
                 action=""
                 onSubmit={formik.handleSubmit}
-                className="d-flex flex-column gap-15"
+                className="d-flex flex-column gap-10"
               >
                 <CustomInput
                   type="email"
@@ -68,7 +68,7 @@ const Login = () => {
                 <div>
                   <Link to="/forgot-password">Forgot Your Password?</Link>
                 </div>
-                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
+                <div className="mt-2 d-flex justify-content-center gap-15 align-items-center">
                   <button className="button border-0 " type="submit">
                     Login
                   </button>

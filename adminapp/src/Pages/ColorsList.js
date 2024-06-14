@@ -72,7 +72,7 @@ const ColorList = () => {
     setOpen(false);
     setTimeout(() => {
       dispatch(getColors());
-    }, 100);
+    }, 500);
   };
 
   return (

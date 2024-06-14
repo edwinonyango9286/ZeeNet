@@ -1,27 +1,33 @@
-const mongoose = require("mongoose"); 
-const {Schema,Types:{ObjectId},} = require("mongoose");
-
+const mongoose = require("mongoose");
+const {
+  Schema,
+  Types: { ObjectId },
+} = require("mongoose");
 
 var cartSchema = new mongoose.Schema(
   {
-    products: [
-      {
-        product: {
-          type: ObjectId,
-          ref: "Product",
-        },
-        count: Number,
-        color: String,
-        price: Number,
-      },
-    ],
-    cartTotal: Number,
-    totalAfterDiscount: Number,
-    orderby: {
+    userId: {
       type: ObjectId,
       ref: "User",
     },
+    productId: {
+      type: ObjectId,
+      ref: "Product",
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    color: {
+      type: ObjectId,
+      ref: "Color",
+    },
   },
+
   {
     timestamps: true,
   }

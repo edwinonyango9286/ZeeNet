@@ -17,12 +17,14 @@ var productSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      trim: true,
     },
     description: {
       type: String,
       required: true,
       minlength: 2,
-      maxlength: 200,
+      maxlength: 2000,
+      trim: true,
     },
     price: {
       type: Number,
@@ -31,10 +33,12 @@ var productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
+      trim: true,
     },
     brand: {
       type: String,
       required: true,
+      trim: true,
     },
     quantity: {
       type: Number,
@@ -46,12 +50,22 @@ var productSchema = new mongoose.Schema(
     },
     images: [
       {
-         public_id: String,
+        public_id: String,
         url: String,
       },
     ],
-    color: [],
-    tags: String,
+    color: [
+      {
+        type: ObjectId,
+        ref: "Color",
+      },
+    ],
+
+    tags: {
+      type: String,
+      trim: true,
+    },
+    
     ratings: [
       {
         star: Number,
