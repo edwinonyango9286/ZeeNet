@@ -37,7 +37,7 @@ const MainLayout = () => {
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">
-          <h2 className="text-center text-white mb-0 py-3 fs-4">
+          <h2 className="text-center items-center text-white mb-0 fs-4 py-3">
             <span className="sm-logo">ZN</span>
             <span className="lg-logo">ZeeNet</span>
           </h2>
@@ -241,7 +241,7 @@ const MainLayout = () => {
         >
           <ToastContainer
             position="top-center"
-            autoClose={1000}
+            autoClose={5000}
             hideProgressBar={true}
             newestOnTop={true}
             closeOnClick

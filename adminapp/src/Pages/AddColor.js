@@ -34,14 +34,14 @@ const AddColor = () => {
 
   useEffect(() => {
     if (isSuccess && createdColor) {
-      toast.success("Color Added Successfully!!");
+      toast.success("Color added successfully.");
     }
     if (isSuccess && updatedColor) {
-      toast.success("Color Updated Successfully!!");
+      toast.success("Color updated successfully.");
       navigate("/admin/color-list")
     }
     if (isError) {
-      toast.error("Something went Wrong Please Try Again!!");
+      toast.error("Something went wrong. Please try again.");
     }
   }, [isSuccess, isError, isLoading]);
 

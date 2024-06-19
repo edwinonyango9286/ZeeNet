@@ -61,14 +61,14 @@ const AddBlog = () => {
 
   useEffect(() => {
     if (isSuccess && createdBlog) {
-      toast.success("Blog Added Successfully!!");
+      toast.success("Blog added successfully.");
     }
     if (isSuccess && updatedBlog) {
-      toast.success("Blog Updated Successfully!!");
+      toast.success("Blog updated successfully.");
       navigate("/admin/blog-list");
     }
     if (isError && blogName && blogDescription && blogCategory && blogImages) {
-      toast.error("Something went Wrong Please Try Again!!");
+      toast.error("Something went wrong. Please try again.");
     }
   }, [isSuccess, isError, isLoading]);
 
@@ -82,7 +82,8 @@ const AddBlog = () => {
 
   useEffect(() => {
     formik.values.images = img;
-  }, [blogImages]);
+  }, [img]);
+  
 
   const formik = useFormik({
     enableReinitialize: true,

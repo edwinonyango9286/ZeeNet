@@ -8,13 +8,20 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../features/users/userSlice";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string().email("Enter a valid email.").required("Enter your email address."),
+  email: Yup.string()
+    .email("Enter a valid email.")
+    .required("Enter your email address."),
   password: Yup.string().required("Enter your password"),
 });
 
 const Login = () => {
+  const authState = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -23,9 +30,18 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
-      dispatch(loginUser(values))
+      dispatch(loginUser(values));
+      if (authState.isSuccess) {
+        navigate("/");
+      }
     },
   });
+  
+  useEffect(() => {
+    if (authState.user !== null && authState.isError === false) {
+      navigate("/");
+    }
+  }, [authState]);
 
   return (
     <>

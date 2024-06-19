@@ -75,7 +75,7 @@ const CategoryList = () => {
   return (
     <>
       <div>
-        <h5 className="mb-4 title"> Product Categories</h5>
+        <h5 className="mb-2 title"> Product Categories</h5>
         <div>{<Table columns={columns} dataSource={data1} />}</div>
         <CustomModal
           open={open}

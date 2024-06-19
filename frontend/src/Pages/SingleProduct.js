@@ -8,7 +8,7 @@ import Colors from "../Components/Colors";
 import { VscGitCompare } from "react-icons/vsc";
 import { AiOutlineHeart } from "react-icons/ai";
 import Container from "../Components/Container";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAproduct } from "../features/products/productSlice";
 import { toast } from "react-toastify";
@@ -20,6 +20,7 @@ const SingleProduct = () => {
   const [alreadyAdded, setAlreadyAdded] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const getProductId = location.pathname.split("/")[2];
   const productState = useSelector((state) => state.product.singleProduct);
   const cartState = useSelector((state) => state.auth.cartProducts);
@@ -37,9 +38,10 @@ const SingleProduct = () => {
     }
   }, []);
 
+
   const uploadCart = () => {
     if (color === null) {
-      toast.error("Choose Product Color");
+      toast.error("Choose product color.");
       return false;
     } else {
       dispatch(
@@ -50,6 +52,7 @@ const SingleProduct = () => {
           price: productState?.price,
         })
       );
+      navigate("/cart");
     }
   };
 
@@ -75,7 +78,7 @@ const SingleProduct = () => {
     <>
       <Meta title={productState?.title} />
       <BreadCrumb title={productState?.title} />
-      <Container class1="main-product-wrapper py-5 home-wrapper-2">
+      <Container class1="main-product-wrapper py-2 home-wrapper-2">
         <div className="row">
           <div className="col-6">
             <div className="main-product-image">
@@ -212,24 +215,30 @@ const SingleProduct = () => {
                     </>
                   )}
 
-                  <div className="d-flex align-items-center  gap-30 ms-5">
+                  <div
+                    className={
+                      alreadyAdded
+                        ? "ms-0"
+                        : "ms-5" + "d-flex align-items-center justify-content-between  gap-30 ms-5"
+                    }
+                  >
                     <button
                       className="button border-0"
                       // data-bs-toggle="modal"
                       // data-bs-target="#staticBackdrop"
                       type="button"
                       onClick={() => {
-                        uploadCart();
+                        alreadyAdded ? navigate("/cart") : uploadCart();
                       }}
                     >
-                      Add to Cart
+                      {alreadyAdded ? "Proceed To Cart" : "Add to Cart"}
                     </button>
                     <div>
                       <button className="button signup">Buy It Now</button>
                     </div>
                   </div>
                 </div>
-                <div className=" d-flex  align-items-center gap-15">
+                <div className="d-flex  align-items-center gap-15">
                   <div>
                     <a href="">
                       <VscGitCompare className="fs-5 me-2" />
@@ -269,7 +278,7 @@ const SingleProduct = () => {
         </div>
       </Container>
 
-      <Container class1="description-wrapper py-5 home-wrapper-2">
+      <Container class1="description-wrapper py-2 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h4>Description</h4>
@@ -360,7 +369,7 @@ const SingleProduct = () => {
         </div>
       </Container>
 
-      <Container class1="popular-wrapper home-wrapper-2">
+      <Container class1="popular-wrapper home-wrapper-2 py-2">
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Our Popular Products </h3>

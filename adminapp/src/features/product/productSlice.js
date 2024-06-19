@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import productService from "./productService";
+import { toast } from "react-toastify";
 
 export const getProducts = createAsyncThunk(
   "product/get-products",
@@ -103,6 +104,9 @@ export const productSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;
+        if (state.isError === true) {
+          toast.error(action.payload.response.data.message);
+        }
       })
       .addCase(deleteAProduct.pending, (state) => {
         state.isLoading = true;

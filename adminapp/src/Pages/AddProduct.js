@@ -40,8 +40,8 @@ const AddProduct = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const getProductId = location.pathname.split("/")[3];
-
   const [color, setColor] = useState([]);
+
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
@@ -119,6 +119,7 @@ const AddProduct = () => {
     });
   });
 
+  
   const img = [];
   imgState.forEach((i) => {
     img.push({
@@ -200,6 +201,7 @@ const AddProduct = () => {
             type="number"
             label="Enter Product price"
             name="price"
+            min={1}
             onChng={formik.handleChange("price")}
             onBlr={formik.handleBlur("price")}
             val={formik.values.price}
@@ -283,6 +285,7 @@ const AddProduct = () => {
             type="number"
             label="Enter Product Quantity"
             name="quantity"
+            min={1}
             onChng={formik.handleChange("quantity")}
             onBlr={formik.handleBlur("quantity")}
             val={formik.values.quantity}

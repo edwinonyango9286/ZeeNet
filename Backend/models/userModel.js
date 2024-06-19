@@ -15,7 +15,6 @@ var userSchema = new mongoose.Schema(
       minlength: 2,
       maxlength: 16,
       trim: true,
-      lowercase: true,
     },
     lastname: {
       type: String,
@@ -23,7 +22,6 @@ var userSchema = new mongoose.Schema(
       minlength: 2,
       maxlength: 16,
       trim: true,
-      lowercase: true,
     },
     email: {
       type: String,

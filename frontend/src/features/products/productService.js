@@ -20,7 +20,9 @@ const addToWishlist = async (prodId) => {
     },
     config
   );
-  return response.data;
+  if (response.data) {
+    return response.data;
+  }
 };
 
 const productService = {

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import blogImage from "../images/blog-1.jpg"
 
 const BlogCard = (props) => {
   const { data } = props;
@@ -13,14 +12,14 @@ const BlogCard = (props) => {
           <div key={index} className="blog-card">
             <div className="card-image">
               <img
-                src={item.images[0]?.url ? item.images[0]?.url : blogImage }
+                src={item.images[0]?.url}
                 alt="Blog Image"
                 className="img-fluid w-100%"
               ></img>
             </div>
             <div className="blog-content">
               <p className="date">
-                {moment(item?.createdAt).format("MMMM DO YY, h:mm a")}
+                {moment(item?.createdAt).format("MMMM D YY, h:mm a")}
               </p>
               <h5 className="title text-uppercase">{item?.title}</h5>
               <p

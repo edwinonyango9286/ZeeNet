@@ -2,18 +2,28 @@ import React, { useEffect } from "react";
 import Meta from "../Components/Meta";
 import BreadCrumb from "../Components/BreadCrumb";
 import watch from "../images/watch.jpg";
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Container from "../Components/Container";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserCart } from "../features/users/userSlice";
+import {
+  deleteAProductFromCart,
+  getUserCart,
+} from "../features/users/userSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const userCartState = useSelector((state) => state.auth.cart);
+  const userCartState = useSelector((state) => state.auth.cartProducts);
   useEffect(() => {
     dispatch(getUserCart());
   }, []);
+
+  const deleteACartProduct = (id) => {
+    dispatch(deleteAProductFromCart(id));
+    setTimeout(() => {
+      dispatch(getUserCart());
+    }, 500);
+  };
   return (
     <>
       <Meta title={"Cart"} />
@@ -63,27 +73,33 @@ const Cart = () => {
                         <input
                           className="form-control"
                           type="number"
-                          name=""
-                          id=""
+                          name="quantity"
+                          id="quantity"
                           min={1}
                           max={10}
                           value={item?.quantity}
                         />
                       </div>
                       <div>
-                        <AiOutlineDelete className="text-danger fs-3" />
+                        <button
+                          className="ms-3 fs-3 text-danger bg-transparent border-0"
+                          onClick={() => {
+                            deleteACartProduct(item?._id);
+                          }}
+                        >
+                          <AiFillDelete />
+                        </button>
                       </div>
                     </div>
                     <div className="cart-col-4">
-                      <h5 className="price">Ksh {item?.price * item?.quantity}</h5>
+                      <h5 className="price">
+                        Ksh {item?.price * item?.quantity}
+                      </h5>
                     </div>
                   </div>
                 );
               })}
-
-              
           </div>
-          
 
           <div className="col-12 py-2 mt-4">
             <div className="d-flext justify-content-between align-items-baseline">

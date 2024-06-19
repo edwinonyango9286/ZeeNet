@@ -42,14 +42,14 @@ const AddBlogCategory = () => {
 
   useEffect(() => {
     if (isSuccess && createdBlogCategory) {
-      toast.success("Blog Category Added Successfully!!");
+      toast.success("Blog category added successfully.");
     }
     if (isSuccess && updatedBlogCat) {
-      toast.success("Blog Category updated Successfully!!");
+      toast.success("Blog category updated successfully.");
       navigate("/admin/blog-category-list");
     }
     if (isError) {
-      toast.error("Something went Wrong Please Try Again!!");
+      toast.error("Something went wrong. Please try again.");
     }
   }, [isSuccess, isError, isLoading]);
 

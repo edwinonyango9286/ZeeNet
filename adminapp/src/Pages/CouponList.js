@@ -47,7 +47,6 @@ const CouponList = () => {
   useEffect(() => {
     dispatch(resetState())
     dispatch(getCoupons());
-
   }, []);
 
   const couponState = useSelector((state) => state.coupon.coupons);
@@ -88,7 +87,7 @@ const CouponList = () => {
   return (
     <>
       <div>
-        <h5 className="mb-4 title">Coupon List</h5>
+        <h5 className="mb-2 title">Coupon List</h5>
         <div>{<Table columns={columns} dataSource={data1} />}</div>
         <CustomModal
           open={open}

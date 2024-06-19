@@ -1,4 +1,4 @@
-const getTokenFromLocalStorge = localStorage.getItem("user")
+const getTokenFromLocalStorge = localStorage.getItem("customer")
   ? JSON.parse(localStorage.getItem("customer"))
   : null;
 

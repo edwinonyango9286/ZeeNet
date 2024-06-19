@@ -1,24 +1,29 @@
 import React from "react";
 import Meta from "../Components/Meta";
 import BreadCrump from "../Components/BreadCrumb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../Components/Container";
 import CustomInput from "../Components/CustomInput";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../features/users/userSlice";
+import { useEffect } from "react";
 
 const signUpschema = Yup.object().shape({
   firstname: Yup.string().required("Enter your first name."),
   lastname: Yup.string().required("Enter your Last name is."),
-  email: Yup.string().email("Enter a valid email.").required("Enter your email address."),
+  email: Yup.string()
+    .email("Enter a valid email.")
+    .required("Enter your email address."),
   mobile: Yup.string().required("Enter your mobile number"),
   password: Yup.string().required("Enter your password."),
 });
 
-const Signup = () => { 
+const Signup = () => {
+  const authState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -32,6 +37,12 @@ const Signup = () => {
       dispatch(registerUser(values));
     },
   });
+
+  useEffect(() => {
+    if (authState.createdUser !== null && authState.isError === false) {
+      navigate("/login");
+    }
+  }, [authState]);
 
   return (
     <>

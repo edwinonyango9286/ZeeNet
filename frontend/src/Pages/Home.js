@@ -279,7 +279,7 @@ const Home = () => {
                 return (
                   <div
                     key={index}
-                    className={"col-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2  "}
+                    className={"col-6 col-md-4 col-lg-4 col-xl-3 col-xxl-3  "}
                   >
                     <div className="product-card position-relative">
                       <div className="wishlist-icon position-absolute">
@@ -411,7 +411,9 @@ const Home = () => {
             <h3 className="section-heading">Special Products</h3>
           </div>
         </div>
+
         <div className="row">
+
           {productState &&
             productState?.map((item, index) => {
               if (item.tags === "special") {
@@ -440,12 +442,12 @@ const Home = () => {
           </div>
         </div>
         <div className="">
-          <div className="col-6 ">
+          <div className="col-12">
             {productState &&
               productState?.map((item, index) => {
                 if (item?.tags === "popular") {
                   return (
-                    <div key={index} className={"col-3"}>
+                    <div key={index} className={"col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"}>
                       <div className="product-card position-relative">
                         <div className="wishlist-icon position-absolute">
                           <button
@@ -550,12 +552,13 @@ const Home = () => {
         </div>
       </Container>
 
-      <Container class1="blog-wrapper  home-wrapper-2">
+      <Container class1="home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Our Latest Blogs</h3>
           </div>
-          <div className="col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3  d-flex justify-content-center align-items-center  gap-15 pb-2">
+
+          <div className="d-flex justify-content-between align-items-between gap-10 pb-2">
             <BlogCard data={blogState ? blogState : []} />
           </div>
         </div>

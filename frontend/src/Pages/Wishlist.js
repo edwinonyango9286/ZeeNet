@@ -33,7 +33,7 @@ const Wishlist = () => {
         <div className="row">
           { wishlistState  && wishlistState.length === 0 && (
             <div className="text-center fs-3">
-              No products in your wishlist{" "}
+              No products in your wishlist
             </div>
           )}
           { wishlistState && wishlistState?.map((item, index) => {

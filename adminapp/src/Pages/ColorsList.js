@@ -78,7 +78,7 @@ const ColorList = () => {
   return (
     <>
       <div>
-        <h5 className="mb-4 title">Colors</h5>
+        <h5 className="mb-2 title">Colors</h5>
         <div>
           <Table columns={columns} dataSource={data1} />
         </div>

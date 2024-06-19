@@ -21,6 +21,9 @@ import TermsandConditions from "./Pages/TermsandConditions";
 import SingleProduct from "./Pages/SingleProduct";
 import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
+import { PrivateRoutes } from "./routing/PrivateRoutes";
+import { OpenRoutes } from "./routing/OpenRoutes";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -36,12 +39,56 @@ function App() {
             <Route path="blogs/singleblog/:id" element={<SingleBlog />} />
             <Route path="contact" element={<Contact />} />
             <Route path="compare-products" element={<CompareProducts />} />
-            <Route path="wishlist" element={<Wishlist />} />
-            <Route path="login" element={<Login />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="checkout" element={<Checkout />} />
+            <Route
+              path="my-profile"
+              element={
+                <PrivateRoutes>
+                  <Profile />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="wishlist"
+              element={
+                <PrivateRoutes>
+                  <Wishlist />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <OpenRoutes>
+                  <Login />
+                </OpenRoutes>
+              }
+            />
+            <Route
+              path="cart"
+              element={
+                <PrivateRoutes>
+                  <Cart />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="checkout"
+              element={
+                <PrivateRoutes>
+                  <Checkout />
+                </PrivateRoutes>
+              }
+            />
             <Route path="forgot-password" element={<ForgotPassword />} />
-            <Route path="signup" element={<Signup />} />
+
+            <Route
+              path="signup"
+              element={
+                <OpenRoutes>
+                  <Signup />
+                </OpenRoutes>
+              }
+            />
             <Route path="reset-password" element={<ResetPassword />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />

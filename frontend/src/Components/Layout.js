@@ -13,14 +13,14 @@ const Layout = () => {
       <Footer></Footer>
       <ToastContainer
         position="top-center"
-        autoClose={250}
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={true}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
-        theme="light"
+        theme="dark"
       />
     </>
   );

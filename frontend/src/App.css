@@ -298,7 +298,7 @@ footer .input-group-text {
 .blog-card {
   background-color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
 }
 .blog-card img {
   border-top-left-radius: 10px;
@@ -309,8 +309,8 @@ footer .input-group-text {
 }
 
 .blog-content p.date {
-  font-size: 13px;
-  line-height: 24px;
+  font-size: 12px;
+  line-height: 20px;
   text-transform: uppercase;
   letter-spacing: 0;
   font-weight: 400;
@@ -322,11 +322,11 @@ footer .input-group-text {
   color: var(--color-131921);
 }
 .blog-content p.desc {
-  font-size: 13px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 20px;
   color: var(--color-777777);
 }
-/* Blogcart styling ends here */
+/* Blogcard styling ends here */
 
 /* single blog card styling starts here */
 .single-blog-card h3 {

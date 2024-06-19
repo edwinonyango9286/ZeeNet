@@ -31,7 +31,7 @@ const ProductCard = (props) => {
               <div className="wishlist-icon position-absolute">
                 <button
                   className="border-0 bg-transparent"
-                  onClick={(e) => addProductToWishlist(item?._id)}
+                  onClick={(e) => {addProductToWishlist(item?._id)}}
                 >
                   <img src={wishlistIcon} alt="Wishlist Image" />
                 </button>

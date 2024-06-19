@@ -2,7 +2,6 @@ import axios from "axios";
 import { base_url } from "../../utils/baseUrl";
 import { config } from "../../utils/axiosConfig";
 
-
 const register = async (userData) => {
   const response = await axios.post(`${base_url}user/register`, userData);
   if (response.data) {
@@ -14,6 +13,7 @@ const register = async (userData) => {
 const login = async (userData) => {
   const response = await axios.post(`${base_url}user/login`, userData);
   if (response.data) {
+    localStorage.setItem("customer", JSON.stringify(response.data));
   }
   return response.data;
 };
@@ -25,7 +25,6 @@ const getUserWishlist = async () => {
   return response.data;
 };
 
-
 const addToCart = async (cartData) => {
   const response = await axios.post(`${base_url}user/cart`, cartData, config);
   if (response.data) {
@@ -33,10 +32,16 @@ const addToCart = async (cartData) => {
   return response.data;
 };
 
-
 const getCart = async () => {
-  const response = await axios.get(
-    `${base_url}user/getusercart`,
+  const response = await axios.get(`${base_url}user/getusercart`, config);
+  if (response.data) {
+  }
+  return response.data;
+};
+
+const removeProductFromCart = async (cartItemId) => {
+  const response = await axios.delete(
+    `${base_url}user/remove-from-cart/${cartItemId}`,
     config
   );
   if (response.data) {
@@ -50,6 +55,7 @@ const authService = {
   getUserWishlist,
   addToCart,
   getCart,
+  removeProductFromCart,
 };
 
 export default authService;

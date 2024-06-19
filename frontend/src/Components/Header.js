@@ -6,6 +6,8 @@ import wishlistImage from "../images/wishlist.svg";
 import accountImage from "../images/user.svg";
 import cartImage from "../images/cart.svg";
 import menu from "../images/menu.svg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // Extra small: 100%
 // Small: 540px
@@ -22,6 +24,9 @@ import menu from "../images/menu.svg";
 // xxl (Extra Extra Large): ≥1400px
 
 const Header = () => {
+  const authState = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="header-top container-fluid py-2">
@@ -124,21 +129,33 @@ const Header = () => {
               </div>
               <div>
                 <Link
-                  to="/login"
+                  to={authState?.user === null ? "/login" : "/my-profile"}
                   className="d-flex align-items-center gap-10 text-white"
                 >
                   <img
                     src={accountImage}
                     alt="Account Image"
                     className="img-fluid"
-                  ></img>
-                  <p
-                    className="mb-0 d-none  d-lg-block d-xl-block d-xxl-block"
-                    id="hidden"
-                  >
-                    Log in <br />
-                    My Account
-                  </p>
+                  />
+                  {authState?.user === null ? (
+                    <p
+                      className="mb-0 d-none  d-lg-block d-xl-block d-xxl-block"
+                      id="hidden"
+                    >
+                      Log in
+                      <br />
+                      My Account
+                    </p>
+                  ) : (
+                    <p
+                      className="mb-0 d-none  d-lg-block d-xl-block d-xxl-block"
+                      id="hidden"
+                    >
+                      Welcome
+                      <br />
+                      {authState?.user?.firstname}
+                    </p>
+                  )}
                 </Link>
               </div>
 

@@ -78,7 +78,7 @@ const BrandList = () => {
   return (
     <>
       <div>
-        <h5 className="mb-4 title">Product Brands</h5>
+        <h5 className="mb-2 title">Product Brands</h5>
         <div>{<Table columns={columns} dataSource={data1} />}</div>
         <CustomModal
           open={open}

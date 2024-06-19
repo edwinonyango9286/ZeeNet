@@ -67,14 +67,11 @@ const BlogList = () => {
     });
   }
 
-  const deleteBlog = (e) => {
-    dispatch(deleteABlog(e));
+  const deleteBlog = async (e) => {
+    await dispatch(deleteABlog(e));
     setOpen(false);
-    setTimeout(() => {
-      dispatch(getBlogs());
-    }, 500);
+    dispatch(getBlogs());
   };
-
   return (
     <>
       <div>

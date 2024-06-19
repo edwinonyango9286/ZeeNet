@@ -125,6 +125,8 @@ const AddCoupon = () => {
             type="number"
             label="Enter discount "
             name="discount"
+            min={1}
+            max={100}
             onChng={formik.handleChange("discount")}
             onBlr={formik.handleBlur("discount")}
             val={formik.values.discount}
