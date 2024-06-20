@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Meta from "../Components/Meta";
 import BreadCrumb from "../Components/BreadCrumb";
-import watch from "../images/watch.jpg";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Container from "../Components/Container";
@@ -9,21 +8,39 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteAProductFromCart,
   getUserCart,
+  updatedCartProduct,
 } from "../features/users/userSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const [updatedProductDetails, setUpdatedProductDetails] = useState(null);
+
   const userCartState = useSelector((state) => state.auth.cartProducts);
   useEffect(() => {
     dispatch(getUserCart());
   }, []);
 
-  const deleteACartProduct = (id) => {
-    dispatch(deleteAProductFromCart(id));
-    setTimeout(() => {
-      dispatch(getUserCart());
-    }, 500);
+  useEffect(() => {
+    if (updatedProductDetails !== null) {
+      dispatch(
+        updatedCartProduct({
+          cartItemId: updatedProductDetails?.cartItemId,
+          quantity: updatedProductDetails?.quantity,
+        })
+      );
+      setTimeout(() => {
+        dispatch(getUserCart());
+      }, 200);
+    }
+  }, [updatedProductDetails]);
+
+
+  const deleteACartProduct = async (id) => {
+    await dispatch(deleteAProductFromCart(id));
+    dispatch(getUserCart());
   };
+
+  
   return (
     <>
       <Meta title={"Cart"} />
@@ -37,6 +54,7 @@ const Cart = () => {
               <h4 className="cart-col-3">Quantity</h4>
               <h4 className="crat-col-4">Total</h4>
             </div>
+
             {userCartState &&
               userCartState?.map((item, index) => {
                 return (
@@ -47,7 +65,7 @@ const Cart = () => {
                     <div className="cart-col-1 gap-15 d-flex align-items-center">
                       <div className="w-25">
                         <img
-                          src={watch}
+                          src={item?.productId?.images[0]?.url}
                           className="img-fluid"
                           alt="watch"
                         ></img>
@@ -55,8 +73,9 @@ const Cart = () => {
                       <div className="w-75">
                         <p>{item?.productId.title}</p>
                         <p>Size</p>
-                        <p>
-                          <ul>
+                        <p className="d-flex gap-3">
+                          Color:
+                          <ul className="colors ps-0">
                             <li
                               style={{ backgroundColor: item?.color?.title }}
                             ></li>
@@ -64,7 +83,6 @@ const Cart = () => {
                         </p>
                       </div>
                     </div>
-
                     <div className="cart-col-2">
                       <h5 className="price">Ksh {item?.price}</h5>
                     </div>
@@ -77,7 +95,17 @@ const Cart = () => {
                           id="quantity"
                           min={1}
                           max={10}
-                          value={item?.quantity}
+                          value={
+                            updatedProductDetails?.quantity
+                              ? updatedProductDetails?.quantity
+                              : item?.quantity
+                          }
+                          onChange={(e) => {
+                            setUpdatedProductDetails({
+                              cartItemId: item?._id,
+                              quantity: e.target.value,
+                            });
+                          }}
                         />
                       </div>
                       <div>

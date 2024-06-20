@@ -18,7 +18,7 @@ const Blogs = () => {
     <>
       <Meta title={"Blogs"} />
       <BreadCrumb title="Blogs" />
-      <Container clas1="blog-wrapper  home-wrapper-2 py-5">
+      <Container clas1="blog-wrapper  home-wrapper-2 py-2">
         <div className="row">
           <div className="col-3">
             <div className="filter-card mb-3">

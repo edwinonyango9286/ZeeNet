@@ -19,7 +19,7 @@ const BlogCard = (props) => {
             </div>
             <div className="blog-content">
               <p className="date">
-                {moment(item?.createdAt).format("MMMM D YY, h:mm a")}
+                {moment(item?.createdAt).format("MMMM Do YY, h:mm a")}
               </p>
               <h5 className="title text-uppercase">{item?.title}</h5>
               <p

@@ -17,23 +17,26 @@ const Wishlist = () => {
     dispatch(getUserProductWishlist());
   };
 
-  const wishlistState = useSelector((state) => state.auth?.wishlist?.wishlist);
+  const wishlistState = useSelector(
+    (state) => state.auth?.wishlistProducts?.wishlist
+  );
   const removeFromWishlist = (id) => {
     dispatch(addToWishlist(id));
     setTimeout(() => {
-      dispatch(getUserProductWishlist());
-    }, 300);
+      dispatch(getUserProductWishlist()); 
+    }, 200);
   };
+
 
   return (
     <>
-      <Meta title={"wishlist"} />
-      <BreadCrumb title="wishlist" />
+      <Meta title={"Wishlist"} />
+      <BreadCrumb title="Wishlist" />
       <Container class1="wishlist-wrapper home-wrapper-2 py-5">
         <div className="row">
-          { wishlistState  && wishlistState.length === 0 && (
+          { wishlistState  &&  wishlistState?.length === 0 && (
             <div className="text-center fs-3">
-              No products in your wishlist
+              No products in your wishlist. 
             </div>
           )}
           { wishlistState && wishlistState?.map((item, index) => {
@@ -55,7 +58,8 @@ const Wishlist = () => {
                       }
                       className="img-fluid d-block mx-auto"
                       alt="Product Image"
-                      width={160}
+                      width={140}
+                      height={140}
                     />
                   </div>
                   <div className="py-3 px-3 ">

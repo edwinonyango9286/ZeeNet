@@ -28,7 +28,7 @@ const SingleProduct = () => {
   useEffect(() => {
     dispatch(getAproduct(getProductId));
     dispatch(getUserCart());
-  }, []);
+  }, []); 
 
   useEffect(() => {
     for (let index = 0; index < cartState?.length; index++) {
@@ -38,13 +38,12 @@ const SingleProduct = () => {
     }
   }, []);
 
-
-  const uploadCart = () => {
+  const uploadCart = async () => {
     if (color === null) {
       toast.error("Choose product color.");
       return false;
     } else {
-      dispatch(
+  await  dispatch(
         addProductToCart({
           productId: productState?._id,
           quantity,
@@ -186,7 +185,7 @@ const SingleProduct = () => {
                 {alreadyAdded === false && (
                   <>
                     <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                      <h3 className="product-heading">Color:</h3>
+                      <h3 className="product-heading"> Select product color:</h3>
                       <Colors
                         setColor={setColor}
                         colorData={productState?.color}
@@ -194,8 +193,8 @@ const SingleProduct = () => {
                     </div>
                   </>
                 )}
-
-                <div className="d-flex   align-items-center gap-15  flex-row mt-2 mb-2">
+ 
+                <div className="d-flex align-items-center  gap-15  flex-row mt-2 mb-2">
                   {alreadyAdded === false && (
                     <>
                       <h3 className="product-heading">Quantity:</h3>
@@ -219,7 +218,7 @@ const SingleProduct = () => {
                     className={
                       alreadyAdded
                         ? "ms-0"
-                        : "ms-5" + "d-flex align-items-center justify-content-between  gap-30 ms-5"
+                        : "ms-5" + "d-flex  align-items-center gap-30 ms-5"
                     }
                   >
                     <button
@@ -233,9 +232,8 @@ const SingleProduct = () => {
                     >
                       {alreadyAdded ? "Proceed To Cart" : "Add to Cart"}
                     </button>
-                    <div>
-                      <button className="button signup">Buy It Now</button>
-                    </div>
+
+                    {/* <button className="button signup">Buy It Now</button> */}
                   </div>
                 </div>
                 <div className="d-flex  align-items-center gap-15">
