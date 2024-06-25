@@ -8,7 +8,7 @@ import { getAllBlogs } from "../features/blogs/blogSlice";
 
 const Blogs = () => {
   const dispatch = useDispatch();
-  const blogState = useSelector((state) => state.blog.blogs);
+  const blogState = useSelector((state) => state?.blog?.blogs);
 
   useEffect(() => {
     dispatch(getAllBlogs());

@@ -6,8 +6,10 @@ import wishlistImage from "../images/wishlist.svg";
 import accountImage from "../images/user.svg";
 import cartImage from "../images/cart.svg";
 import menu from "../images/menu.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Typeahead } from "react-bootstrap-typeahead";
+import "react-bootstrap-typeahead/css/Typeahead.css";
 
 // Extra small: 100%
 // Small: 540px
@@ -24,9 +26,13 @@ import { useNavigate } from "react-router-dom";
 // xxl (Extra Extra Large): ≥1400px
 
 const Header = () => {
-  const authState = useSelector((state) => state.auth);
+  const authState = useSelector((state) => state?.auth);
+  const productState = useSelector((state) => state?.product?.products);
+  const [productOpt, setProductOpt] = useState([]);
+  const [paginate, setPaginate] = useState(true);
+  const dispatach = useDispatch();
   const navigate = useNavigate();
-  const cartState = useSelector((state) => state.auth.cartProducts);
+  const cartState = useSelector((state) => state?.auth?.cartProducts);
   const [total, setTotal] = useState(null);
 
   useEffect(() => {
@@ -34,10 +40,19 @@ const Header = () => {
     for (let index = 0; index < cartState?.length; index++) {
       sum =
         sum +
-        Number(cartState[index].quantity) * Number(cartState[index].price);
+        Number(cartState[index]?.quantity) * Number(cartState[index]?.price);
       setTotal(sum);
     }
   }, [cartState]);
+
+  useEffect(() => {
+    let data = [];
+    for (let index = 0; index < productState.length; index++) {
+      const element = productState[index];
+      data.push({ id: index, prod: element?._id, name: element?.title });
+    }
+    setProductOpt(data);
+  }, [productState]);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -90,12 +105,17 @@ const Header = () => {
 
           <div className="d-none d-md-block d-lg-block  col-md-5 col-lg-5 col-xxl-5">
             <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search product here..."
-                aria-label="Search Product Here..."
-                aria-describedby="basic-addon2"
+              <Typeahead
+                id=""
+                onPaginate={() => console.log("result paginated")}
+                onChange={(selected) => {
+                  navigate(`/product/${selected[0]?.prod}`);
+                }}
+                minLength={2}
+                options={productOpt}
+                paginate={paginate}
+                labelKey={"name"}
+                placeholder="Search product here...?"
               />
               <span className="input-group-text p-2" id="basic-addon2">
                 <BsSearch className="fs-6"></BsSearch>
@@ -271,7 +291,6 @@ const Header = () => {
                 </div>
               </div>
 
-
               <div className="menu-links col-6">
                 <div className="d-flex align-items-center justify-content-between gap-10">
                   <NavLink to="/">home</NavLink>
@@ -283,7 +302,7 @@ const Header = () => {
                     type="button"
                     onClick={handleLogout}
                     className=" border-0  bg-transparent text-white text-uppercase"
-                    style={{ fontSize:"14px" ,fontWeight:"400"}}
+                    style={{ fontSize: "14px", fontWeight: "400" }}
                   >
                     Logout
                   </button>

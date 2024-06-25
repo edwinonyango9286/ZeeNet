@@ -22,13 +22,15 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getProductId = location.pathname.split("/")[2];
-  const productState = useSelector((state) => state.product.singleProduct);
-  const cartState = useSelector((state) => state.auth.cartProducts);
+  const productState = useSelector((state) => state?.product?.singleProduct);
+  const cartState = useSelector((state) => state?.auth?.cartProducts);
+  const productsState = useSelector((state) => state?.product?.products);
+  const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
     dispatch(getAproduct(getProductId));
     dispatch(getUserCart());
-  }, []); 
+  }, []);
 
   useEffect(() => {
     for (let index = 0; index < cartState?.length; index++) {
@@ -43,7 +45,7 @@ const SingleProduct = () => {
       toast.error("Choose product color.");
       return false;
     } else {
-  await  dispatch(
+      await dispatch(
         addProductToCart({
           productId: productState?._id,
           quantity,
@@ -73,6 +75,19 @@ const SingleProduct = () => {
     document.execCommand("copy");
     textField.remove();
   };
+
+  useEffect(() => {
+    let data = [];
+    for (let index = 0; index < productsState.length; index++) {
+      const element = productsState[index];
+      if (element.tags === "popular") {
+        data.push(element);
+      }
+      setPopularProducts(data);
+    }
+  }, [productsState]);
+  console.log(popularProducts);
+
   return (
     <>
       <Meta title={productState?.title} />
@@ -185,7 +200,7 @@ const SingleProduct = () => {
                 {alreadyAdded === false && (
                   <>
                     <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                      <h3 className="product-heading"> Select product color:</h3>
+                      <h3 className="product-heading">Select product color:</h3>
                       <Colors
                         setColor={setColor}
                         colorData={productState?.color}
@@ -193,7 +208,7 @@ const SingleProduct = () => {
                     </div>
                   </>
                 )}
- 
+
                 <div className="d-flex align-items-center  gap-15  flex-row mt-2 mb-2">
                   {alreadyAdded === false && (
                     <>
@@ -370,14 +385,13 @@ const SingleProduct = () => {
       <Container class1="popular-wrapper home-wrapper-2 py-2">
         <div className="row">
           <div className="col-12">
-            <h3 className="section-heading">Our Popular Products </h3>
+            <h6 className="section-heading">Our Popular Products </h6>
           </div>
         </div>
         <div className="row">
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
+          <div className="col-12">
+            <ProductCard data={popularProducts} />
+          </div>
         </div>
       </Container>
     </>

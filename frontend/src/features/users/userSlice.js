@@ -78,8 +78,6 @@ export const updatedCartProduct = createAsyncThunk(
   }
 );
 
-
-
 export const updateProfile = createAsyncThunk(
   "user/update-user-profile",
   async (userData, thunkAPI) => {
@@ -101,12 +99,20 @@ export const resetPasswordToken = createAsyncThunk(
   }
 );
 
-
+export const resetPassword = createAsyncThunk(
+  "user/reset-password",
+  async (data, thunkAPI) => {
+    try {
+      return await authService.resetUserPassword(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const getCustomerFromLocalStorge = localStorage.getItem("customer")
   ? JSON.parse(localStorage.getItem("customer"))
   : null;
-
 
 const initialState = {
   user: getCustomerFromLocalStorge,
@@ -286,7 +292,7 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.token = action.payload;
         if (state.isSuccess) {
-          toast.success("A reset password token has been sent to your email.");
+          toast.success("A password reset token has been sent to your email.");
         }
       })
 
@@ -298,9 +304,30 @@ export const authSlice = createSlice({
         if (state.isSuccess === false) {
           toast.error(action.payload.response.data.message);
         }
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.newPassword = action.payload;
+        if (state.isSuccess) {
+          toast.success("Your password has been updated.");
+        }
+      })
+
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.error;
+        if (state.isSuccess === false) {
+          toast.error(action.payload.response.data.message);
+        }
       });
   },
 });
-
 
 export default authSlice.reducer;

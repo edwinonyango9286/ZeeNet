@@ -29,10 +29,10 @@ body a {
 }
 
 .section-heading {
-  font-size: 26px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 30px;
   font-weight: 500;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .card-wrapper {
   border-color: white;

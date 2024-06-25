@@ -16,7 +16,7 @@ const Cart = () => {
   const [updatedProductDetails, setUpdatedProductDetails] = useState(null);
   const [totalAmount, setTotalAmount] = useState(null);
 
-  const userCartState = useSelector((state) => state.auth.cartProducts);
+  const userCartState = useSelector((state) => state?.auth?.cartProducts);
   useEffect(() => {
     dispatch(getUserCart());
   }, []);

@@ -20,7 +20,7 @@ const loginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const authState = useSelector((state) => state.auth);
+  const authState = useSelector((state) => state?.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const formik = useFormik({

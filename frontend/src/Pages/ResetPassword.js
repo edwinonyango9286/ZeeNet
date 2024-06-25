@@ -4,38 +4,46 @@ import Meta from "../Components/Meta";
 import BreadCrump from "../Components/BreadCrumb";
 import Container from "../Components/Container";
 import CustomInput from "../Components/CustomInput";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { resetPassword } from "../features/users/userSlice";
 
 const resetPasswordSchema = Yup.object().shape({
-  password: Yup.string().required("Enter a new  password."),
-  confirmpassword: Yup.string().required("Confirm your password."),
+  password: Yup.string().required("Enter a new password."),
 });
 
 const ResetPassword = () => {
   const location = useLocation();
   const getToken = location.pathname.split("/")[2];
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
       password: "",
-      confirmpassword: "",
     },
     validationSchema: resetPasswordSchema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      dispatch(resetPassword({ token: getToken, password: values.password }));
+      navigate("/login")
+    },
   });
 
   return (
     <>
       <Meta title={"reset-password"} />
       <BreadCrump title="reset-password" />
-      <Container class1="reset-password-wrapper py-5 home-wrapper-2">
+      <Container class1="reset-password-wrapper py-2 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <div className="auth-card">
               <h3 className="text-center mb-3">Reset Password</h3>
-              <form action="" className="d-flex flex-column gap-15">
+              <form
+                onSubmit={formik.handleSubmit}
+                className="d-flex flex-column gap-15"
+              >
                 <div>
                   <CustomInput
                     type="password"
@@ -49,24 +57,11 @@ const ResetPassword = () => {
                     {formik.touched.password && formik.errors.password}
                   </div>
                 </div>
-
                 <div>
-                  <CustomInput
-                    type="password"
-                    name="confirmpassword"
-                    placeholder="Confirm Password"
-                    onChange={formik.handleChange("confirmpassword")}
-                    onBlur={formik.handleBlur("confirmpassword")}
-                    value={formik.values.confirmpassword}
-                  />
-                  <div className="error">
-                    {formik.touched.confirmpassword &&
-                      formik.errors.confirmpassword}
-                  </div>
-                </div>
-                <div>
-                  <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <button className="button border-0">Reset Password</button>
+                  <div className="mt-4 d-flex justify-content-center gap-15 align-items-center">
+                    <button className="button border-0" type="submit">
+                      Reset Password
+                    </button>
                   </div>
                 </div>
               </form>
