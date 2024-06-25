@@ -14,6 +14,7 @@ import {
 const Cart = () => {
   const dispatch = useDispatch();
   const [updatedProductDetails, setUpdatedProductDetails] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(null);
 
   const userCartState = useSelector((state) => state.auth.cartProducts);
   useEffect(() => {
@@ -34,13 +35,21 @@ const Cart = () => {
     }
   }, [updatedProductDetails]);
 
-
   const deleteACartProduct = async (id) => {
     await dispatch(deleteAProductFromCart(id));
     dispatch(getUserCart());
   };
 
-  
+  useEffect(() => {
+    let sum = 0;
+    for (let index = 0; index < userCartState?.length; index++) {
+      sum =
+        sum +
+        Number(userCartState[index].quantity) * userCartState[index].price;
+      setTotalAmount(sum);
+    }
+  }, [userCartState]);
+
   return (
     <>
       <Meta title={"Cart"} />
@@ -135,7 +144,7 @@ const Cart = () => {
                 Continue Shopping
               </Link>
               <div className="d-flex flex-column align-items-end">
-                <h5>SubTotal : {0}/-</h5>
+                <h5>SubTotal : Ksh {totalAmount}/-</h5>
                 <p>Taxes and shipping calaculate at checkout</p>
                 <Link to="/checkout" className="button">
                   Checkout

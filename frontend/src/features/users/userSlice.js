@@ -3,7 +3,7 @@ import authService from "./userService";
 import { toast } from "react-toastify";
 
 export const registerUser = createAsyncThunk(
-  "auth/register",
+  "auth/user-register",
   async (userData, thunkAPI) => {
     try {
       return await authService.register(userData);
@@ -14,7 +14,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk(
-  "auth/login",
+  "auth/user-login",
   async (userData, thunkAPI) => {
     try {
       return await authService.login(userData);
@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const getUserProductWishlist = createAsyncThunk(
-  "user/wishlist",
+  "user/get-user-wishlist",
   async (thunkAPI) => {
     try {
       return await authService.getUserWishlist();
@@ -35,7 +35,7 @@ export const getUserProductWishlist = createAsyncThunk(
   }
 );
 export const addProductToCart = createAsyncThunk(
-  "user/add-cart",
+  "user/add-product-to-cart",
   async (cartData, thunkAPI) => {
     try {
       return await authService.addToCart(cartData);
@@ -77,6 +77,30 @@ export const updatedCartProduct = createAsyncThunk(
     }
   }
 );
+
+
+
+export const updateProfile = createAsyncThunk(
+  "user/update-user-profile",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.updateUserProfile(userData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const resetPasswordToken = createAsyncThunk(
+  "user/reset-password-token",
+  async (data, thunkAPI) => {
+    try {
+      return await authService.forgotPasswordToken(data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 
 
 const getCustomerFromLocalStorge = localStorage.getItem("customer")
@@ -230,8 +254,53 @@ export const authSlice = createSlice({
         if (state.isSuccess === false) {
           toast.error("Something went wrong. Please try again.");
         }
+      })
+      .addCase(updateProfile.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateProfile.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.updatedUser = action.payload;
+        if (state.isSuccess) {
+          toast.success("Profile updated.");
+        }
+      })
+
+      .addCase(updateProfile.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.error;
+        if (state.isSuccess === false) {
+          toast.error("Something went wrong. Please try again.");
+        }
+      })
+      .addCase(resetPasswordToken.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(resetPasswordToken.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.token = action.payload;
+        if (state.isSuccess) {
+          toast.success("A reset password token has been sent to your email.");
+        }
+      })
+
+      .addCase(resetPasswordToken.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.message = action.error;
+        if (state.isSuccess === false) {
+          toast.error(action.payload.response.data.message);
+        }
       });
   },
 });
+
 
 export default authSlice.reducer;

@@ -16,7 +16,9 @@ const signUpschema = Yup.object().shape({
   email: Yup.string()
     .email("Enter a valid email.")
     .required("Enter your email address."),
-  mobile: Yup.string().required("Enter your mobile number"),
+  mobile: Yup.string()
+    .matches(/^(\+?254|0)?(7\d{8})$/, "Enter a valid phone number.")
+    .required("Enter your Phone Number."),
   password: Yup.string().required("Enter your password."),
 });
 
@@ -39,7 +41,7 @@ const Signup = () => {
   });
 
   useEffect(() => {
-    if (authState.createdUser !== null && authState.isError === false) {
+    if ( authState.createdUser && authState.createdUser !== null && authState.isError === false) {
       navigate("/login");
     }
   }, [authState]);

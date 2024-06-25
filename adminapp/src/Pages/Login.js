@@ -7,7 +7,7 @@ import {useDispatch,useSelector} from "react-redux";
 import { login } from "../features/auth/authSlice";
 
 
-let schema = Yup.object().shape({
+const Loginschema = Yup.object().shape({
   email:Yup.
   string().
   email("Not a valid email").
@@ -19,12 +19,14 @@ let schema = Yup.object().shape({
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    validationSchema:schema,
+    validationSchema: Loginschema,
     onSubmit: (values) => {
       dispatch(login(values));
     },

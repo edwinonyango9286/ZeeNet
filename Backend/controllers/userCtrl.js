@@ -12,7 +12,6 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../controllers/emailCtrl");
 
-// Check if the user exist is the database using the email from the req.body.email (form input)
 const createUser = asyncHandler(async (req, res) => {
   const email = req.body.email;
   const findUser = await User.findOne({ email: email });
@@ -20,16 +19,17 @@ const createUser = asyncHandler(async (req, res) => {
     const newUser = await User.create(req.body);
     res.json(newUser);
   } else {
-    throw new Error("Email already exists. Login instead.");
+    throw new Error("An account has already been created with this email. Login instead.");
   }
 });
+
 
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const findUser = await User.findOne({ email });
   if (findUser && (await findUser.isPasswordMatched(password))) {
     const refreshToken = await generateRefreshToken(findUser?._id);
-    const updateuser = await User.findByIdAndUpdate(
+    const updateUser = await User.findByIdAndUpdate(
       findUser.id,
       {
         refreshToken: refreshToken,
@@ -61,7 +61,7 @@ const adminLogin = asyncHandler(async (req, res) => {
   if (findAdmin.role !== "admin") throw new Error("Not Authorised");
   if (findAdmin && (await findAdmin.isPasswordMatched(password))) {
     const refreshToken = await generateRefreshToken(findAdmin?._id);
-    const updateuser = await User.findByIdAndUpdate(
+    const updateUser = await User.findByIdAndUpdate(
       findAdmin.id,
       {
         refreshToken: refreshToken,
@@ -84,6 +84,7 @@ const adminLogin = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password.");
   }
 });
+
 const handleRefreshToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
   if (!cookie?.refreshToken) throw new Error("No refresh token in cookies.");
@@ -124,6 +125,8 @@ const logout = asyncHandler(async (req, res) => {
   res.sendStatus(204);
 });
 
+
+
 const updateAUser = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
@@ -147,6 +150,8 @@ const updateAUser = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
 
 const saveUserAddress = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -255,14 +260,17 @@ const updatePassword = asyncHandler(async (req, res) => {
   }
 });
 
+
+
+
 const forgotPasswordToken = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
-  if (!user) throw new Error("User with this email not found.");
+  if (!user) throw new Error("User with this email do not exist.");
   try {
     const token = await user.createPasswordResetToken();
     await user.save();
-    const resetURL = `Hi, Please follow this link to reset Your Password. This link is valid 10 minutes from now. <a href='http://localhost:8000/api/user/reset-password/${token}'>Click Here</>`;
+    const resetURL = `Hi, Please follow this link to reset Your Password. This link is valid 10 minutes from now. <a href='http://localhost:3000/reset-password/${token}'>Click Here</>`;
     const data = {
       to: email,
       text: "Zeenet App Developers",
@@ -275,6 +283,9 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
+
 
 const resetPassword = asyncHandler(async (req, res) => {
   const { password } = req.body;
@@ -291,6 +302,9 @@ const resetPassword = asyncHandler(async (req, res) => {
   await user.save();
   res.json(user);
 });
+
+
+
 
 const getWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -352,7 +366,6 @@ const removeProductFromCart = asyncHandler(async (req, res) => {
 });
 
 
-
 const updateProductQuantityFromCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { cartItemId, newQuantity } = req.params;
@@ -366,13 +379,10 @@ const updateProductQuantityFromCart = asyncHandler(async (req, res) => {
     cartItem.quantity = newQuantity;
     cartItem.save();
     res.json(cartItem);
-  } catch (error) {
+  } catch (error) { 
     throw new Error(error);
   }
 });
-
-
-
 
 
 const emptyCart = asyncHandler(async (req, res) => {
@@ -386,6 +396,8 @@ const emptyCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
 const applyCoupon = asyncHandler(async (req, res) => {
   const { coupon } = req.body;
   const { _id } = req.user;
@@ -410,108 +422,39 @@ const applyCoupon = asyncHandler(async (req, res) => {
   res.json(totalAfterDiscount);
 });
 
+
+
+
+//User creates an order
 const createOrder = asyncHandler(async (req, res) => {
-  const { COD, couponApplied } = req.body;
+  const {
+    shippingInfo,
+    orderedItems,
+    totalPrice,
+    totalPriceAfterDiscount,
+    paymentInfo,
+  } = req.body;
+
   const { _id } = req.user;
   validateMongodbId(_id);
   try {
-    if (!COD) throw new Error("Creating cash order failed. Please try again.");
-    const user = await User.findById(_id);
-    let userCart = await Cart.findOne({ orderby: user._id });
-    let finalAmount = 0;
-    if (couponApplied && userCart.totalAfterDiscount) {
-      finalAmount = userCart.totalAfterDiscount;
-    } else {
-      finalAmount = userCart.cartTotal;
-    }
-    let newOrder = await new Order({
-      products: userCart.products,
-      paymentIntent: {
-        id: uniqid(),
-        method: "COD",
-        amount: finalAmount,
-        status: "Cash on Delivery",
-        created: Date.now(),
-        currency: "ksh",
-      },
-      orderby: user._id,
-      orderStatus: "Cash on Delivery",
-    }).save();
-
-    let update = userCart.products.map((item) => {
-      return {
-        updateOne: {
-          filter: { _id: item.product._id },
-          update: { $inc: { quantity: -item.count, sold: +item.count } },
-        },
-      };
+    const order = await Order.create({
+      shippingInfo,
+      orderedItems,
+      totalPrice,
+      totalPriceAfterDiscount,
+      paymentInfo,
     });
-    const updated = await Product.bulkWrite(update, {});
-    res.json({ message: "success" });
+    res.json({
+      order,
+      success: true,
+    });
   } catch (error) {
     throw new Error(error);
   }
 });
 
-const getOrders = asyncHandler(async (req, res) => {
-  const { _id } = req.user;
-  validateMongodbId(_id);
-  try {
-    const userOrders = await Order.findOne({ orderby: _id });
-    res.json(userOrders);
-  } catch (error) {
-    throw new Error(error);
-  }
-});
 
-const getAllOrders = asyncHandler(async (req, res) => {
-  try {
-    const allUserOrders = await Order.find()
-      .populate("products.product")
-      .populate("orderby")
-      .exec();
-    res.json(allUserOrders);
-  } catch (error) {
-    throw new Error(error);
-  }
-});
-
-const getOrderByUserId = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  validateMongodbId(id);
-  try {
-    const userOrders = await Order.findOne({ orderby: id })
-      .populate("products.product")
-      .populate("orderby")
-      .exec();
-    res.json(userOrders);
-  } catch (error) {
-    throw new Error(error);
-  }
-});
-
-const updateOrderStatus = asyncHandler(async (req, res) => {
-  const { status } = req.body;
-  const { id } = req.params;
-  validateMongodbId(id);
-  try {
-    const updateOrderStatus = await Order.findByIdAndUpdate(
-      id,
-      {
-        orderStatus: status,
-        paymentIntent: {
-          status: status,
-        },
-      },
-      { new: true }
-    );
-    res.json(updateOrderStatus);
-  } catch (error) {
-    throw new Error(error);
-  }
-});
-
-// To look at later
 
 const getMyOrders = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -522,6 +465,9 @@ const getMyOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+
+
 
 module.exports = {
   createUser,
@@ -545,10 +491,6 @@ module.exports = {
   emptyCart,
   applyCoupon,
   createOrder,
-  getOrders,
-  updateOrderStatus,
-  getOrderByUserId,
-  getAllOrders,
   removeProductFromCart,
   updateProductQuantityFromCart,
 };

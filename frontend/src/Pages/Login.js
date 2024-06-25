@@ -53,12 +53,12 @@ const Login = () => {
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
               <form
-                action=""
                 onSubmit={formik.handleSubmit}
                 className="d-flex flex-column gap-10"
               >
                 <CustomInput
                   type="email"
+                  id="email"
                   name="email"
                   placeholder="Email"
                   onChange={formik.handleChange("email")}
@@ -72,6 +72,7 @@ const Login = () => {
                 <CustomInput
                   type="password"
                   name="password"
+                  id="password"
                   placeholder="password"
                   onChange={formik.handleChange("password")}
                   onBlur={formik.handleBlur("password")}

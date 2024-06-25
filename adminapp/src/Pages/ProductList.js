@@ -77,7 +77,7 @@ const ProductList = () => {
       price: `Ksh ${productState[i].price}`,
       action: (
         <>
-          <Link to={`/admin/product/${productState[i]._id}`} className=" fs-3">
+          <Link to={`/admin/product/${productState[i]._id}`} className="fs-3">
             <FiEdit />
           </Link>
 

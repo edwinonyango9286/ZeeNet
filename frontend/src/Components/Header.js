@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import compareImage from "../images/compare.svg";
@@ -26,6 +26,23 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const authState = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const cartState = useSelector((state) => state.auth.cartProducts);
+  const [total, setTotal] = useState(null);
+
+  useEffect(() => {
+    let sum = 0;
+    for (let index = 0; index < cartState?.length; index++) {
+      sum =
+        sum +
+        Number(cartState[index].quantity) * Number(cartState[index].price);
+      setTotal(sum);
+    }
+  }, [cartState]);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <>
@@ -162,19 +179,23 @@ const Header = () => {
               <div>
                 <Link
                   to="/cart"
-                  className="d-flex align-items-center  text-white"
+                  className="d-flex align-items-center justify-content-between text-white gap-10"
                 >
                   <img
                     src={cartImage}
                     alt="Cart Image"
                     className="img-fluid"
+                    style={{
+                      height: "30px",
+                      width: "25px",
+                    }}
                   ></img>
                   <div className="d-flex flex-column">
-                    <span className="badge rounded-circle bg-white text-dark mb-0 mt-0 p-1">
-                      2
+                    <span className="badge  rounded-fill bg-white text-dark p-1">
+                      {cartState?.length ? cartState?.length : 0}
                     </span>
                     <p className="m-0 p-0 cart-total " id="hidden">
-                      500/-
+                      {total ? total : 0}/=
                     </p>
                   </div>
                 </Link>
@@ -187,7 +208,7 @@ const Header = () => {
       <header className="header-bottom  container-fluid">
         <div className="row">
           <div className="col-12">
-            <div className="menu-bottom d-flex align-items-center justify-content-between gap-30 col-6">
+            <div className="menu-bottom d-flex align-items-center justify-content-between gap-10 col-6">
               <div className="col-6">
                 <div className="dropdown">
                   <button
@@ -249,12 +270,23 @@ const Header = () => {
                   </ul>
                 </div>
               </div>
+
+
               <div className="menu-links col-6">
-                <div className="d-flex align-items-center gap-15">
+                <div className="d-flex align-items-center justify-content-between gap-10">
                   <NavLink to="/">home</NavLink>
                   <NavLink to="/store">store</NavLink>
+                  <NavLink to="/myorders">orders</NavLink>
                   <NavLink to="/blogs">blogs</NavLink>
                   <NavLink to="/contact">contact</NavLink>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className=" border-0  bg-transparent text-white text-uppercase"
+                    style={{ fontSize:"14px" ,fontWeight:"400"}}
+                  >
+                    Logout
+                  </button>
                 </div>
               </div>
             </div>

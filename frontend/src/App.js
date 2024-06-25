@@ -24,6 +24,7 @@ import Checkout from "./Pages/Checkout";
 import { PrivateRoutes } from "./routing/PrivateRoutes";
 import { OpenRoutes } from "./routing/OpenRoutes";
 import Profile from "./Pages/Profile";
+import MyOrders from "./Pages/MyOrders";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
                 </OpenRoutes>
               }
             />
+
             <Route
               path="cart"
               element={
@@ -71,6 +73,15 @@ function App() {
                 </PrivateRoutes>
               }
             />
+            <Route
+              path="/myorders"
+              element={
+                <PrivateRoutes>
+                  <MyOrders />
+                </PrivateRoutes>
+              }
+            />
+
             <Route
               path="checkout"
               element={
@@ -89,7 +100,7 @@ function App() {
                 </OpenRoutes>
               }
             />
-            <Route path="reset-password" element={<ResetPassword />} />
+            <Route path="reset-password/:token" element={<ResetPassword />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />

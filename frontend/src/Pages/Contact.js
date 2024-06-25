@@ -12,9 +12,13 @@ import { createEnquiry } from "../features/contact/contactSlice";
 let contactSchema = Yup.object().shape({
   name: Yup.string().required("Enter your name."),
   email: Yup.string().email("Invalid email").required("Enter your email."),
-  mobile: Yup.number().required("Enter your mobile number."),
+  mobile: Yup.string()
+    .matches(/^(\+?254|0)?(7\d{8})$/, "Enter a valid phone number.")
+    .required("Enter your Phone Number."),
   comment: Yup.string().required("Enter an enquiry."),
 });
+
+
 
 const Contact = () => {
   const dispatch = useDispatch();

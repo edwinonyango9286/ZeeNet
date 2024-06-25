@@ -115,7 +115,7 @@ const Home = () => {
                 <div className="small-banner-content position-absolute">
                   <h4>New Arrivals</h4>
                   <h5>Apple iPad</h5>
-                  <p className="d-none d-md-block d-lg-blog d-xl-block d-xxl-block">
+                  <p className="d-none d-md-block d-lg-block d-xl-block d-xxl-block">
                     From Ksh: 56,000 to 120,000
                   </p>
                 </div>
@@ -558,7 +558,7 @@ const Home = () => {
             <h3 className="section-heading">Our Latest Blogs</h3>
           </div>
 
-          <div className="d-flex justify-content-between align-items-between gap-10 pb-2">
+          <div className="d-flex  align-items-center gap-10 pb-2 flex-wrap">
             <BlogCard data={blogState ? blogState : []} />
           </div>
         </div>

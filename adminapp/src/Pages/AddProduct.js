@@ -86,6 +86,8 @@ const AddProduct = () => {
     dispatch(getAColor());
   }, []);
 
+
+  
   useEffect(() => {
     if (isSuccess && createdProduct) {
       toast.success("Product added Successfully!!");
@@ -119,7 +121,6 @@ const AddProduct = () => {
     });
   });
 
-  
   const img = [];
   imgState.forEach((i) => {
     img.push({
@@ -134,6 +135,7 @@ const AddProduct = () => {
   }, [color, img]);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       title: productName || "",
       description: productDescription || "",
@@ -170,14 +172,17 @@ const AddProduct = () => {
   return (
     <>
       <div>
-        <h5 className="mb-4 title"> {getProductId !== undefined ? "Update" : "Add"} Product</h5>
+        <h5 className="mb-4 title">
+          {" "}
+          {getProductId !== undefined ? "Update" : "Add"} Product
+        </h5>
         <form
           onSubmit={formik.handleSubmit}
           className="d-flex gap-3 flex-column"
         >
           <CustomInput
             type="text"
-            label="Enter Product Name"
+            label="Enter product name."
             name="title"
             onChng={formik.handleChange("title")}
             onBlr={formik.handleBlur("title")}
@@ -199,7 +204,7 @@ const AddProduct = () => {
           </div>
           <CustomInput
             type="number"
-            label="Enter Product price"
+            label="Enter product price."
             name="price"
             min={1}
             onChng={formik.handleChange("price")}
@@ -283,7 +288,7 @@ const AddProduct = () => {
 
           <CustomInput
             type="number"
-            label="Enter Product Quantity"
+            label="Enter product quantity."
             name="quantity"
             min={1}
             onChng={formik.handleChange("quantity")}
