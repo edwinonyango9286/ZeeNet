@@ -3,7 +3,11 @@ import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
-import { deleteACoupon, getCoupons, resetState } from "../features/coupon/couponSlice";
+import {
+  deleteACoupon,
+  getCoupons,
+  resetState,
+} from "../features/coupon/couponSlice";
 import { FiEdit } from "react-icons/fi";
 import CustomModal from "../Components/CustomModal";
 
@@ -45,7 +49,7 @@ const CouponList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(resetState())
+    dispatch(resetState());
     dispatch(getCoupons());
   }, []);
 
@@ -60,12 +64,12 @@ const CouponList = () => {
 
       action: (
         <>
-          <Link to={`/admin/coupon/${couponState[i]._id}`} className="fs-3">
+          <Link to={`/admin/coupon/${couponState[i]._id}`} className="fs-5">
             <FiEdit />
           </Link>
           <button
             onClick={() => showModal(couponState[i]._id)}
-            className="ms-3 text-danger bg-transparent border-0 fs-3"
+            className="ms-2 text-danger bg-transparent border-0 fs-5"
           >
             <AiFillDelete />
           </button>
@@ -74,14 +78,11 @@ const CouponList = () => {
     });
   }
 
-
-  const deleteCoupon = (e) => {
-    dispatch(deleteACoupon(e));
+  const deleteCoupon = async (e) => {
+    await dispatch(deleteACoupon(e));
 
     setOpen(false);
-    setTimeout(() => {
-      dispatch(getCoupons());
-    }, 500);
+    dispatch(getCoupons());
   };
 
   return (

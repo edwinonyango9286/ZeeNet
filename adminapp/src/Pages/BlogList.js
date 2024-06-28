@@ -53,11 +53,11 @@ const BlogList = () => {
       category: blogState[i].category,
       action: (
         <>
-          <Link to={`/admin/blog/${blogState[i]._id}`} className="fs-3">
+          <Link to={`/admin/blog/${blogState[i]._id}`} className="fs-5">
             <FiEdit />
           </Link>
           <button
-            className="ms-3 fs-3 text-danger bg-transparent border-0"
+            className="ms-2 fs-5 text-danger bg-transparent border-0"
             onClick={() => showModal(blogState[i]._id)}
           >
             <AiFillDelete />
@@ -85,7 +85,7 @@ const BlogList = () => {
           perfomAction={() => {
             deleteBlog(blogId);
           }}
-          title="Are You sure you want to delete this Blog"
+          title="Are you sure you want to delete this blog?"
         />
       </div>
     </>

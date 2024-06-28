@@ -150,7 +150,7 @@ const rating = asyncHandler(async (req, res) => {
       const updateRating = await Product.updateOne(
         { ratings: { $elemMatch: alreadyRated } },
         {
-          $set: { "ratings.$.star": star, "rating.$.comment": comment },
+          $set: { "ratings.$.star": star, "ratings.$.comment": comment },
         },
         { new: true }
       );
@@ -170,6 +170,7 @@ const rating = asyncHandler(async (req, res) => {
       );
     }
 
+    
     const getallratings = await Product.findById(prodId);
     let totalrating = getallratings.ratings.length;
     let ratingsum = getallratings.ratings

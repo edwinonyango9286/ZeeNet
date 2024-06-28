@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
     <>
-      <Container class1="home-wrapper-1">
+      <Container class1="home-wrapper-1 overflow-hidden">
         <div className="row">
           <div className="col-12 col-lg-6 col-xl-6 col-xxl-6">
             <div className="main-banner position-relative py-2">
@@ -413,7 +413,6 @@ const Home = () => {
         </div>
 
         <div className="row">
-
           {productState &&
             productState?.map((item, index) => {
               if (item.tags === "special") {
@@ -441,13 +440,17 @@ const Home = () => {
             <h3 className="section-heading">Popular Products</h3>
           </div>
         </div>
-        <div className="">
-          <div className="col-12">
+
+        <div className="col-12">
+          <div className="d-flex gap-10 align-items-center ">
             {productState &&
               productState?.map((item, index) => {
                 if (item?.tags === "popular") {
                   return (
-                    <div key={index} className={"col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"}>
+                    <div
+                      key={index}
+                      className={"col-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"}
+                    >
                       <div className="product-card position-relative">
                         <div className="wishlist-icon position-absolute">
                           <button
@@ -515,6 +518,8 @@ const Home = () => {
               })}
           </div>
         </div>
+
+
       </Container>
 
       <Container class1="marquee-wrapper py-2  home-wrapper-2">

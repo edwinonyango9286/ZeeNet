@@ -27,6 +27,7 @@ const columns = [
   },
 ];
 
+
 const BlogCategoryList = () => {
   const [open, setOpen] = useState(false);
   const [blogCatId, setBlogCatId] = useState("");
@@ -42,23 +43,23 @@ const BlogCategoryList = () => {
     dispatch(resetState());
     dispatch(getBlogCategory());
   }, []);
-  const blogcategorystate = useSelector((state) => state.bCategory.bCategories);
+  const blogCategoryState = useSelector((state) => state.bCategory.bCategories);
   const data1 = [];
-  for (let i = 0; i < blogcategorystate.length; i++) {
+  for (let i = 0; i < blogCategoryState.length; i++) {
     data1.push({
       key: i + 1,
-      name: blogcategorystate[i].title,
+      name: blogCategoryState[i].title,
       action: (
         <>
           <Link
-            to={`/admin/blog-category/${blogcategorystate[i]._id}`}
-            className="fs-3"
+            to={`/admin/blog-category/${blogCategoryState[i]._id}`}
+            className="fs-5"
           >
             <FiEdit />
           </Link>
           <button
-            onClick={() => showModal(blogcategorystate[i]._id)}
-            className="ms-3 text-danger bg-transparent border-0 fs-3"
+            onClick={() => showModal(blogCategoryState[i]._id)}
+            className="ms-2 text-danger bg-transparent border-0 fs-5"
           >
             <AiFillDelete />
           </button>
@@ -67,12 +68,10 @@ const BlogCategoryList = () => {
     });
   }
 
-  const deleteBlogcategory = (e) => {
-    dispatch(deleteABlogCat(e));
+  const deleteBlogcategory = async (e) => {
+   await  dispatch(deleteABlogCat(e));
     setOpen(false);
-    setTimeout(() => {
       dispatch(getBlogCategory());
-    }, 500);
   };
   
 
@@ -89,7 +88,7 @@ const BlogCategoryList = () => {
           perfomAction={() => {
             deleteBlogcategory(blogCatId);
           }}
-          title="Are You sure you want to delete this Blog"
+          title="Are you sure you want to delete this blog?"
         />
       </div>
     </>

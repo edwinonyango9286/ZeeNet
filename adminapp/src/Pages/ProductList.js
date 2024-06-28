@@ -77,12 +77,12 @@ const ProductList = () => {
       price: `Ksh ${productState[i].price}`,
       action: (
         <>
-          <Link to={`/admin/product/${productState[i]._id}`} className="fs-3">
+          <Link to={`/admin/product/${productState[i]._id}`} className="fs-5">
             <FiEdit />
           </Link>
 
           <button
-            className="ms-3 fs-3  text-danger border-0 bg-transparent"
+            className="ms-2 fs-5  text-danger border-0 bg-transparent"
             onClick={() => showModal(productState[i]._id)}
           >
             <AiFillDelete />
@@ -110,6 +110,7 @@ const ProductList = () => {
           perfomAction={() => {
             deleteProduct(productId);
           }}
+          title="Are you sure you want to delete this product?"
         />
       </div>
     </>

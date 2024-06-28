@@ -45,7 +45,7 @@ const Cart = () => {
     for (let index = 0; index < userCartState?.length; index++) {
       sum =
         sum +
-        Number(userCartState[index].quantity) * userCartState[index].price;
+        Number(userCartState[index]?.quantity) * userCartState[index]?.price;
       setTotalAmount(sum);
     }
   }, [userCartState]);
@@ -80,7 +80,7 @@ const Cart = () => {
                         ></img>
                       </div>
                       <div className="w-75">
-                        <p>{item?.productId.title}</p>
+                        <p>{item?.productId?.title}</p>
                         <p>Size</p>
                         <p className="d-flex gap-3">
                           Color:
@@ -119,7 +119,7 @@ const Cart = () => {
                       </div>
                       <div>
                         <button
-                          className="ms-3 fs-3 text-danger bg-transparent border-0"
+                          className="ms-2 fs-5 text-danger bg-transparent border-0"
                           onClick={() => {
                             deleteACartProduct(item?._id);
                           }}

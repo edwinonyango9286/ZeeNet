@@ -10,7 +10,11 @@ import { AiOutlineHeart } from "react-icons/ai";
 import Container from "../Components/Container";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAproduct } from "../features/products/productSlice";
+import {
+  addProductRating,
+  getAllProducts,
+  getAproduct,
+} from "../features/products/productSlice";
 import { toast } from "react-toastify";
 import { addProductToCart, getUserCart } from "../features/users/userSlice";
 
@@ -26,10 +30,13 @@ const SingleProduct = () => {
   const cartState = useSelector((state) => state?.auth?.cartProducts);
   const productsState = useSelector((state) => state?.product?.products);
   const [popularProducts, setPopularProducts] = useState([]);
+  const [star, setStar] = useState(null);
+  const [comment, setComment] = useState(null);
 
   useEffect(() => {
     dispatch(getAproduct(getProductId));
     dispatch(getUserCart());
+    dispatch(getAllProducts());
   }, []);
 
   useEffect(() => {
@@ -86,7 +93,22 @@ const SingleProduct = () => {
       setPopularProducts(data);
     }
   }, [productsState]);
-  console.log(popularProducts);
+
+  const addRatingToProduct = () => {
+    if (star === null) {
+      toast.error("Add star rating?");
+      return false;
+    } else if (comment === null) {
+      toast.error("Please write a review about the product?");
+      return false;
+    } else {
+      dispatch(
+        addProductRating({ star: star, comment: comment, prodId: getProductId })
+      );
+      dispatch(getAproduct(getProductId));
+      return false;
+    }
+  };
 
   return (
     <>
@@ -104,28 +126,29 @@ const SingleProduct = () => {
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image"
+                  className="img-fluid square-image object-fit"
                   alt="Product Image"
                 />
               </div>
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image"
+                  className="img-fluid square-image object-fit"
+                  alt="Product Image"
+
+                />
+              </div>
+              <div>
+                <img
+                  src={productState?.images[0]?.url}
+                  className="img-fluid square-image object-fit"
                   alt="Product Image"
                 />
               </div>
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image"
-                  alt="Product Image"
-                />
-              </div>
-              <div>
-                <img
-                  src={productState?.images[0]?.url}
-                  className="img-fluid square-image"
+                  className="img-fluid square-image object-fit"
                   alt="Product Image"
                 />
               </div>
@@ -143,14 +166,14 @@ const SingleProduct = () => {
                   <ReactStars
                     count={5}
                     size={20}
-                    value={productState?.totalrating.toString()}
+                    value={productState?.totalrating?.toString()}
                     edit={false}
                     activeColor="#ffd700"
                   />
                   <p className="mb-0 t-review">(2 Reviews )</p>
                 </div>
                 <a className="review-btn" href="#review">
-                  Write A Review
+                  Write a review
                 </a>
               </div>
               <div className=" py-3">
@@ -179,28 +202,21 @@ const SingleProduct = () => {
                   <p className="product-data">In Stock</p>
                 </div>
 
-                <div className="d-flex gap-10 flex-column mt-2 mb-3">
+                <div className="d-flex gap-10 flex-column flex-wrap mt-2 mb-2">
                   <h3 className="product-heading">Size:</h3>
                   <div className="d-flex flex-wrap gap-2 gap-md-15">
-                    <span className="badge border border-1 bg-white text-dark  border-secondary ">
-                      S
-                    </span>
-                    <span className="badge border border-1 bg-white text-dark border-secondary">
-                      M
-                    </span>
-                    <span className="badge border border-1 bg-white text-dark  border-secondary">
-                      XL
-                    </span>
-                    <span className="badge border border-1 bg-white text-dark border-secondary">
-                      XXL
-                    </span>
+                    <span className="bg-white text-dark border px-3">11.6"</span>
+                    <span className=" bg-white text-dark border px-3">12"</span>
+                    <span className="  bg-white text-dark border px-3">13.3"</span>
+                    <span className="bg-white text-dark border px-2">14"</span>
+                    <span className=" bg-white text-dark border px-1">15.6"</span>
                   </div>
                 </div>
 
                 {alreadyAdded === false && (
                   <>
                     <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                      <h3 className="product-heading">Select product color:</h3>
+                      <h3 className="product-heading">Select laptop color:</h3>
                       <Colors
                         setColor={setColor}
                         colorData={productState?.color}
@@ -327,13 +343,14 @@ const SingleProduct = () => {
                 </div>
                 <div>
                   <button className="text-dark text-decoration-underline btn btn-link">
-                    Write A Review
+                    Write a review
                   </button>
                 </div>
               </div>
               <div className="review-form py-4">
-                <h4>Write A Review</h4>
-                <form action="" className="d-flex flex-column gap-15">
+                <h4>Write a review</h4>
+
+                <div action="" className="d-flex flex-column gap-15">
                   <div>
                     <ReactStars
                       count={5}
@@ -341,41 +358,54 @@ const SingleProduct = () => {
                       value={4}
                       edit={true}
                       activeColor="#ffd700"
+                      onChange={(e) => {
+                        setStar(e);
+                      }}
                     />
                   </div>
                   <div>
                     <textarea
-                      name=""
-                      id=""
+                      name="review"
+                      id="review"
                       className="w-100 form-control"
-                      cols={30}
+                      cols={20}
                       rows={4}
-                      placeholder="Comments"
+                      placeholder="Comment..."
+                      onChange={(e) => {
+                        setComment(e.target.value);
+                      }}
                     />
                   </div>
-                  <div className="d-flex justify-content-end">
-                    <button className="button border-0">Submit</button>
+                  <div className="d-flex justify-content-end mt-2">
+                    <button
+                      type="button"
+                      onClick={addRatingToProduct}
+                      className="button border-0"
+                    >
+                      Submit Review
+                    </button>
                   </div>
-                </form>
+                </div>
               </div>
 
               <div className="reviews mt-4">
-                <div className="review">
-                  <div className="d-flex flex-column flex-md-row align-items-md-center align-items-start gap-10">
-                    <h6 className="mb-0">Omollo</h6>
-                    <ReactStars
-                      count={5}
-                      size={20}
-                      value={4}
-                      edit={false}
-                      activeColor="#ffd700"
-                    />
-                  </div>
-                  <p>
-                    I recently purchased this product, and I must say, I am
-                    pleasantly surprised by its performance
-                  </p>
-                </div>
+                {productState &&
+                  productState.ratings?.map((item, index) => {
+                    return (
+                      <div key={index} className="review">
+                        <div className="d-flex align-items-center gap-10">
+                          <ReactStars
+                            count={5}
+                            size={20}
+                            value={item?.star}
+                            edit={false}
+                            activeColor="#ffd700"
+                          />
+                        </div>
+                        <p>{item?.comment}</p>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </div>
@@ -385,11 +415,11 @@ const SingleProduct = () => {
       <Container class1="popular-wrapper home-wrapper-2 py-2">
         <div className="row">
           <div className="col-12">
-            <h6 className="section-heading">Our Popular Products </h6>
+            <h6 className="section-heading">Popular Products.</h6>
           </div>
         </div>
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 d-flex gap-10 flex-wrap">
             <ProductCard data={popularProducts} />
           </div>
         </div>

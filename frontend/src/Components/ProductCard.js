@@ -39,15 +39,17 @@ const ProductCard = (props) => {
               <div className="product-image">
                 <img
                   src={item?.images[0]?.url}
-                  className="img-fluid mx-auto "
+                  className="img-fluid mx-auto border rounded object-fit "
                   alt="Product Image"
                   width={160}
+                  height={160}
                 />
                 <img onClick={()=>{}}
                   src={item?.images[0]?.url}
-                  className="img-fluid mx-auto "
+                  className="img-fluid mx-auto  border rounded object-fit"
                   alt="Product Image"
                   width={160}
+                  height={160}
                 />
               </div>
 

@@ -56,26 +56,26 @@ const Enquiries = () => {
     dispatch(getEnquiries());
   }, []);
 
-  const enquiryState = useSelector((state) => state.enquiry.enquiries);
+  const enquiryState = useSelector((state) => state?.enquiry?.enquiries);
 
   const data1 = [];
-  for (let i = 0; i < enquiryState.length; i++) {
+  for (let i = 0; i < enquiryState?.length; i++) {
     data1.push({
       key: i + 1,
-      name: enquiryState[i].name,
-      email: enquiryState[i].email,
-      mobile: enquiryState[i].mobile,
+      name: enquiryState[i]?.name,
+      email: enquiryState[i]?.email,
+      mobile: enquiryState[i]?.mobile,
       status: (
         <>
           <select
             name=""
             defaultValue={
-              enquiryState[i].status ? enquiryState[i].status : "Submitted"
+              enquiryState[i]?.status ? enquiryState[i]?.status : "Submitted"
             }
             className="form-control form-select"
             id=""
             onChange={(e) =>
-              setEnquiryStatus(e.target.value, enquiryState[i]._id)
+              setEnquiryStatus(e.target.value, enquiryState[i]?._id)
             }
           >
             <option value="Submitted">Submitted</option>
@@ -88,14 +88,14 @@ const Enquiries = () => {
       action: (
         <>
           <Link
-            to={`/admin/enquiries/${enquiryState[i]._id}`}
-            className="fs-3 ms-3 text-danger "
+            to={`/admin/enquiries/${enquiryState[i]?._id}`}
+            className="fs-5 ms-2 text-danger "
           >
             <FaRegEye />
           </Link>
           <button
-            className="ms-3 fs-3 text-danger bg-transparent border-0"
-            onClick={() => showModal(enquiryState[i]._id)}
+            className="ms-2 fs-5 text-danger bg-transparent border-0"
+            onClick={() => showModal(enquiryState[i]?._id)}
           >
             <AiFillDelete />
           </button>
@@ -108,12 +108,10 @@ const Enquiries = () => {
     dispatch(updateAEnquiry(data));
   };
 
-  const deleteEnquiry = (e) => {
-    dispatch(deleteAEnquiry(e));
+  const deleteEnquiry = async (e) => {
+    await dispatch(deleteAEnquiry(e));
     setOpen(false);
-    setTimeout(() => {
-      dispatch(getEnquiries());
-    }, 500);
+    dispatch(getEnquiries());
   };
 
   return (
@@ -129,7 +127,7 @@ const Enquiries = () => {
           perfomAction={() => {
             deleteEnquiry(enquiryId);
           }}
-          title="Are You sure you want to delete this Enquiry"
+          title="Are you sure you want to delete this enquiry?"
         />
       </div>
     </>

@@ -53,12 +53,12 @@ const ColorList = () => {
       name: colorState[i].title,
       action: (
         <>
-          <Link to={`/admin/color/${colorState[i]._id}`} className="fs-3">
+          <Link to={`/admin/color/${colorState[i]._id}`} className="fs-5">
             <FiEdit />
           </Link>
           <button
             onClick={() => showModal(colorState[i]._id)}
-            className="fs-3 ms-3 text-danger bg-transparent border-0"
+            className="fs-5 ms-2 text-danger bg-transparent border-0"
           >
             <AiFillDelete />
           </button>
@@ -67,13 +67,14 @@ const ColorList = () => {
     });
   }
 
-  const deleteColor = (e) => {
-    dispatch(deleteAColor(e));
+
+
+  const deleteColor = async (e) => {
+  await dispatch(deleteAColor(e));
     setOpen(false);
-    setTimeout(() => {
       dispatch(getColors());
-    }, 500);
   };
+
 
   return (
     <>
@@ -88,7 +89,7 @@ const ColorList = () => {
           perfomAction={() => {
             deleteColor(colorId);
           }}
-          title="Are You sure you want to delete this Brand"
+          title="Are you sure you want to delete this brand?"
         />
       </div>
     </>

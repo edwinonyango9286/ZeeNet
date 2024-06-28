@@ -51,12 +51,12 @@ const BrandList = () => {
       name: brandState[i].title,
       action: (
         <>
-          <Link to={`/admin/brand/${brandState[i]._id}`} className="fs-3">
+          <Link to={`/admin/brand/${brandState[i]._id}`} className="fs-5">
             <FiEdit />
           </Link>
 
           <button
-            className="ms-3 fs-3 text-danger bg-transparent border-0"
+            className="ms-3 fs-5 text-danger bg-transparent border-0"
             onClick={() => showModal(brandState[i]._id)}
           >
             <AiFillDelete />
@@ -64,17 +64,14 @@ const BrandList = () => {
         </>
       ),
     });
-  } 
+  }
 
-  const deleteBrand = (e) => {
-    dispatch(deleteABrand(e));
+  const deleteBrand = async (e) => {
+    await dispatch(deleteABrand(e));
     setOpen(false);
-    setTimeout(() => {
-      dispatch(getBrands());
-    }, 500);
+    dispatch(getBrands());
   };
 
-  
   return (
     <>
       <div>
@@ -86,7 +83,7 @@ const BrandList = () => {
           perfomAction={() => {
             deleteBrand(brandId);
           }}
-          title="Are You sure you want to delete this Brand"
+          title="Are you sure you want to delete this brand?"
         />
       </div>
     </>

@@ -41,14 +41,14 @@ const AddCategory = () => {
 
   useEffect(() => {
     if (isSuccess && createdCategory) {
-      toast.success("Product Category Added Successfully!!");
+      toast.success("Product category added successfully.");
     }
     if (isSuccess && updatedCategory) {
-      toast.success("Category Updated Successfully!!");
+      toast.success("Category updated successfully.");
       navigate("/admin/category-list");
     }
     if (isError) {
-      toast.error("Something went Wrong Please Try Again!!");
+      toast.error("Something went wrong. Please try again later.");
     }
   }, [isSuccess, isError, isLoading]);
 

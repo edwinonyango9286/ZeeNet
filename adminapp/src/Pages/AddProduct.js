@@ -86,15 +86,13 @@ const AddProduct = () => {
     dispatch(getAColor());
   }, []);
 
-
-  
   useEffect(() => {
     if (isSuccess && createdProduct) {
-      toast.success("Product added Successfully!!");
+      toast.success("Product added successfully.");
     }
 
     if (isSuccess && updatedProduct) {
-      toast.success("Product Updated Successfully!!");
+      toast.success("Product updated successfully.");
       navigate("/admin/product-list");
     }
     if (
@@ -109,7 +107,7 @@ const AddProduct = () => {
       productColor &&
       productTag
     ) {
-      toast.error("Something went Wrong Please Try Again!!");
+      toast.error("Something went wrong. Please try again later.");
     }
   }, [isSuccess, isError, isLoading]);
 
@@ -267,6 +265,28 @@ const AddProduct = () => {
             <option value="featured">Featured</option>
             <option value="popular">Popular</option>
             <option value="special">Special</option>
+            <option value="featured">Featured</option>
+            <option value="popular">Popular</option>
+            <option value="special">Special</option>
+            <option value="new">New</option>
+            <option value="sale">Sale</option>
+            <option value="clearance">Clearance</option>
+            <option value="gaming">Gaming</option>
+            <option value="business">Business</option>
+            <option value="student">Student</option>
+            <option value="ultrabook">Ultrabook</option>
+            <option value="2-in-1">2-in-1</option>
+            <option value="touchscreen">Touchscreen</option>
+            <option value="amd">AMD</option>
+            <option value="intel">Intel</option>
+            <option value="nvidia">NVIDIA</option>
+            <option value="dell">Dell</option>
+            <option value="hp">HP</option>
+            <option value="lenovo">Lenovo</option>
+            <option value="asus">ASUS</option>
+            <option value="acer">Acer</option>
+            <option value="microsoft">Microsoft</option>
+            <option value="apple">Apple</option>
           </select>
 
           <div className="error">

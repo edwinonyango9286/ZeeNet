@@ -18,11 +18,8 @@ let contactSchema = Yup.object().shape({
   comment: Yup.string().required("Enter an enquiry."),
 });
 
-
-
 const Contact = () => {
   const dispatch = useDispatch();
-
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -33,7 +30,7 @@ const Contact = () => {
       comment: "",
     },
     validationSchema: contactSchema,
-    onSubmit: values => {
+    onSubmit: (values) => {
       dispatch(createEnquiry(values));
     },
   });
@@ -41,7 +38,7 @@ const Contact = () => {
     <>
       <Meta title={"Contact Us"} />
       <BreadCrumb title="Contact Us" />
-      <Container class1="contact-wrapper py-5 home-wrapper-2">
+      <Container class1="py-4 home-wrapper-2 overflow-hidden">
         <div className="row">
           <div className="col-12">
             <iframe
@@ -54,14 +51,16 @@ const Contact = () => {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <div className="col-12 mt-5">
-            <div className="contact-inner-wrapper d-flex justify-content-between">
-              <div>
+
+            <div className="contact-inner-wrapper mt-4 d-md-flex  d-lg-flex d-xl-flex d-xxl-flex  gap-10">
+
+
+              <div className="col-12 col-md-6 col-lg-12 col-xl-12 col-xxl-12  my-2">
                 <h3 className="contact-title mb-4">Contact</h3>
                 <form
                   action=""
                   onSubmit={formik.handleSubmit}
-                  className="d-flex flex-column gap-15"
+                  className="d-flex align flex-column gap-10"
                 >
                   <div>
                     <input
@@ -126,11 +125,14 @@ const Contact = () => {
                     </div>
                   </div>
                   <div>
-                    <button type="submit" className="button border-0">Submit</button>
+                    <button type="submit" className="button border-0">
+                      Submit
+                    </button>
                   </div>
                 </form>
               </div>
-              <div>
+
+              <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 my-2 ">
                 <h3 className="contact-title"> Get In Touch With Us</h3>
 
                 <div>
@@ -163,7 +165,6 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
       </Container>
     </>
   );
