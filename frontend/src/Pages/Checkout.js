@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { IoArrowBackSharp } from "react-icons/io5";
 import Container from "../Components/Container";
 import CustomInput from "../Components/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Meta from "../Components/Meta";
+
 
 const shippingSchema = Yup.object().shape({
   firstName: Yup.string().required("Enter your first name."),
@@ -20,8 +22,11 @@ const shippingSchema = Yup.object().shape({
 
 const Checkout = () => {
   const dispatch = useDispatch();
-  const cartState = useSelector((state) => state.auth.cartProducts);
+  const cartState = useSelector((state) => state?.auth?.cartProducts);
+  const currentUser = useSelector((state)=>state?.auth?.user)
+
   const [totalAmount, setTotalAmount] = useState(null);
+  const [ShippingInfo,setShippingInfo] = useState(null)
   
 
   useEffect(() => {
@@ -32,6 +37,7 @@ const Checkout = () => {
     }
   }, [cartState]);
 
+ 
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -46,17 +52,19 @@ const Checkout = () => {
 
     validationSchema: shippingSchema,
     onSubmit: (values) => {
-      alert(values);
+      setShippingInfo(values)
     },
   });
 
+
   return (
     <>
+      <Meta title={"Checkout"} />
       <Container class1="checkout-wrapper py-4 home-wrapper-2">
         <div className="row">
           <div className="col-7">
             <div className="checkout-left-data">
-              <h3 className="website-name">ZeeNet Tech</h3>
+              <h4 className="logo pb-2">ORLEANSTECH</h4>
               <nav
                 style={{ "--bs-breadcrumb-divider": ">" }}
                 aria-label="breadcrumb"
@@ -67,23 +75,23 @@ const Checkout = () => {
                       Cart
                     </Link>
                   </li>
-                  &nbsp;/&nbsp;
+                  &nbsp;&gt;&nbsp;
                   <li className="breadcrumb-item active " aria-current="page">
                     Information
                   </li>
-                  &nbsp;/
+                  &nbsp;&gt;
                   <li className="breadcrumb-item active" aria-current="page">
                     Shipping
                   </li>
-                  &nbsp;/
+                  &nbsp;&gt;
                   <li className="breadcrumb-item active " aria-current="page">
                     Payment
                   </li>
                 </ol>
               </nav>
-              <h4 className="title total">Contact Information </h4>
-              <p className="user-details">Omollo Dev(omollodev@gmail.com)</p>
-              <h4 className="mb-3">Delivery Address</h4>
+              <h4 className="title total">Account</h4>
+              <p className="user-details">{currentUser?.email}</p>
+              <h4 className="mb-3">Delivery</h4>
               <form
                 action=""
                 className="d-flex gap-15 flex-wrap justify-content-between"
@@ -98,8 +106,10 @@ const Checkout = () => {
                     onBlur={formik.handleBlur("country")}
                     value={formik.values.country}
                   >
-                    <option>Select Country.</option>
-                    <option value="Kenya">Kenya</option>
+                    <option disabled>Select Country.</option>
+                    <option value="Kenya" selected>
+                      Kenya
+                    </option>
                     <option value="Uganda">Uganda</option>
                   </select>
                   <div className="error ms-2">
@@ -161,7 +171,7 @@ const Checkout = () => {
                     id="other"
                     onChange={formik.handleChange("other")}
                     onBlur={formik.handleBlur("other")}
-                    value={formik.values.city}
+                    value={formik.values.other}
                   />
                   <div className="error ms-2">
                     {formik.touched.other && formik.errors.other}
@@ -191,11 +201,12 @@ const Checkout = () => {
                     onBlur={formik.handleBlur("state")}
                     value={formik.values.state}
                   >
-                    <option value="" selected disabled>
-                      Select State.
-                    </option>
-                    <option value="" selected>
+                    <option disabled>Select State.</option>
+                    <option value="Katani" selected>
                       Katani
+                    </option>
+                    <option value="Maseno" selected>
+                      Maseno
                     </option>
                   </select>
                   <div className="error ms-2">
@@ -287,8 +298,6 @@ const Checkout = () => {
                 <p className="mb-0 total-price">Ksh {500}</p>
               </div>
             </div>
-
-            
 
             <div className="d-flex justify-content-between align-items-center border-bottom py-4">
               <h4 className="total">Total</h4>

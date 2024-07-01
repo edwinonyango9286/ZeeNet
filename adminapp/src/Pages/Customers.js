@@ -24,6 +24,7 @@ const columns = [
 ];
 
 const Customers = () => {
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(resetState())
@@ -42,6 +43,8 @@ const Customers = () => {
       });
     }
   }
+
+  
 
   return (
     <div>

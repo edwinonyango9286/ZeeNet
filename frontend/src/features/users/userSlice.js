@@ -80,14 +80,15 @@ export const updatedCartProduct = createAsyncThunk(
 
 export const updateProfile = createAsyncThunk(
   "user/update-user-profile",
-  async (userData, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      return await authService.updateUserProfile(userData);
+      return await authService.updateUserProfile(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
+
 export const resetPasswordToken = createAsyncThunk(
   "user/reset-password-token",
   async (data, thunkAPI) => {
@@ -137,7 +138,7 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.createdUser = action.payload;
         if (state.isSuccess === true) {
-          toast.success("Account created successfully.");
+          toast.success("Account creation successful.");
         }
       })
       .addCase(registerUser.rejected, (state, action) => {
@@ -269,18 +270,28 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.updatedUser = action.payload;
-        if (state.isSuccess) {
-          toast.success("Profile updated.");
-        }
-      })
+        let currentUserData = JSON.parse(localStorage.getItem("customer"));
+        let newUserData = {
+          _id: currentUserData?._id,
+          token: currentUserData?.token,
+          firstname: action?.payload?.firstname,
+          lastname: action?.payload?.lastname,
+          email: action?.payload?.email,
+          mobile: action?.payload?.mobile,
+        };
+        
+        localStorage.setItem("customer", JSON.stringify(newUserData));
+        state.user = newUserData;
+        toast.success("Profile updated.");
 
-      .addCase(updateProfile.rejected, (state, action) => {
+
+      }).addCase(updateProfile.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
         state.message = action.error;
         if (state.isSuccess === false) {
-          toast.error("Something went wrong. Please try again.");
+          toast.error("Something went wrong. Please try again later.");
         }
       })
       .addCase(resetPasswordToken.pending, (state) => {

@@ -15,11 +15,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [updatedProductDetails, setUpdatedProductDetails] = useState(null);
   const [totalAmount, setTotalAmount] = useState(null);
-
   const userCartState = useSelector((state) => state?.auth?.cartProducts);
+
   useEffect(() => {
     dispatch(getUserCart());
   }, []);
+
+
 
   useEffect(() => {
     if (updatedProductDetails !== null) {
@@ -31,9 +33,12 @@ const Cart = () => {
       );
       setTimeout(() => {
         dispatch(getUserCart());
-      }, 200);
+      },100);
     }
+
   }, [updatedProductDetails]);
+
+
 
   const deleteACartProduct = async (id) => {
     await dispatch(deleteAProductFromCart(id));

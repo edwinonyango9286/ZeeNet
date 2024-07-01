@@ -1,4 +1,4 @@
-var unirest = require("unirest");
+const expressAsyncHandler = require("express-async-handler");
 
 // var req = unirest("GET", "https://sandbox.safaricom.co.ke/oauth/v1/generate");
 
@@ -16,3 +16,17 @@ var unirest = require("unirest");
 //   console.log(res.body);
 // });
 
+
+
+const checkout = async (req, res) => {
+   const { mobile, amount } = req.body;
+
+  const order = await instance.orders.create(mobile, amount);
+  res.json({ success: true, order });
+};
+
+
+
+module.exports = {
+  checkout,
+};

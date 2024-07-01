@@ -42,7 +42,6 @@ const Store = () => {
     setCategories(newCategory);
     setTags(newTags);
   }, [productState]);
-  console.log(sort);
 
   useEffect(() => {
     dispatch(

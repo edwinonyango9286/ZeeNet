@@ -19,10 +19,11 @@ const createUser = asyncHandler(async (req, res) => {
     const newUser = await User.create(req.body);
     res.json(newUser);
   } else {
-    throw new Error("An account has already been created with this email. Login instead.");
+    throw new Error(
+      "An account has already been created with this email. Login instead."
+    );
   }
 });
-
 
 const loginUserCtrl = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -51,7 +52,7 @@ const loginUserCtrl = asyncHandler(async (req, res) => {
       token: generateToken(findUser?._id),
     });
   } else {
-    throw new Error("Invalid email or password.");
+    throw new Error("Wrong email or password.");
   }
 });
 
@@ -125,8 +126,6 @@ const logout = asyncHandler(async (req, res) => {
   res.sendStatus(204);
 });
 
-
-
 const updateAUser = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   validateMongodbId(_id);
@@ -150,8 +149,6 @@ const updateAUser = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
-
 
 const saveUserAddress = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -260,9 +257,6 @@ const updatePassword = asyncHandler(async (req, res) => {
   }
 });
 
-
-
-
 const forgotPasswordToken = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
@@ -284,9 +278,6 @@ const forgotPasswordToken = asyncHandler(async (req, res) => {
   }
 });
 
-
-
-
 const resetPassword = asyncHandler(async (req, res) => {
   const { password } = req.body;
   const { token } = req.params;
@@ -302,9 +293,6 @@ const resetPassword = asyncHandler(async (req, res) => {
   await user.save();
   res.json(user);
 });
-
-
-
 
 const getWishlist = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -365,7 +353,6 @@ const removeProductFromCart = asyncHandler(async (req, res) => {
   }
 });
 
-
 const updateProductQuantityFromCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const { cartItemId, newQuantity } = req.params;
@@ -379,11 +366,10 @@ const updateProductQuantityFromCart = asyncHandler(async (req, res) => {
     cartItem.quantity = newQuantity;
     cartItem.save();
     res.json(cartItem);
-  } catch (error) { 
+  } catch (error) {
     throw new Error(error);
   }
 });
-
 
 const emptyCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
@@ -396,7 +382,6 @@ const emptyCart = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
 
 const applyCoupon = asyncHandler(async (req, res) => {
   const { coupon } = req.body;
@@ -422,9 +407,6 @@ const applyCoupon = asyncHandler(async (req, res) => {
   res.json(totalAfterDiscount);
 });
 
-
-
-
 //User creates an order
 const createOrder = asyncHandler(async (req, res) => {
   const {
@@ -444,6 +426,7 @@ const createOrder = asyncHandler(async (req, res) => {
       totalPrice,
       totalPriceAfterDiscount,
       paymentInfo,
+      user: _id,
     });
     res.json({
       order,
@@ -455,7 +438,6 @@ const createOrder = asyncHandler(async (req, res) => {
 });
 
 
-
 const getMyOrders = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   try {
@@ -465,9 +447,6 @@ const getMyOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
-
-
-
 
 module.exports = {
   createUser,

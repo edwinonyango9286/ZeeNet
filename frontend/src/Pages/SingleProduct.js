@@ -46,7 +46,6 @@ const SingleProduct = () => {
       }
     }
   }, []);
-
   const uploadCart = async () => {
     if (color === null) {
       toast.error("Choose product color.");
@@ -63,6 +62,7 @@ const SingleProduct = () => {
       navigate("/cart");
     }
   };
+
 
   const props = {
     width: 594,
@@ -117,23 +117,23 @@ const SingleProduct = () => {
       <Container class1="main-product-wrapper py-2 home-wrapper-2">
         <div className="row">
           <div className="col-6">
-            <div className="main-product-image">
+            <div className="main-product-image mb-2">
               <div>
-                <ReactImageZoom {...props} />
+                <ReactImageZoom {...props}  style={{width:"50px", height:"50px"}}/> 
               </div>
             </div>
             <div className="other-product-images d-flex flex-wrap gap-15">
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image object-fit"
+                  className="img-fluid square-image object-fit rounded"
                   alt="Product Image"
                 />
               </div>
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image object-fit"
+                  className="img-fluid square-image object-fit rounded"
                   alt="Product Image"
 
                 />
@@ -141,14 +141,14 @@ const SingleProduct = () => {
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image object-fit"
+                  className="img-fluid square-image object-fit rounded"
                   alt="Product Image"
                 />
               </div>
               <div>
                 <img
                   src={productState?.images[0]?.url}
-                  className="img-fluid square-image object-fit"
+                  className="img-fluid square-image object-fit rounded"
                   alt="Product Image"
                 />
               </div>
@@ -212,7 +212,6 @@ const SingleProduct = () => {
                     <span className=" bg-white text-dark border px-1">15.6"</span>
                   </div>
                 </div>
-
                 {alreadyAdded === false && (
                   <>
                     <div className="d-flex gap-10 flex-column mt-2 mb-3">
@@ -261,6 +260,7 @@ const SingleProduct = () => {
                         alreadyAdded ? navigate("/cart") : uploadCart();
                       }}
                     >
+
                       {alreadyAdded ? "Proceed To Cart" : "Add to Cart"}
                     </button>
 

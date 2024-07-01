@@ -1,10 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
+
 
 export const PrivateRoutes = ({ children }) => {
+  const location = useLocation();
   const getTokenFromLocalStorage = JSON.parse(localStorage.getItem("customer"));
-  return getTokenFromLocalStorage?.token !== undefined ?  (
+  return getTokenFromLocalStorage?.token !== undefined ? (
     children
   ) : (
-    <Navigate to={"/login"} replace={true} />
+    <Navigate to={"/login"} state={{ from: location }} replace />
   );
 };
+

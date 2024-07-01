@@ -54,11 +54,21 @@ const Header = () => {
     }
     setProductOpt(data);
   }, [productState]);
+  
 
   const handleLogout = () => {
     localStorage.clear();
     window.location.reload();
   };
+
+    useEffect(() => {
+      if (!localStorage.getItem("customer") && !localStorage.getItem("token")) {
+        navigate("/store");
+      }
+    }, []);
+
+
+
 
   return (
     <>

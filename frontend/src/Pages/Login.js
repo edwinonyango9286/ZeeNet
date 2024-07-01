@@ -9,7 +9,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../features/users/userSlice";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const loginSchema = Yup.object().shape({
@@ -22,7 +22,10 @@ const loginSchema = Yup.object().shape({
 const Login = () => {
   const authState = useSelector((state) => state?.auth);
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
+  const from = location.state?.from?.pathname || "/store";
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -32,14 +35,14 @@ const Login = () => {
     onSubmit: (values) => {
       dispatch(loginUser(values));
       if (authState.isSuccess) {
-        navigate("/");
+      navigate(from, { replace: true });
       }
     },
   });
-  
+
   useEffect(() => {
     if (authState.user !== null && authState.isError === false) {
-      navigate("/");
+      navigate(from, { replace: true });
     }
   }, [authState]);
 

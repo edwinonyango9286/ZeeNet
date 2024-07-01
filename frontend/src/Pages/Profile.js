@@ -19,11 +19,25 @@ const profileSchema = Yup.object().shape({
 });
 
 const Profile = () => {
+  const getTokenFromLocalStorge = localStorage.getItem("customer")
+    ? JSON.parse(localStorage.getItem("customer"))
+    : null;
+
+  const config2 = {
+    headers: {
+      Authorization: `Bearer ${
+        getTokenFromLocalStorge !== null ? getTokenFromLocalStorge.token : ""
+      }`,
+      Accept: "application/json",
+    },
+  };
+
   const dispatch = useDispatch();
+  const userState = useSelector((state) => state?.auth?.user);
   const [update, setUpdate] = useState(true);
-  const userState = useSelector((state) => state.auth.user);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
       firstname: userState?.firstname,
       lastname: userState?.lastname,
@@ -32,8 +46,8 @@ const Profile = () => {
     },
     validationSchema: profileSchema,
     onSubmit: (values) => {
-      dispatch(updateProfile(values));
-      setUpdate(true)
+      dispatch(updateProfile({ data: values, config2: config2 }));
+      setUpdate(true);
     },
   });
 
@@ -45,11 +59,10 @@ const Profile = () => {
           <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
             <div className="d-flex justify-content-between align-items-center">
               <h4> {update === true ? "Your Profile" : "Update Profile"}</h4>
-
-              <FiEdit
+              {/* <FiEdit
                 className=" fs-4 text-primary"
                 onClick={() => setUpdate(false)}
-              />
+              /> */}
             </div>
 
             <div>

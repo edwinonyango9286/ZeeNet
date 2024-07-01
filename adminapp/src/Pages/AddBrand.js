@@ -40,14 +40,14 @@ const AddBrand = () => {
 
   useEffect(() => {
     if (isSuccess && createdBrand) {
-      toast.success("Brand Added Successfully!!");
+      toast.success("Brand added successfully.");
     }
     if (isSuccess && updatedBrand) {
-      toast.success("Brand Updated Successfully!!");
+      toast.success("Brand updated successfully.");
       navigate("/admin/brand-list");
     }
     if (isError) {
-      toast.error("Something went Wrong. Please Try Again!!");
+      toast.error("Something went wrong. Please try again.");
     }
   }, [isSuccess, isError, isLoading]);
 
@@ -72,6 +72,7 @@ const AddBrand = () => {
     },
   });
 
+  
   return (
     <>
       <div>

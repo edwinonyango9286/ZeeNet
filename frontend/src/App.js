@@ -60,7 +60,7 @@ function App() {
               path="login"
               element={
                 <OpenRoutes>
-                  <Login />
+                  <Login/>
                 </OpenRoutes>
               }
             />

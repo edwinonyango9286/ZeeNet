@@ -21,8 +21,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { RiCoupon5Fill } from "react-icons/ri";
 import { SiMarketo } from "react-icons/si";
 import { GrCatalog } from "react-icons/gr";
-
 const { Header, Sider, Content } = Layout;
+
+
 
 const MainLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
